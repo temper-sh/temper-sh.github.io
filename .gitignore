@@ -1,0 +1,64 @@
+# Root navigation and repository instructions.
+/*
+!/.gitignore
+!/AGENTS.md
+!/README.md
+!/LICENSE
+!/LICENSE.*
+!/models/
+!/catalog/
+!/guides/
+!/investigations/
+!/templates/
+
+# General-model index, cards and optional configuration notes.
+/models/**
+!/models/README.md
+!/models/*/
+/models/*/*
+!/models/*/README.md
+!/models/*/chat-templates.md
+!/models/*/tuning.md
+!/models/*/layouts/
+/models/*/layouts/*
+!/models/*/layouts/*.md
+/models/*/layouts/*/
+/models/*.md/
+
+# Specialists use the same card structure behind a separate task index.
+/models/specialists/*
+!/models/specialists/README.md
+!/models/specialists/*/
+/models/specialists/*/*
+!/models/specialists/*/README.md
+!/models/specialists/*/chat-templates.md
+!/models/specialists/*/tuning.md
+!/models/specialists/*/layouts/
+/models/specialists/*/layouts/*
+!/models/specialists/*/layouts/*.md
+/models/specialists/*/layouts/*/
+/models/specialists/*.md/
+
+# Other Markdown content collections.
+/catalog/*
+!/catalog/*.md
+/catalog/*/
+/guides/*
+!/guides/*.md
+/guides/*/
+/investigations/*
+!/investigations/*.md
+/investigations/*/
+/templates/*
+!/templates/*.md
+/templates/*/
+
+# Drafts and generated work never enter Git history.
+.work/
+.cache/
+__pycache__/
+.DS_Store
+
+# Planning documents stay in the maintainer's local workspace.
+*[Pp][Ll][Aa][Nn]*.md
+plans/
