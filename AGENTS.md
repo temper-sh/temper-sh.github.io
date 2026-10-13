@@ -29,7 +29,9 @@ pages by their purpose:
 | Path | Content |
 |---|---|
 | `README.md` | Public entry point and routes to useful pages |
-| `catalog/README.md` | Curated links to tools and resources, grouped by purpose |
+| `tools.md` | Curated links to tools and resources, grouped by purpose |
+| `catalog/README.md` | Temper's preset choices: what each installable preset is for, its license and limits |
+| `catalog/sources/`, `catalog/v1/` | Temper's authored catalog and its signed publication (see below) |
 | `models/README.md` | General-model index: memory tiers, linked names and one-line uses |
 | `models/<model>/README.md` | One compact card per model, shared across its configurations |
 | `models/<model>/layouts/<configuration>.md` | Optional detail for a configuration worth comparing or choosing |
@@ -80,6 +82,16 @@ procedures and machine-specific research history in Labs or Field Kit. Summarize
 the supporting observations and state which model/template/engine versions the
 guidance covers.
 
+## Temper catalog
+
+`catalog/` belongs to Temper; this site only hosts it. Every Temper reads the
+signed files under `catalog/v1/` from this site, so they are machine files, not
+pages. Change the catalog only with `temper-catalog publish`, following
+[the maintenance steps](catalog/MAINTAINING.md): edit
+`catalog/sources/<platform>.json` and `catalog/README.md` in the same commit,
+then publish and commit the new files under `catalog/v1/`. Never edit, move or
+delete anything under `catalog/v1/` by hand; snapshots are immutable.
+
 ## Publishing and maintenance
 
 - Use the voice of a maintainer solving practical problems and sharing the
@@ -117,8 +129,9 @@ guidance covers.
   producing time. Recheck navigation and source identities without rerunning
   model inference for a document move.
 - Keep drafts and generated working files under `.work/` from the first write.
-  The [ignore rules](.gitignore) admit the named repository files and Markdown
-  pages in the content directories. Do not force-add temporary material.
+  The [ignore rules](.gitignore) admit the named repository files, Markdown
+  pages in the content directories, and the Temper catalog's source and
+  signed files. Do not force-add temporary material.
 - Before publication, check that each reader-facing page works from this
   repository alone. It must not require sibling research repositories or ignored
   working files. Internal editorial instructions and provenance notes may still

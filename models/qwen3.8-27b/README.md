@@ -10,7 +10,7 @@ llama.cpp was useful, while strict output formats and Swedish prose needed check
 [Model details](https://huggingface.co/Qwen/Qwen3.8-27B), checked
 13 September 2026.
 
-[Temper offers Splash and llama.cpp presets](https://github.com/temper-sh/temper/blob/master/catalog/README.md).
+[Temper offers Splash and llama.cpp presets](../../catalog/README.md).
 It installs the engine and prepares the model files. The coding measurements
 below used an earlier Splash source build; they are not measurements of the
 current packaged release. See the [coding comparison](layouts/splash-ud-q4-k-xl.md)

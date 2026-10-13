@@ -3,6 +3,7 @@
 !/.gitignore
 !/AGENTS.md
 !/README.md
+!/tools.md
 !/LICENSE
 !/LICENSE.*
 !/models/
@@ -52,6 +53,12 @@
 /templates/*
 !/templates/*.md
 /templates/*/
+
+# Temper's catalog: authored sources and the signed publication.
+!/catalog/sources/
+/catalog/sources/*
+!/catalog/sources/*.json
+!/catalog/v1/
 
 # Drafts and generated work never enter Git history.
 .work/

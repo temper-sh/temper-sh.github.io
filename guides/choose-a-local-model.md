@@ -20,7 +20,7 @@ and tuned settings. You do not need to assemble those parts yourself.
 
 These are starting points for specific jobs. The cards explain what was tested
 and what failed. The [model index](../models/README.md) includes other assessed
-models; [Temper's presets](https://github.com/temper-sh/temper/blob/master/catalog/README.md)
+models; [Temper's presets](../catalog/README.md)
 show what you can install today. A historical test may use different settings
 or an older engine than the current preset.
 

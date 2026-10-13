@@ -5,7 +5,7 @@ translate text. The useful differences are the input/output contract, languages,
 correctness and resource cost. Each linked card explains the evidence behind
 its recommendation.
 
-Choose a preset in [Temper's Specialist tab](https://github.com/temper-sh/temper/blob/master/catalog/README.md#specialist-recommendations).
+Choose a preset in [Temper's Specialist tab](../../catalog/README.md#specialist-recommendations).
 Your application connects the steps; a layout makes the models available and
 lets them load when requested. The [request guide](https://github.com/temper-sh/temper/blob/master/docs/SPECIALISTS.md)
 shows their different APIs.

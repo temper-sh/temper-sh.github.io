@@ -10,7 +10,7 @@ simulated workflow involving a conflicting edit; broader reliability is unproven
 [Model details](https://huggingface.co/meta-models/Muse-Glimmer-30B), checked
 27 September 2026.
 
-[Temper offers a Glimmer preset](https://github.com/temper-sh/temper/blob/master/catalog/README.md).
+[Temper offers a Glimmer preset](../../catalog/README.md).
 The measured configuration used Unsloth UD-Q4_K_XL, Meta's template,
 llama.cpp b11205, medium reasoning, F16 conversation memory, two context
 checkpoints, and a 57,344-token window. It used no draft model.

@@ -10,7 +10,7 @@ and translation, with language coverage and resource tradeoffs by task.
 
 Use the [model-choice guide](../guides/choose-a-local-model.md) for a starting
 point by task. To install, choose from
-[Temper's presets](https://github.com/temper-sh/temper/blob/master/catalog/README.md).
+[Temper's presets](../catalog/README.md).
 The configurations below describe measurements; current presets may use
 different settings or software. [The basics](../guides/basics.md) explains the
 memory and configuration terms.
@@ -106,5 +106,5 @@ requirements or engine speed.
 - [GLM 5.3 Flash](glm-5.3-flash/README.md) — Completed two extended tool
   workflows; all five notices needed corrections. Z.ai FP8.
 
-[Tools and resources](../catalog/README.md) · [Guides](../guides/README.md) ·
+[Tools and resources](../tools.md) · [Guides](../guides/README.md) ·
 [Back to Temper](../README.md).

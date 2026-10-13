@@ -10,7 +10,7 @@ preference advantage over 26B, and operational advice needed independent checkin
 [Model details](https://huggingface.co/google/gemma-4-31B-it), checked
 27 September 2026.
 
-[Temper offers a Gemma 31B preset](https://github.com/temper-sh/temper/blob/master/catalog/README.md).
+[Temper offers a Gemma 31B preset](../../catalog/README.md).
 The measured configuration used Unsloth QAT UD-Q4_K_XL, the embedded template,
 llama.cpp b11205, Q8 conversation memory, two context checkpoints, and a
 40,960-token window. It used plain decoding and **thinking off**; Temper's

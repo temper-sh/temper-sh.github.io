@@ -23,7 +23,8 @@ much checking and correction it still needs.
 | Local helpers for a cloud assistant | [Combining local and cloud models](guides/choose-a-local-model.md#use-a-local-model-beside-another-assistant) |
 | General assistants | [Models by memory tier](models/README.md) |
 | Pipeline components | [Specialists for extraction, reranking and translation](models/specialists/README.md) |
-| Software | [Tools and resources](catalog/README.md) |
+| Installing a model | [Temper presets](catalog/README.md) |
+| Software | [Tools and resources](tools.md) |
 | Pi, web search and remote access | [Pi setup](guides/pi-setup.md) |
 | Tested claims and techniques | [Investigations](investigations/README.md) |
 

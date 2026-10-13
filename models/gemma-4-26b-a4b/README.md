@@ -11,7 +11,7 @@ context. Apache 2.0.
 [Model details](https://huggingface.co/google/gemma-4-26B-A4B-it), checked
 27 September 2026.
 
-[Temper offers a Gemma 26B preset](https://github.com/temper-sh/temper/blob/master/catalog/README.md).
+[Temper offers a Gemma 26B preset](../../catalog/README.md).
 The measurements below used Unsloth QAT UD-Q4_K_XL, the embedded template,
 llama.cpp b11205, and **thinking off**. Temper's current medium-thinking
 default is a different setting.
