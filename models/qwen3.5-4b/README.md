@@ -10,7 +10,9 @@ details](https://huggingface.co/Qwen/Qwen3.5-4B), checked 12 September 2026.
 
 Tested with the compressed **Q4_K_M** build, embedded template, thinking off
 and a **16,384-token context**. The b11149 configuration used llama-swap v257
-and a 4,096-token output allowance. Text only; vision was not assessed.
+and a 4,096-token output allowance. Those capability tests used text input.
+The separate structured-extraction comparison below includes one invoice image
+and uses its own configuration.
 
 ## Capabilities
 
@@ -39,6 +41,29 @@ attributed solely to the engine version.
 An actual investigation edit using b10621 still needed substantive correction.
 Human effort and time to accepted work were unmeasured.
 
+### Structured extraction
+
+Nine fictional cases checked complete records, associations, absence, Swedish
+text, normalization and a legible invoice image against predefined answers.
+The configuration was Unsloth Q4_K_M plus its BF16 projector, revision
+`e87f176479d0855a907a41277aca2f8ee7a09523`, llama.cpp **b11381**, Metal,
+8,192-token context, one slot, thinking off, Q8_0 KV cache, temperature 0 and
+1,536 output tokens.
+
+Ordinary chat returned the correct facts in all nine cases, but two answers
+used a bare array instead of the required `records` envelope. A separate
+JSON Schema condition constrained structure, field types and nullability
+without supplying expected values or record counts. It produced valid
+structure throughout and met the strict oracle in **8/9 cases**. The remaining
+answer omitted a pending order: the question asked for a shipment record
+although dispatch had not happened, while the oracle expected the order ID
+with null shipping fields. That wording limits the failure's interpretation.
+
+The invoice image passed in both conditions. These results make Qwen a useful
+baseline before adding [NuExtract3](../specialists/nuextract3/README.md) solely
+for extraction; they do not establish OCR quality on real scans or complex
+documents. Grammar acceptance and factual correctness remain separate checks.
+
 ## Performance
 
 Broader suite, measured **12 September 2026**.
@@ -50,6 +75,13 @@ Broader suite, measured **12 September 2026**.
 Rates are medians across 41 model calls in 23 suite cases. Prefill measures
 newly processed input with prompt caching enabled. Memory is the highest
 sampled resident memory of the server process, not a minimum RAM requirement.
+
+The b11381 structured-output configuration, measured **4 October 2026** on
+the same M5/32 GiB and macOS 26.6.1, took a median **1.73 s** across eight text
+requests and **3.71 s** for the invoice image. Peak sampled server RSS was
+**5.07 GiB**, with no observed swap growth. These full-request times exclude
+startup and include the pending-record omission; no large main model was
+resident, and time to reviewed acceptance was not measured.
 
 On b11149/v257, lookup across a long input and a follow-up both passed with
 11,776 initial input tokens and a 4,096-token output allowance in the

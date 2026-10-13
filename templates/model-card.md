@@ -1,8 +1,9 @@
 # Model card template
 
-Copy the body into `models/<model>/README.md`, or
-`models/specialists/<model>/README.md` for a specialist. Replace the placeholders
-and include only assessed tasks and measured configurations.
+Copy the body into `models/<model>/README.md` for a general assistant, including
+coding-focused assistants. For a pipeline component, use the separate
+[specialist card](specialist-card.md). Replace the placeholders and include
+only assessed tasks and measured configurations.
 
 Lead with what the model is useful for and its main limitation. The page must
 stand on its own: summarize the test method, conditions, selected measurements

@@ -5,7 +5,7 @@ Start with what you want to do and how much memory your Mac has.
 presets: weights chosen for quality, an engine suited to the model and hardware,
 and tuned settings. You do not need to assemble those parts yourself.
 
-## Pick a starting point
+## Choose a general assistant
 
 | What you want to do | Starting point | Main limitation |
 |---|---|---|
@@ -28,6 +28,19 @@ For Gemma's writing role, 26B is the practical starting point on the measured
 M5 with 32 GiB. Its tested scene and revision took 16 and 11.3 seconds, compared
 with 94.2 and 71.1 seconds for 31B. Both needed factual and continuity edits.
 The cards retain the configurations and review limits behind that comparison.
+
+## Choose a specialist for a pipeline step
+
+Use the [specialist catalog](../models/specialists/README.md) when your input
+and desired output are already defined. It compares extractors by record
+correctness, rerankers by candidate ordering, and translators by language pair
+and preserved meaning, alongside their memory use and request times.
+
+NuExtract3 is the text/image extraction choice. Ettin 150M is the compact
+English CPU reranker; Qwen3 Reranker 0.6B is the multilingual alternative with
+CPU and GPU placement. For translation, choose a Tiny Aya variant by language
+region and noncommercial terms, or a TranslateGemma size by resource budget.
+The specialist cards distinguish publisher guidance from local measurements.
 
 ## Match the configuration to your machine
 

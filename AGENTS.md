@@ -39,14 +39,16 @@ pages by their purpose:
 | `guides/README.md`, `guides/<topic>.md` | Guide index and explanations of concepts, choices and tasks |
 | `guides/pi-setup.md` | Recommended Pi components, setup guidance and the evidence behind each choice |
 | `investigations/README.md`, `investigations/<question>.md` | Investigation index, comparisons and practical verdicts |
-| `templates/model-card.md` | Maintained editorial template |
+| `templates/model-card.md` | Editorial template for general assistants, including coding models |
+| `templates/specialist-card.md` | Editorial template for pipeline components, with task-specific evidence |
 | `AGENTS.md` | Contributor instructions |
 | Local `PLAN.md` (ignored) | Private editorial planning |
 | `.work/<task>/` | Temporary drafts, previews and generated files; ignored |
 
 Use lowercase descriptive directory names with hyphens, for example
-`models/qwen3.5-4b/README.md`. Use the [card template](templates/model-card.md)
-when writing a model page. Create optional pages and the specialist index only
+`models/qwen3.5-4b/README.md`. Use the [general card](templates/model-card.md)
+for assistants and the [specialist card](templates/specialist-card.md) for
+defined pipeline components. Create optional pages and the specialist index only
 when there is assessed content to put there. Do not create empty tier folders,
 placeholder notes or a directory cross-product of quant, template and engine.
 
@@ -56,7 +58,11 @@ configurations may appear in different tiers while linking to the same card or
 its layout pages. Each index entry gives a very brief useful role; it does not
 repeat the capability matrix. Group specialist models by their purpose, such
 as embedding, reranking or transcription, with memory requirements beside each
-entry. A general model used as a helper keeps its existing card.
+entry. A general model used as a helper keeps its existing card. Coding-focused
+assistants belong in the general index. Specialist pages describe input/output,
+language coverage, license, resource tradeoffs and evidence for the component's
+job; they do not reuse a general-assistant capability matrix or token-rate table
+when those do not answer the choice.
 
 A preset is one exact configuration: artifact and quant, chat template
 or patch, engine and settings. A layout is a user-owned composition of presets.

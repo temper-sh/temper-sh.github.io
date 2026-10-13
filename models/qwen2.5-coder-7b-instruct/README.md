@@ -4,8 +4,7 @@
 drafting. It described tool actions without executing them, leaving repository
 tasks unfinished. These tests do not establish broader coding ability.
 
-**Official:** Qwen coding-focused text model with 7.61B parameters. Apache
-2.0; 32,768-token configured context, extendable with YaRN. [Model
+**Official:** Qwen coding-focused text model with 7.61B parameters. [Apache-2.0](https://choosealicense.com/licenses/apache-2.0/); 32,768-token configured context, extendable with YaRN. [Model
 details](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct), checked 13
 September 2026.
 
@@ -47,4 +46,4 @@ resident memory (RSS) of the server process; it does not establish the
 machine's RAM requirement. The tasks vary, which limits speed comparisons with
 other workloads.
 
-[All models](../../README.md).
+[General models](../README.md).

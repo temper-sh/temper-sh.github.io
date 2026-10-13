@@ -1,8 +1,12 @@
-# Model catalog
+# General models
 
 Models assessed for extraction, writing, editing and tool use. Each card
 describes the tested configuration, observed results and limitations. Some
 entries document setups that did not work well for the tested tasks.
+
+For a defined pipeline step, use the separate
+[specialist catalog](specialists/README.md): structured extraction, reranking
+and translation, with language coverage and resource tradeoffs by task.
 
 Use the [model-choice guide](../guides/choose-a-local-model.md) for a starting
 point by task. To install, choose from
@@ -52,6 +56,9 @@ placement here does not imply that they all fit an 8 GB machine.
   copyediting; the tested setup claimed tool work it had not performed.
 - [Qwen3 8B](qwen3-8b/README.md) — Short English drafts, extraction and
   copyediting; some workflows omitted final checks.
+- [Qwen2.5 Coder 7B Instruct](qwen2.5-coder-7b-instruct/README.md) — A
+  coding-focused assistant; the tested tool integration left repository work
+  unfinished. Q4_K_M, 16k context, 5.17 GiB measured process RSS.
 - [Qwen3.5 4B](qwen3.5-4b/README.md) — Extraction, classification and short
   tool workflows; longer writing needed close checking.
 - [Spark X2.5 4B](spark-x2.5-4b/README.md) — With thinking on, completed short
@@ -98,11 +105,6 @@ requirements or engine speed.
   workflows; most notices needed small repairs. Alibaba Cloud route.
 - [GLM 5.3 Flash](glm-5.3-flash/README.md) — Completed two extended tool
   workflows; all five notices needed corrections. Z.ai FP8.
-
-## Specialists
-
-[Specialist models](specialists/README.md) are grouped by task, starting with
-coding.
 
 [Tools and resources](../catalog/README.md) · [Guides](../guides/README.md) ·
 [Back to Temper](../README.md).
