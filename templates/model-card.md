@@ -10,6 +10,8 @@ stand on its own: summarize the test method, conditions, selected measurements
 and failures. Labs and Workshop remain private; no log or research-repository
 link is required. Link official sources and useful public comparisons.
 
+<!-- {% raw %} -->
+
 ```markdown
 # {{Model name}}
 
@@ -44,6 +46,8 @@ answers distinct from successful work; token speed is not time to accepted work.
 {{State where this evidence does not transfer: other machines, settings,
 longer work, or capabilities that remain unmeasured.}}
 ```
+
+<!-- {% endraw %} -->
 
 Maintain one current assessment. Revise its prose and tables as evidence changes;
 do not append dated updates, progress reports or next-work lists. Dates and

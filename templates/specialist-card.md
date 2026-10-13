@@ -11,6 +11,8 @@ resource costs. Distinguish publisher guidance, local integration checks and
 task-quality evidence. A recommendation may rely on trusted publisher evidence;
 do not present an unmeasured language or variant as locally validated.
 
+<!-- {% raw %} -->
+
 ```markdown
 # {{Specialist or family}}
 
@@ -52,6 +54,8 @@ Separate process memory from minimum RAM; name unmeasured co-residency and
 pipeline overhead. Do not imply time saved in completed work from component
 latency alone.}}
 ```
+
+<!-- {% endraw %} -->
 
 Use task-specific evidence: record selection, associations and absence for
 extraction; candidate retrieval and ordering for reranking; preserved meaning

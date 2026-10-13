@@ -128,6 +128,11 @@ delete anything under `catalog/v1/` by hand; snapshots are immutable.
   source snapshots and historical path descriptions as observations of their
   producing time. Recheck navigation and source identities without rerunning
   model inference for a document move.
+- GitHub Pages renders this site with Jekyll, which reads `{{` and `{%` as
+  Liquid template code, even inside code blocks. Put a
+  `<!-- {% raw %} -->` line before such a block and a
+  `<!-- {% endraw %} -->` line after it, each followed or preceded by a
+  blank line. Otherwise the site build fails or drops the text.
 - Keep drafts and generated working files under `.work/` from the first write.
   The [ignore rules](.gitignore) admit the named repository files, Markdown
   pages in the content directories, and the Temper catalog's source and

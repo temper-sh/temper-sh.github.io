@@ -4,9 +4,13 @@ The embedded chat template failed during parser generation when the request
 did not supply a `tools` variable. The **tools-guard-v2** patch used in the
 [model card](README.md) adds a default before the unchanged original template:
 
+<!-- {% raw %} -->
+
 ```jinja
 {%- if tools is not defined -%}{%- set tools = none -%}{%- endif -%}
 ```
+
+<!-- {% endraw %} -->
 
 This converts an absent variable to `none`. Explicit tool lists and null
 values are unchanged. The [model card](README.md) identifies the engine and
