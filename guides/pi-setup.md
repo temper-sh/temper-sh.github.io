@@ -94,5 +94,5 @@ PI_CODING_AGENT_DIR='' unbien-admin install launcher
 A deliberately customised Pi directory needs its own value. Use this repair
 only for the recorded version and symptom.
 
-[All guides](README.md) · [Tools and resources](../catalog/README.md) ·
+[All guides](README.md) · [Tools and resources](../tools.md) ·
 [Back to Temper](../README.md).

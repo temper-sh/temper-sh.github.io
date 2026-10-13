@@ -62,5 +62,5 @@ and remote access with Un Bien. The trial covers **0.24.0**; newer releases,
 optional video processing and additional providers were not tested. Project
 links and installation details were checked on 24 September 2026.
 
-[All investigations](README.md) · [Tools and resources](../catalog/README.md) ·
+[All investigations](README.md) · [Tools and resources](../tools.md) ·
 [Back to Temper](../README.md).

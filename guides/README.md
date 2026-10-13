@@ -12,7 +12,7 @@ work.
 | [Tuning Qwen3.8 27B](../models/qwen3.8-27b/tuning.md) | Context, caching and generation settings for this model. |
 
 Individual models are in the [model catalog](../models/README.md), and software
-is in [tools and resources](../catalog/README.md). The
+is in [tools and resources](../tools.md). The
 [investigations](../investigations/README.md) cover specific experiments and
 their conclusions.
 
