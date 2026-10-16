@@ -10,8 +10,16 @@ shows the requirements and estimated memory use before you prepare anything.
 [Follow the setup guide](https://github.com/temper-sh/temper/blob/master/docs/contracts/init.md) to get a model
 running in your app.
 
-This page describes the presets in the catalog dated 4 October 2026, for Apple
-Silicon Macs.
+This page describes the presets in the catalog dated 16 October 2026, for Apple
+Silicon Macs. They need Temper 0.2.0 or newer; Temper 0.1.0 can use only the
+Ettin Reranker. Run `brew upgrade temper` to get the new release.
+
+Chat presets let responses use the context remaining after the input, including
+reasoning. They impose no separate output-token cap. Your app can request a
+smaller allowance; a normal completion can end before either limit. The context
+settings and memory allowances still apply.
+Measurements below retain their original request budgets; they do not establish
+long-output performance.
 
 ## General recommendations
 
@@ -59,8 +67,8 @@ It has a fixed 7,999-token query/passage limit. Split longer documents before
 reranking. Qwen is the alternative when English-only retrieval is insufficient.
 
 TranslateGemma's publisher reports support for 55 languages and a 2K-token
-input limit. The presets reserve a 4,096-token total window and 2,048 output
-tokens, use greedy decoding and F16 KV, and disable speculation. The selected
+input limit. The presets use a 4,096-token total window, greedy decoding and
+F16 KV, and disable speculation. The selected
 input adapter preserves the publisher's translation prompt. A six-case check
 across English, Swedish, German and French found meaning errors in all three
 sizes; it is model-assisted review, not an independent bilingual assessment.
