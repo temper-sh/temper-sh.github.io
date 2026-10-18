@@ -10,9 +10,15 @@ shows the requirements and estimated memory use before you prepare anything.
 [Follow the setup guide](https://github.com/temper-sh/temper/blob/master/docs/contracts/init.md) to get a model
 running in your app.
 
-This page describes the presets in the catalog dated 16 October 2026, for Apple
-Silicon Macs. They need Temper 0.2.0 or newer; Temper 0.1.0 can use only the
-Ettin Reranker. Run `brew upgrade temper` to get the new release.
+This page describes the presets in the catalog dated 18 October 2026, for Apple
+Silicon Macs. Qwen with Splash needs Temper 0.3.0 or newer; the other presets
+need 0.2.0, except Ettin Reranker, which also works with 0.1.0.
+Run `brew upgrade temper` to get the current release.
+
+The catalog also lists two experimental engines, Rapid MLX and vLLM Metal,
+with no presets yet. Temper 0.3.0 can use them for
+[your own presets](https://github.com/temper-sh/temper/blob/master/docs/contracts/user-presets.md);
+nothing here assesses them.
 
 Chat presets let responses use the context remaining after the input, including
 reasoning. They impose no separate output-token cap. Your app can request a
@@ -33,7 +39,16 @@ long-output performance.
 
 The Qwen choices use the same target weights with different engines and
 settings. Installing both reuses shared model files. Splash's first startup
-also creates a weight cache, which adds time and disk use.
+also creates a weight cache, which adds time and disk use. The Splash 1.3.2
+preset uses a 112,000-token total window under a 24 GiB engine memory cap;
+118,000 was refused by this release on the tested M5 / 32 GiB. ANE prefill
+calibrates during startup; SSD prefix caching is disabled. Short chat, JSON,
+tool and prefix-reuse checks passed at the selected window, with 19.46 GiB
+loaded and 20.46 GiB peak engine physical footprint, and no swap growth.
+This checks startup and short requests at that allocation, not full-window
+quality or a minimum machine RAM requirement. Prefix reuse took 0.36 s after
+a 2.60 s cold request. The [Qwen assessment](../models/qwen3.8-27b/README.md)
+retains coding measurements from its earlier engine.
 
 These are recommendations for particular uses, not a ranking of every model.
 We combine trusted upstream and practitioner findings with our own experiments,
@@ -68,8 +83,8 @@ reranking. Qwen is the alternative when English-only retrieval is insufficient.
 
 TranslateGemma's publisher reports support for 55 languages and a 2K-token
 input limit. The presets use a 4,096-token total window, greedy decoding and
-F16 KV, and disable speculation. The selected
-input adapter preserves the publisher's translation prompt. A six-case check
+F16 KV, and disable speculation. The embedded template and llama.cpp's native
+language-code handling preserve the publisher's translation prompt. A six-case check
 across English, Swedish, German and French found meaning errors in all three
 sizes; it is model-assisted review, not an independent bilingual assessment.
 The longer document took 20, 59 and 116 seconds respectively; 27B required a

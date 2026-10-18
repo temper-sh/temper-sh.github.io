@@ -14,17 +14,24 @@ Publisher comparisons do not measure the selected compressed weights.
 
 Tested builds: Bullerwins 4B/12B Q5_K_M and 27B Q4_K_M GGUF, llama.cpp b11396
 on Metal, greedy decoding, F16 KV, 4,096-token total context, one slot, four
-CPU threads, batch 512/microbatch 256. Temper's pinned text-input adapter
-preserves the publisher's prompt while accepting source and target language
+CPU threads, batch 512/microbatch 256. The tested pinned text-input adapter
+preserved the publisher's prompt while accepting source and target language
 codes. These are text-only configurations; image translation was not tested.
 
 ## Use in a pipeline
 
 **Text plus explicit source/target language codes → translated text.** Use
-Temper's pinned text-input adapter and pass the codes on every request; the
+the embedded publisher template with the catalog's llama.cpp b11716 and pass
+the codes on every request; the
 [request guide](https://github.com/temper-sh/temper/blob/master/docs/SPECIALISTS.md#translategemma)
 shows the contract. Keep input within 2K tokens and check the output before a
 later pipeline step relies on it.
+
+Native language-code handling preserves the former adapter's prompt: the
+4B check on 2026-10-17 produced identical rendered prompts and translations for
+English→French and English→German. All three selected GGUFs contain the same
+template bytes. This verifies the request interface; the broader quality and
+performance measurements below retain their b11396 configuration.
 
 Choose 4B when memory and waiting time matter most. The 12B and 27B builds
 corrected some short errors at greater cost; none made the longer procedure
