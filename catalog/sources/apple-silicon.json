@@ -480,6 +480,28 @@
         "model_name": "Muse Glimmer 30B DFlash2",
         "weights_name": "Inco Q4_K_M · GGUF"
       }
+    },
+    "gemma-4-31b-mtp-q4-0": {
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "unsloth/gemma-4-31B-it-qat-GGUF",
+          "revision": "43cc1aeb31adf47ec06a854507ce552cd9862e6f"
+        }
+      ],
+      "format": "gguf",
+      "files": [
+        {
+          "path": "mtp-gemma-4-31B-it.gguf",
+          "bytes": 279955968,
+          "sha256": "3a5e99fd8d0b23afb1fccd1ee0c9ebd1f571d00399c2dae2292d217feeec0f6b"
+        }
+      ],
+      "license": "Apache-2.0",
+      "presentation": {
+        "model_name": "Gemma 4 31B MTP",
+        "weights_name": "Q4_0"
+      }
     }
   },
   "templates": {
@@ -3152,6 +3174,44 @@
       "presentation": {
         "display_name": "vLLM Metal 0.31.0 (experimental)"
       }
+    },
+    "llama-cpp-gemma": {
+      "adapter": "llama-server/v1",
+      "minimum_temper": "0.4.0",
+      "interfaces": [
+        "chat-completions"
+      ],
+      "modalities": [
+        "text"
+      ],
+      "supply": {
+        "package": "llama-cpp",
+        "target": {
+          "os": "darwin",
+          "arch": "arm64"
+        },
+        "source": {
+          "repository": "ggml-org/llama.cpp",
+          "asset": "llama-{version}-bin-macos-arm64.tar.gz",
+          "archive_root": "llama-{version}"
+        },
+        "release": {
+          "version": "b11756",
+          "revision": "d80619397c2ba5cf1366c29f7d43699ca3a159b9",
+          "artifact": {
+            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11756/llama-b11756-bin-macos-arm64.tar.gz",
+            "sha256": "f86b5eb838b985a17587e794dee9c6b34193aca6dceec018031a4ba7951fb7e6",
+            "size": 16103382,
+            "unpacked_size": 40842486,
+            "installed_entries": 61,
+            "format": "tar.gz",
+            "archive_root": "llama-b11756"
+          }
+        }
+      },
+      "presentation": {
+        "display_name": "llama.cpp"
+      }
     }
   },
   "presets": {
@@ -3648,7 +3708,7 @@
     "gemma-4-26b-a4b-qat-ud-q4-k-xl-llama": {
       "artifact": "gemma-4-26b-a4b-qat-ud-q4-k-xl",
       "template": "builtin",
-      "engine": "llama-cpp",
+      "engine": "llama-cpp-gemma",
       "interface": "chat-completions",
       "modalities": [
         "text"
@@ -3663,7 +3723,8 @@
           "min_p": 0,
           "repeat_penalty": 1,
           "presence_penalty": 0
-        }
+        },
+        "reasoning_budget_tokens": 1024
       },
       "speculation": {
         "method": "none",
@@ -3677,7 +3738,7 @@
       "profiles": [
         {
           "min_memory_gib": 32,
-          "context_window_tokens": 98304,
+          "context_window_tokens": 131072,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -3700,12 +3761,70 @@
               "threads_batch": 4,
               "load_mode": "mmap"
             }
+          },
+          "memory": {
+            "observed_on": "2026-10-20",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "Thinking-off capacity sequence: 122,880-input ledger retrieval, appended lookup, early source correction, 4,096 generated tokens and 126,969-input final recall, plus a short diagnostic. One slot; engine RSS sampled every two seconds across startup and requests; loaded sample after readiness. Semantic recall passed; bare-JSON formatting failed.",
+            "counter": "engine-rss",
+            "loaded_bytes": 17572904960,
+            "peak_bytes": 18628329472,
+            "limitations": "Engine process only; router excluded. RSS is sampled and may miss brief peaks or Metal allocations; physical footprint omits much of mmap-backed weights and is not added to RSS or wired memory. No swap growth. Verification warmed the file cache. This thinking-off context workload is not a worst-case bound, a minimum RAM requirement, or evidence of long-context thinking quality. Short thinking-on confirmation at a 1,024-token reasoning budget had a lower peak.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11756",
+              "engine_files": [
+                "f86b5eb838b985a17587e794dee9c6b34193aca6dceec018031a4ba7951fb7e6"
+              ],
+              "weights": [
+                {
+                  "path": "gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf",
+                  "bytes": 14249047104,
+                  "sha256": "a7c5bc715f5ff8e99a3e8901ce7d2b42b402c669bf24f7c5250747633d0f5891"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 131072,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "f16",
+                "flash_attention": "on",
+                "batch_tokens": 1024,
+                "microbatch_tokens": 1024,
+                "context_checkpoints": 2,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "checkpoint_min_step": 8192,
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
+            }
           }
         }
       ],
       "presentation": {
         "display_name": "Gemma 4 26B-A4B / plain",
-        "description": "A lighter, faster alternative to Gemma 4 31B for creative writing and general conversation.",
+        "description": "A lighter Gemma option for creative drafting and conversation. Plain decoding with bounded thinking preserved the tested facts; source details and length constraints still need review.",
         "group": "general",
         "memory_tier": "S"
       }
@@ -3713,7 +3832,7 @@
     "gemma-4-31b-qat-ud-q4-k-xl-llama": {
       "artifact": "gemma-4-31b-qat-ud-q4-k-xl",
       "template": "builtin",
-      "engine": "llama-cpp",
+      "engine": "llama-cpp-gemma",
       "interface": "chat-completions",
       "modalities": [
         "text"
@@ -3728,12 +3847,14 @@
           "min_p": 0,
           "repeat_penalty": 1,
           "presence_penalty": 0
-        }
+        },
+        "reasoning_budget_tokens": 1024
       },
       "speculation": {
-        "method": "none",
-        "source": "none",
-        "max_draft_tokens": 0
+        "method": "mtp",
+        "source": "artifact",
+        "draft_artifact": "gemma-4-31b-mtp-q4-0",
+        "max_draft_tokens": 3
       },
       "compute": "gpu",
       "compute_options": [
@@ -3765,12 +3886,77 @@
               "threads_batch": 4,
               "load_mode": "mmap"
             }
+          },
+          "memory": {
+            "observed_on": "2026-10-20",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "Thinking-off capacity sequence: 32,768-input ledger retrieval, appended lookup, early source correction, 4,096 generated tokens and 37,048-input final recall, plus a short diagnostic. One slot; engine RSS sampled every two seconds across startup and requests; loaded sample after readiness. Semantic recall passed; bare-JSON formatting failed.",
+            "counter": "engine-rss",
+            "loaded_bytes": 20348583936,
+            "peak_bytes": 21442445312,
+            "limitations": "Engine process only; router excluded. RSS is sampled and may miss brief peaks or Metal allocations; physical footprint omits much of mmap-backed weights and is not added to RSS or wired memory. No swap growth. Verification warmed the file cache. This thinking-off context workload is not a worst-case bound, a minimum RAM requirement, or evidence of long-context thinking quality. Short thinking-on confirmation at a 1,024-token reasoning budget had a lower peak.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11756",
+              "engine_files": [
+                "f86b5eb838b985a17587e794dee9c6b34193aca6dceec018031a4ba7951fb7e6"
+              ],
+              "weights": [
+                {
+                  "path": "gemma-4-31B-it-qat-UD-Q4_K_XL.gguf",
+                  "bytes": 17287670048,
+                  "sha256": "00b5a7c497f0c8934033088c10a7fa9a4c015e46ee6d89e9c6890650ba5d0e71"
+                }
+              ],
+              "draft": [
+                {
+                  "path": "mtp-gemma-4-31B-it.gguf",
+                  "bytes": 279955968,
+                  "sha256": "3a5e99fd8d0b23afb1fccd1ee0c9ebd1f571d00399c2dae2292d217feeec0f6b"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 40960,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "q8",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 2,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "checkpoint_min_step": 8192,
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "mtp",
+                "source": "artifact",
+                "max_draft_tokens": 3
+              }
+            }
           }
         }
       ],
       "presentation": {
-        "display_name": "Gemma 4 31B · llama.cpp",
-        "description": "The larger Gemma option for creative writing and general conversation. Expected to offer better fidelity and broader knowledge than 26B-A4B, at the cost of speed. Uses Unsloth QAT weights on llama.cpp with plain decoding.",
+        "display_name": "Gemma 4 31B / MTP",
+        "description": "Creative drafting and revision with a small draft predictor to reduce waits. Bounded thinking preserved the tested facts; length and coverage still need review.",
         "group": "general",
         "memory_tier": "S"
       }

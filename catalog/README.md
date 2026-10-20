@@ -28,6 +28,11 @@ settings and memory allowances still apply.
 Measurements retain their stated request budgets; an output allowance alone
 does not establish completed-work quality.
 
+The Gemma presets default to 1,024 thinking tokens before the answer. This
+controls reasoning separately from the total response allowance. Apps can
+override it with `reasoning_budget_tokens` (`-1` for unrestricted thinking,
+`0` to end thinking immediately, or a positive token count).
+
 ## General recommendations
 
 | Preset | Model license | Useful for | Main tradeoff |
@@ -67,6 +72,41 @@ The [Muse assessment](../models/muse-glimmer-30b/README.md) gives the methods
 and limits. **Other** retains the plain 57,344-token preset to save memory;
 selecting both reuses the target weights. Saved plain selections stay plain.
 
+### Gemma writing presets
+
+Gemma 26B uses plain decoding with a 131,072-token window. Gemma 31B uses a
+small model-matched draft predictor (MTP width 3) at 40,960 tokens. Both use
+Unsloth QAT UD-Q4_K_XL weights, llama.cpp b11756, thinking on and the 1,024-token
+reasoning default. The 31B sidecar adds about 280 MB of model files.
+
+On Apple M5 / 32 GiB, the 20 October 2026 five-task writing comparison preserved
+the tested facts and chronology in all five tasks for both choices. At a 16,384-
+token allocation, 26B plain took 143.87 seconds, with 14.18 → 14.53 GiB engine
+RSS; 31B MTP-3 took 565.21 seconds, with 17.95 → 18.73 GiB. Plain 31B took
+1,143.71 seconds, with 17.60 → 18.35 GiB. The MTP-3 peak covers all ten
+thinking-off/on requests; timings cover only the five thinking-on tasks.
+Outputs differed in length, and length/coverage defects remained. These are
+completed-response times, not time to human acceptance or a creative-preference
+ranking. Width 7 was faster on short tasks but slower than plain decoding in
+the matched populated-context check, so the default uses width 3.
+
+At the selected windows, both configurations passed ledger retrieval, appended
+lookup, early correction, full 4,096-token generation and final recall with
+thinking off. Cold input was 122,880 tokens for 26B and 32,768 for 31B; final
+recall used 126,969 and 37,048 input tokens. Engine RSS was respectively
+16.37 → 17.35 GiB and 18.95 → 19.97 GiB, with no swap growth. Cold lookup took
+510.48 / 432.18 seconds and cached follow-up 5.52 / 11.38 seconds. Responses
+had correct values inside unwanted JSON fences. Capacity and cache behavior
+do not establish general long-document reasoning quality.
+
+A reserved short writing brief at these windows passed the factual and
+140–180-word requirements with thinking on and the 1,024-token budget: 26B
+took 27.92 seconds (16.37 → 16.44 GiB RSS), and 31B MTP-3 took 93.20 seconds
+(18.95 → 19.13 GiB). The catalog uses the larger capacity-workload peaks for
+memory accounting. All these tests used llama-swap v265 and macOS 26.6.1,
+one resident model and two-second memory sampling. They do not isolate an
+engine-upgrade effect or establish vision, tool-use or multilingual quality.
+
 These are recommendations for particular uses, not a ranking of every model.
 We combine trusted upstream and practitioner findings with our own experiments,
 compatibility checks, and measurements. The
@@ -85,6 +125,8 @@ or machine makes Temper use estimation until a matching measurement is available
 | Qwen/Splash 1.3.2, 112,000-token window | 2026-10-17 | 19.46 → 20.46 GiB engine physical footprint | Six short interface/reuse requests, largest input 522 tokens. Loaded after the first response. |
 | Muse plain, llama.cpp b11741, 57,344-token window | 2026-10-19 | 15.79 → 16.13 GiB engine RSS | 49,152-token ledger retrieval, appended lookup, source correction, 512 generated tokens and follow-up. |
 | Muse DFlash2, llama.cpp b11741, 131,072-token window | 2026-10-20 | 18.38 → 19.62 GiB engine RSS | 122,880-token ledger retrieval, appended lookup, source correction, 4,096 generated tokens and follow-up. |
+| Gemma 26B plain, llama.cpp b11756, 131,072-token window | 2026-10-20 | 16.37 → 17.35 GiB engine RSS | Thinking-off capacity sequence: 122,880-input ledger, appended lookup, correction, 4,096 generated tokens and 126,969-input final recall. Loaded after readiness. |
+| Gemma 31B MTP-3, llama.cpp b11756, 40,960-token window | 2026-10-20 | 18.95 → 19.97 GiB engine RSS | Thinking-off capacity sequence: 32,768-input ledger, appended lookup, correction, 4,096 generated tokens and 37,048-input final recall. Loaded after readiness. |
 | TranslateGemma 4B, llama.cpp b11716, 4,096-token window | 2026-10-17 | Not sampled → 3.01 GiB engine RSS | Two short French/German translations, each with 84 input and 14 output tokens. |
 
 These are observed peaks, not worst-case bounds or minimum machine RAM. The
@@ -92,7 +134,7 @@ engine counters exclude the router and, for Splash, its frontend. Splash RSS
 and the tested llama.cpp physical-footprint counter omit much of the mapped
 model memory, so the table uses different counters and does not add them to
 overlapping system wired memory. No swap growth was observed. Short requests
-do not establish full-window use; the larger Muse workloads test capacity and
+do not establish full-window use; the larger Muse and Gemma workloads test capacity and
 reuse, not general long-document accuracy. Other presets currently use estimates:
 older-engine measurements and unmeasured configurations are not interchangeable.
 
