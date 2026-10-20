@@ -3458,6 +3458,60 @@
             "max_memory_bytes": 25769803776,
             "reasoning_effort": "medium",
             "request_timeout_seconds": 1800
+          },
+          "memory": {
+            "observed_on": "2026-10-17",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "112,000-token allocation; six sequential short arithmetic, streaming, JSON, tool and prefix-reuse requests; largest input 522 tokens, per-request output cap 512. Loaded after the first response.",
+            "counter": "engine-physical-footprint",
+            "loaded_bytes": 20895345248,
+            "peak_bytes": 21970332664,
+            "limitations": "Engine only; frontend and router excluded. Short requests do not establish full-window use. RSS omits most mapped memory for this engine; footprint is the selected counter. No swap growth; not minimum machine RAM.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "1.3.2",
+              "engine_files": [
+                "c3deb1dd971461ffafcf6b82c318789d6698b22aa865e490a11a0ed943686c0b"
+              ],
+              "weights": [
+                {
+                  "path": "Qwen3.8-27B-UD-Q4_K_XL.gguf",
+                  "bytes": 17559178144,
+                  "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
+                }
+              ],
+              "draft": [
+                {
+                  "path": "config.json",
+                  "bytes": 1239,
+                  "sha256": "873e3556509b0da06e29654ba00d4944888d4b5e8a33afde25f7eb27d321e980"
+                },
+                {
+                  "path": "model.safetensors",
+                  "bytes": 3848817896,
+                  "sha256": "67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 112000,
+              "engine_config": {
+                "kind": "splash/v2",
+                "kv_cache": "int8",
+                "max_memory_bytes": 25769803776,
+                "reasoning_effort": "medium",
+                "request_timeout_seconds": 1800
+              },
+              "speculation": {
+                "method": "dflash2",
+                "source": "artifact",
+                "max_draft_tokens": 0
+              }
+            }
           }
         }
       ],
@@ -3522,6 +3576,64 @@
               "threads": 4,
               "threads_batch": 4,
               "load_mode": "mmap"
+            }
+          },
+          "memory": {
+            "observed_on": "2026-10-19",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "57,344-token allocation, one slot; 49,152-token ledger retrieval, appended lookup, early-source correction, 512 generated tokens and follow-up (49,293 input tokens).",
+            "counter": "engine-rss",
+            "loaded_bytes": 16949215232,
+            "peak_bytes": 17320771584,
+            "limitations": "Sampled engine RSS, excluding router and other processes. Physical footprint omits mapped weights in this build; wired growth overlaps RSS and is not added. No swap growth. This workload does not establish a worst-case peak or minimum machine RAM.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11741",
+              "engine_files": [
+                "812a5f7d3707013956a5c9828c1b40fcfe2e3eb31c1ff7f091df193c3003e5bf"
+              ],
+              "weights": [
+                {
+                  "path": "Muse-Glimmer-30B-UD-Q4_K_XL.gguf",
+                  "bytes": 15878222368,
+                  "sha256": "82bece304887a313ece08400bc030f6066c7bff5b906b0cd40308ec8a409fd38"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 57344,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "f16",
+                "flash_attention": "on",
+                "batch_tokens": 1024,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 2,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "checkpoint_min_step": 8192,
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
             }
           }
         }
@@ -3875,6 +3987,63 @@
               "threads": 4,
               "threads_batch": 4,
               "load_mode": "mmap"
+            }
+          },
+          "memory": {
+            "observed_on": "2026-10-17",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "4,096-token allocation; final authored preset through Temper and llama-swap v265. Two sequential English-to-French/German requests, each with 84 input and 14 output tokens.",
+            "counter": "engine-rss",
+            "loaded_bytes": null,
+            "peak_bytes": 3227779072,
+            "limitations": "Loaded memory was not sampled. Sampled engine RSS excludes the router; physical footprint omits mapped weights in this build. Short requests do not establish full-window use or translation quality. No swap growth; not minimum machine RAM.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11716",
+              "engine_files": [
+                "622020528e3c5c98226bcb7d7e836945b2539197d88855ff1b5f3b846a6fa237"
+              ],
+              "weights": [
+                {
+                  "path": "translategemma-4b-it-Q5_K_M.gguf",
+                  "bytes": 2829713472,
+                  "sha256": "3fd2255970d47ba85730c6d865ea23cd5eca9a67169b65dd4c90947e215928ce"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 4096,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "f16",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 256,
+                "context_checkpoints": 0,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": false,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
             }
           }
         }
@@ -4350,6 +4519,71 @@
               "threads": 4,
               "threads_batch": 4,
               "load_mode": "mmap"
+            }
+          },
+          "memory": {
+            "observed_on": "2026-10-20",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "131,072-token allocation, one slot; 122,880-token ledger retrieval, appended lookup, early-source correction, 4,096 generated tokens and follow-up (126,545 input tokens).",
+            "counter": "engine-rss",
+            "loaded_bytes": 19737067520,
+            "peak_bytes": 21061959680,
+            "limitations": "Sampled engine RSS, excluding router and other processes. Physical footprint omits mapped weights in this build; wired growth overlaps RSS and is not added. No swap growth. This workload does not establish a worst-case peak or minimum machine RAM.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11741",
+              "engine_files": [
+                "812a5f7d3707013956a5c9828c1b40fcfe2e3eb31c1ff7f091df193c3003e5bf"
+              ],
+              "weights": [
+                {
+                  "path": "Muse-Glimmer-30B-UD-Q4_K_XL.gguf",
+                  "bytes": 15878222368,
+                  "sha256": "82bece304887a313ece08400bc030f6066c7bff5b906b0cd40308ec8a409fd38"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 131072,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "f16",
+                "flash_attention": "on",
+                "batch_tokens": 1024,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 2,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "checkpoint_min_step": 8192,
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "dflash2",
+                "source": "artifact",
+                "max_draft_tokens": 7
+              },
+              "draft": [
+                {
+                  "path": "Muse-Glimmer-30B-DFlash2-Q4_K_M.gguf",
+                  "bytes": 1645657280,
+                  "sha256": "93dbfb6f88e4645dec1347cf93f9d6fc80b90d413038722385b2a8e53565c949"
+                }
+              ]
             }
           }
         }

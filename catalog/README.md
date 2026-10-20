@@ -11,8 +11,9 @@ shows the requirements and estimated memory use before you prepare anything.
 running in your app.
 
 This page describes the presets in the catalog dated 19 October 2026, for Apple
-Silicon Macs. Qwen with Splash needs Temper 0.3.0 or newer; the other presets
-need 0.2.0, except Ettin Reranker, which also works with 0.1.0.
+Silicon Macs. Profiles carrying the [memory observations below](#memory-observations)
+need Temper 0.4.0 or newer. The other presets need 0.2.0, except Ettin Reranker,
+which also works with 0.1.0.
 Run `brew upgrade temper` to get the current release.
 
 The catalog also lists two experimental engines, Rapid MLX and vLLM Metal,
@@ -71,6 +72,29 @@ We combine trusted upstream and practitioner findings with our own experiments,
 compatibility checks, and measurements. The
 [model assessments](../models/README.md) and [guides](../guides/README.md)
 summarize the assessments and their limits.
+
+## Memory observations
+
+Temper uses an applicable catalog measurement before estimating memory. These
+observations match the listed preset settings on Apple M5 / 32 GiB, macOS
+26.6.1, with a 24 GiB Metal budget. Changing the engine, weights, runtime settings
+or machine makes Temper use estimation until a matching measurement is available.
+
+| Preset and tested engine | Date | Loaded → peak | Measured workload |
+|---|---|---|---|
+| Qwen/Splash 1.3.2, 112,000-token window | 2026-10-17 | 19.46 → 20.46 GiB engine physical footprint | Six short interface/reuse requests, largest input 522 tokens. Loaded after the first response. |
+| Muse plain, llama.cpp b11741, 57,344-token window | 2026-10-19 | 15.79 → 16.13 GiB engine RSS | 49,152-token ledger retrieval, appended lookup, source correction, 512 generated tokens and follow-up. |
+| Muse DFlash2, llama.cpp b11741, 131,072-token window | 2026-10-20 | 18.38 → 19.62 GiB engine RSS | 122,880-token ledger retrieval, appended lookup, source correction, 4,096 generated tokens and follow-up. |
+| TranslateGemma 4B, llama.cpp b11716, 4,096-token window | 2026-10-17 | Not sampled → 3.01 GiB engine RSS | Two short French/German translations, each with 84 input and 14 output tokens. |
+
+These are observed peaks, not worst-case bounds or minimum machine RAM. The
+engine counters exclude the router and, for Splash, its frontend. Splash RSS
+and the tested llama.cpp physical-footprint counter omit much of the mapped
+model memory, so the table uses different counters and does not add them to
+overlapping system wired memory. No swap growth was observed. Short requests
+do not establish full-window use; the larger Muse workloads test capacity and
+reuse, not general long-document accuracy. Other presets currently use estimates:
+older-engine measurements and unmeasured configurations are not interchangeable.
 
 ## Specialist recommendations
 

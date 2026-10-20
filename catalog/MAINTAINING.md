@@ -31,6 +31,15 @@ defines the commands.
    permanent: a user's saved preset remembers the ID it came from. Removing a
    preset is safe; users who saved it keep it under **Other**.
 
+   When adopting a measured preset, include its reviewed `profile.memory`
+   observation under the
+   [memory contract](https://github.com/temper-sh/temper/blob/master/docs/contracts/memory-estimates.md).
+   Retain exact tested engine/version and runtime inputs, machine, loaded/peak
+   bytes, counter, workload, limitations and a public assessment URL. Verify the
+   tested execution matches; never relabel an older run after an engine update.
+   Missing or mismatched evidence leaves estimation as the fallback. The
+   measurement field needs Temper 0.4.0; older readers hide affected profiles.
+
 2. **Preview it locally.** `--catalog` reads the file as is, without a
    signature, into a separate root:
 
