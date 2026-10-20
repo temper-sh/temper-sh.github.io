@@ -10,7 +10,7 @@ shows the requirements and estimated memory use before you prepare anything.
 [Follow the setup guide](https://github.com/temper-sh/temper/blob/master/docs/contracts/init.md) to get a model
 running in your app.
 
-This page describes the presets in the catalog dated 18 October 2026, for Apple
+This page describes the presets in the catalog dated 19 October 2026, for Apple
 Silicon Macs. Qwen with Splash needs Temper 0.3.0 or newer; the other presets
 need 0.2.0, except Ettin Reranker, which also works with 0.1.0.
 Run `brew upgrade temper` to get the current release.
@@ -24,15 +24,15 @@ Chat presets let responses use the context remaining after the input, including
 reasoning. They impose no separate output-token cap. Your app can request a
 smaller allowance; a normal completion can end before either limit. The context
 settings and memory allowances still apply.
-Measurements below retain their original request budgets; they do not establish
-long-output performance.
+Measurements retain their stated request budgets; an output allowance alone
+does not establish completed-work quality.
 
 ## General recommendations
 
 | Preset | Model license | Useful for | Main tradeoff |
 |---|---|---|---|
 | Qwen3.8 27B with Splash | [Apache-2.0][apache-license] | Coding and proposing changes to a repository | Faster first patch submissions in the tested comparison; patches still needed review. Requires Apple M3 or newer and macOS 26.4+. |
-| Muse Glimmer 30B | [Apache-2.0][apache-license] | Technical explanations, drafts, planning, and a second review | Useful structure and explanations; database and rollout advice needed substantive corrections. |
+| Muse Glimmer 30B with DFlash2 | [Apache-2.0][apache-license] | Technical explanations, drafts, planning, and a second review | Faster generation with an extra draft model; source facts and operational constraints still need checking. |
 | Gemma 4 26B-A4B | [Apache-2.0][apache-license] | Creative drafting, dialogue, and general chat | Shorter waits than 31B on the tested M5; facts and narrative continuity still need checking. |
 | Gemma 4 31B | [Apache-2.0][apache-license] | Creative drafting and revision | Much longer waits on the tested M5; the small writing comparison did not establish a human preference advantage over 26B. |
 | Qwen3.8 27B with llama.cpp | [Apache-2.0][apache-license] | Coding, combining sources, and document work | An alternative engine for Qwen; long inputs can be slow, and strict formats still need checking. |
@@ -49,6 +49,22 @@ This checks startup and short requests at that allocation, not full-window
 quality or a minimum machine RAM requirement. Prefix reuse took 0.36 s after
 a 2.60 s cold request. The [Qwen assessment](../models/qwen3.8-27b/README.md)
 retains coding measurements from its earlier engine.
+
+Muse's DFlash2 preset uses llama.cpp b11741, a seven-token draft, medium thinking,
+F16 conversation memory and a 131,072-token window. On M5 / 32 GiB it passed
+retrieval from 122,880 input tokens, a source correction, a full 4,096-token
+generation and another lookup. Engine RSS was 18.38 GiB loaded → 19.62 GiB peak,
+with no swap. The cold lookup took 25.7 minutes; its cached follow-up took
+29.7 seconds. These checks establish capacity and cache behavior, not general
+long-document accuracy.
+
+In the earlier matched 57,344-window comparison, short 512-token probes took
+33.5 s median with DFlash2 versus 64.6 s plain. Engine RSS loaded/peak was
+17.47/17.72 GiB versus 15.79/15.82 GiB. Both modes confused values in a dense
+directory and invented an unsupported publication condition in an announcement.
+The [Muse assessment](../models/muse-glimmer-30b/README.md) gives the methods
+and limits. **Other** retains the plain 57,344-token preset to save memory;
+selecting both reuses the target weights. Saved plain selections stay plain.
 
 These are recommendations for particular uses, not a ranking of every model.
 We combine trusted upstream and practitioner findings with our own experiments,
@@ -120,6 +136,7 @@ A smaller model can be your main assistant or a helper alongside another model.
 
 | Preset | Model license | Useful for | Main limitation observed |
 |---|---|---|---|
+| Muse Glimmer 30B without draft | [Apache-2.0][apache-license] | The lower-memory Muse option for technical writing, planning and review | Slower generation than DFlash2 on the tested M5; the same source-fidelity and retrieval limitations still apply. |
 | Gemma 4 E2B | [Apache-2.0][apache-license] | Extracting fields from short records and simple tool tasks | Some writing changed facts; recovery from a conflicting edit stopped before saving. |
 | Gemma 4 E4B | [Apache-2.0][apache-license] | Short drafts from supplied facts and simple tool workflows | Longer editing retained incorrect claims after feedback. |
 | Qwen3.5 4B | [Apache-2.0][apache-license] | Extraction, classification, and short tool workflows | Longer writing, translation, and editing need close checking. |

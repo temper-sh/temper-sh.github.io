@@ -1,6 +1,6 @@
 {
   "schema": "temper-catalog/v1",
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "platform": "apple-silicon",
   "runtime": {
     "router": {
@@ -458,6 +458,28 @@
         "model_name": "Tiny Aya Earth",
         "weights_name": "Cohere Labs Q8_0 · GGUF"
       }
+    },
+    "muse-glimmer-30b-dflash2-q4km": {
+      "format": "gguf",
+      "files": [
+        {
+          "path": "Muse-Glimmer-30B-DFlash2-Q4_K_M.gguf",
+          "bytes": 1645657280,
+          "sha256": "93dbfb6f88e4645dec1347cf93f9d6fc80b90d413038722385b2a8e53565c949"
+        }
+      ],
+      "license": "Apache-2.0",
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "incoai/Muse-Glimmer-30B-DFlash2-GGUF",
+          "revision": "5963a0ad803c2493da70252bb00174cd574bb8bf"
+        }
+      ],
+      "presentation": {
+        "model_name": "Muse Glimmer 30B DFlash2",
+        "weights_name": "Inco Q4_K_M · GGUF"
+      }
     }
   },
   "templates": {
@@ -557,16 +579,16 @@
           "archive_root": "llama-{version}"
         },
         "release": {
-          "version": "b11716",
-          "revision": "797de63b2fa7396dcc8caca76834c699ac84e1c3",
+          "version": "b11741",
+          "revision": "1b29621bacc6a446bd523fc790316a24a06e886f",
           "artifact": {
-            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11716/llama-b11716-bin-macos-arm64.tar.gz",
-            "sha256": "622020528e3c5c98226bcb7d7e836945b2539197d88855ff1b5f3b846a6fa237",
-            "size": 12292446,
-            "unpacked_size": 32483638,
+            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11741/llama-b11741-bin-macos-arm64.tar.gz",
+            "sha256": "812a5f7d3707013956a5c9828c1b40fcfe2e3eb31c1ff7f091df193c3003e5bf",
+            "size": 12324422,
+            "unpacked_size": 32572694,
             "installed_entries": 60,
             "format": "tar.gz",
-            "archive_root": "llama-b11716"
+            "archive_root": "llama-b11741"
           }
         }
       },
@@ -3505,9 +3527,9 @@
         }
       ],
       "presentation": {
-        "display_name": "Muse Glimmer 30B",
-        "description": "A companion for technical writing, planning and orchestration.",
-        "group": "general",
+        "display_name": "Muse Glimmer 30B without draft",
+        "description": "The lower-memory Muse option for technical writing, planning and review. Slower generation than DFlash2 on the tested M5; facts and operational constraints still need checking.",
+        "group": "other",
         "memory_tier": "S"
       }
     },
@@ -4272,6 +4294,72 @@
         "section": "translation",
         "memory_tier": "XS"
       }
+    },
+    "muse-glimmer-30b-q4xl-dflash2-llama": {
+      "artifact": "muse-glimmer-30b-q4xl",
+      "template": "muse-glimmer-30b-official",
+      "engine": "llama-cpp",
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "context_limit_tokens": 131072,
+      "request_defaults": {
+        "reasoning": "on",
+        "sampling": {
+          "temperature": 1,
+          "top_k": 64,
+          "top_p": 0.95,
+          "min_p": 0,
+          "repeat_penalty": 1,
+          "presence_penalty": 0
+        }
+      },
+      "speculation": {
+        "method": "dflash2",
+        "source": "artifact",
+        "draft_artifact": "muse-glimmer-30b-dflash2-q4km",
+        "max_draft_tokens": 7
+      },
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "profiles": [
+        {
+          "min_memory_gib": 32,
+          "context_window_tokens": 131072,
+          "engine_config": {
+            "kind": "llama-server/v1",
+            "parallel": 1,
+            "kv_cache": "f16",
+            "flash_attention": "on",
+            "batch_tokens": 1024,
+            "microbatch_tokens": 512,
+            "context_checkpoints": 2,
+            "prompt_cache_ram_mib": 0,
+            "gpu_layers": 99,
+            "controls": {
+              "checkpoint_min_step": 8192,
+              "cache_reuse": 0,
+              "reasoning_effort": "medium",
+              "preserve_reasoning": false,
+              "context_shift": false,
+              "cache_prompt": true,
+              "fit": "off",
+              "threads": 4,
+              "threads_batch": 4,
+              "load_mode": "mmap"
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Muse Glimmer 30B with DFlash2",
+        "description": "Technical explanations, structured drafts, plans and a second review. A small draft model speeds replies; check facts and operational constraints.",
+        "group": "general",
+        "memory_tier": "S"
+      }
     }
   },
   "presentation": {
@@ -4312,10 +4400,11 @@
     "fallback_group": "other",
     "preset_order": [
       "qwen3.8-27b-q4xl-splash",
-      "muse-glimmer-30b-q4xl-llama",
+      "muse-glimmer-30b-q4xl-dflash2-llama",
       "gemma-4-26b-a4b-qat-ud-q4-k-xl-llama",
       "gemma-4-31b-qat-ud-q4-k-xl-llama",
       "qwen3.8-27b-q4xl-mtp",
+      "muse-glimmer-30b-q4xl-llama",
       "gemma-4-e2b-q4km-off",
       "gemma-4-e4b-q4km-off",
       "qwen3.5-4b-q4km-off",

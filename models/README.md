@@ -76,7 +76,8 @@ reached 12.23 GiB of server memory.
   failures remained.
 - [Muse Glimmer 30B](muse-glimmer-30b/README.md) — Technical explanations,
   structured drafts and a second review; completed a conflict-recovery workflow.
-  Check operational details in plans. UD-Q4_K_XL, medium reasoning, 56k.
+  Check operational details and source fidelity. UD-Q4_K_XL, medium reasoning,
+  DFlash2, 128k; plain decoding at 56k is the lower-memory alternative.
 - [Gemma 4 26B-A4B](gemma-4-26b-a4b/README.md) — Creative drafting, dialogue,
   tone revision and general explanations, with substantially shorter waits than
   31B on the M5. Unsloth QAT UD-Q4_K_XL, plain decoding, 96k; check factual
