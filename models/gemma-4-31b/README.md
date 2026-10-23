@@ -1,9 +1,10 @@
 # Gemma 4 31B
 
-**Our assessment:** Useful for creative drafting and revision, with much
-longer waits than Gemma 26B on an M5 with 32 GiB. Scenes still needed factual
-and continuity edits. Our small comparison did not establish a human
-preference advantage over 26B, and operational advice needed independent checking.
+**Our assessment:** Useful for creative drafting and revision. In our writing
+comparison, it took much longer than Gemma 26B on an M5 with 32 GiB.
+Scenes still needed factual and continuity edits. Our small comparison did
+not establish a human preference advantage over 26B, and operational advice
+needed independent checking.
 
 **Official:** Google's dense 31B model accepts text and images, with a
 262,144-token native context. Apache 2.0.
@@ -11,10 +12,11 @@ preference advantage over 26B, and operational advice needed independent checkin
 27 September 2026.
 
 [Temper offers a Gemma 31B preset](../../catalog/README.md).
-The measured configuration used Unsloth QAT UD-Q4_K_XL, the embedded template,
-llama.cpp b11205, Q8 conversation memory, two context checkpoints, and a
-40,960-token window. It used plain decoding and **thinking off**; Temper's
-current medium-thinking default is a different setting.
+The writing and long-document measurements used Unsloth QAT UD-Q4_K_XL,
+the embedded template, llama.cpp b11205, Q8 conversation memory, two context
+checkpoints, and a 40,960-token window. Those measurements used plain decoding
+and **thinking off**; Temper's current medium-thinking default is a different
+setting.
 
 ## Writing and explanation
 
@@ -36,8 +38,22 @@ do not establish better writing; our local comparison found no such advantage.
 
 ## Waiting time and memory
 
-Measured 28 September 2026 on Apple M5 / 32 GiB / macOS 26.6.1, with
-llama.cpp b11205 and llama-swap v260.
+For short, thinking-off work, **MTP at draft width 3 is the strongest tested
+acceleration choice**. A 20 October 2026 smoke on Apple M5 / 32 GiB /
+macOS 26.6.1, using llama.cpp b11756 / llama-swap v265 and a 16,384-token
+allocation, completed 256 fixed output tokens in 19.10–19.55 seconds versus
+plain decoding's 37.85 seconds. Actual input was only 79–167 tokens. Engine RSS was
+17.95–17.96 GiB loaded and 18.12–18.13 GiB peak for MTP, versus
+17.60 / 17.75 GiB for plain. Original DFlash, DFlash2 and DSpark were slower
+than MTP and used more RSS. All completed configurations returned identical
+text, including unwanted JSON fences and an undersized handoff. The
+[draft-method investigation](../../investigations/gemma-speculative-decoding.md)
+explains the comparisons, conversion diagnostics and failed F16 attempt.
+RSS was sampled every two seconds across startup and three short requests;
+it misses some Metal allocations and does not establish minimum machine RAM.
+
+The writing and context measurements below were taken on 28 September 2026
+on the same machine, with llama.cpp b11205 and llama-swap v260.
 
 | Work / configuration | Time | Rate or memory |
 |---|---:|---|
@@ -51,11 +67,12 @@ The 512-token check used greedy sampling, disabled prompt reuse, and forced
 generation past normal stopping. At 32k, Unsloth took 76.50–76.79 seconds
 versus Google's 78.62–78.69 seconds.
 
-One-token MTP reduced median diagnostic time by 19% in the final paired
-comparison, but introduced a central deadline error in the writing task.
-That configuration was not selected. Its repeated timings varied for an
-unresolved reason, and the results do not establish that MTP generally harms
-writing quality.
+The broader writing evidence remains distinct: one-token MTP on b11205
+reduced median diagnostic time by 19% in the paired comparison, but introduced
+a central deadline error in the writing task. That configuration was not
+selected. Its repeated timings varied for an unresolved reason. This does not
+establish that MTP generally harms writing quality, and the b11756 short smoke
+does not qualify creative writing or long context with MTP width 3.
 
 ## Long documents
 

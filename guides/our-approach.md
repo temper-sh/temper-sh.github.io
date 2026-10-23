@@ -59,6 +59,12 @@ helper.
 
 ## What a test establishes
 
+The suite covers a limited set of cases. We use it to record behavior and
+investigate configuration choices; it does not by itself establish a general
+model ranking or reliability across a kind of work. Preset explanations state
+why the components were selected and distinguish that rationale from measured
+outcomes.
+
 | Observation | What it establishes | What remains unknown |
 |---|---|---|
 | A model loads and answers | The tested files and runtime handled that request. | Whether the setup can complete useful work. |

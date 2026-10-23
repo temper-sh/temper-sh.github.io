@@ -1,85 +1,61 @@
 # Qwen3.8 27B
 
-**Our assessment:** Useful for coding, combining sources, and revising documents.
-On the tested M5 with 32 GiB, Splash produced first coding patches much sooner
-than llama.cpp. Both needed code review and corrections. Document work with
-llama.cpp was useful, while strict output formats and Swedish prose needed checking.
+**For a 32 GiB Apple Silicon Mac, our recommended Qwen configuration is
+[Kapitsa with MLX 4-bit weights](layouts/kapitsa-mlx4.md).** The evidence is
+from an M5; other chips are unmeasured. It completed a checked Flask change
+faster and with less memory than the Splash control, while Splash favored
+large cold inputs. Kapitsa requires direct setup; Temper integration is not
+available yet.
 
-**Official:** Qwen's dense 27B model accepts text, images, and video, with a
-262,144-token native context. Apache 2.0.
-[Model details](https://huggingface.co/Qwen/Qwen3.8-27B), checked
-13 September 2026.
+**Publisher description:** A dense 27B model accepting text, images and video,
+with a 262,144-token native context. Apache 2.0.
+[Official model details](https://huggingface.co/Qwen/Qwen3.8-27B).
 
-[Temper offers Splash and llama.cpp presets](../../catalog/README.md).
-It installs the engine and prepares the model files. The coding measurements
-below used an earlier Splash source build; they are not measurements of the
-current packaged release. See the [coding comparison](layouts/splash-ud-q4-k-xl.md)
-for the exact setup and limitations.
+The configurations here use text. Kapitsa uses MLX weights and native
+rendering; the offered Splash and llama.cpp presets share Unsloth UD-Q4_K_XL
+weights and the Frog template. The publisher's context and modality claims do
+not establish those capabilities in these local configurations.
 
-## What it completed
+## Configuration choices
 
-AI reviewers checked the results. Document workflows used simulated tools;
-coding patches ran against real tests. Human acceptance and repair effort
-were not measured, and the Splash code review knew which engine produced each patch.
-
-| Work | Tested configuration | Outcome |
+| Configuration | Purpose and availability | Observations and details |
 |---|---|---|
-| Streaming bug fix and decorator feature | Splash fdc11c5, Unsloth UD-Q4_K_XL, Frog v22.5, DFlash2 | Passed the required behavioral checks; review found overly broad error suppression and an unnecessary API expansion. |
-| Registration, handover, and notice revision | llama.cpp b10964 | Completed all four jobs reserved for validation, including a protected quotation and an authoritative venue change. |
-| Combining sources and recovering edits | llama.cpp b10964 | Completed 7/10 jobs; remaining problems included a misplaced JSON field, a small counting error, and Swedish prose needing broader revision. |
-| Copyediting protected facts | llama.cpp b10936 | 15/18 jobs accepted by the AI review; presentation and output-format corrections remained. |
-| Changed instructions | llama.cpp b10936 | All 12 followed the latest rules; one still needed a closing quote removed. |
-| Longer tool workflows | llama.cpp b10936 | Procurement completed; notice recovery missed an appointment, and a Ruby plan made incorrect repository claims. |
-| Multilingual work | llama.cpp b10936 | English and Spanish needed corrections; Swedish needed broader revision; Ukrainian used its output budget without delivering the notice. |
-| Five focused checks | llama.cpp b11149 | Extraction and updated instructions worked; a copyedit changed a protected plural, and a recovered edit was reported with the wrong tool-call count. |
+| Kapitsa | Recommended 32 GiB Qwen configuration for reviewed coding work; MLX 4-bit, DFlash2, thinking off, 98,304-token window. Direct setup only. | [Recommendation and hardware table](layouts/kapitsa-mlx4.md); slower large cold prefill and long-context memory tradeoffs. |
+| Splash | Installable alternative with DFlash2 and Frog integration. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
+| llama.cpp | Installable preset with built-in draft prediction. Document and tool cases were also run through this engine. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
 
-The llama.cpp document measurements used the Frog v22.5 template and
-UD-Q4_K_XL weights. Results from different engine versions and workloads
-remain separate.
+[Explore the presets and set up Temper](../../catalog/README.md).
 
-## Waiting time and memory
+## Coding workload on tested hardware
 
-All figures below are from Apple M5 / 32 GiB / macOS 26.6.1.
-Output counts include reasoning.
+Kapitsa 0.2.9, MLX affine 4-bit/group-64, DFlash2, ANE on, thinking off;
+98,304 configured tokens, 1,024-token prefill chunks and a 24 GiB engine allowance.
 
-| Coding task, 25–26 September 2026 | Splash fdc11c5 | llama.cpp b11157 |
-|---|---:|---:|
-| First streaming-fix submission | 40m 27s | 102m 21s |
-| First decorator-feature submission | 19m 21s | 58m 23s |
+| Machine | Work | Outcome and elapsed time | Loaded → peak memory |
+|---|---|---|---|
+| M5 · 32 GiB | Flask decorator change with bounded corrections | Final behavior, AI-assisted source review and focused typing checks pass; **13m14s**, four responses | **15.87 → 21.14 GiB** engine physical footprint |
 
-The engines used the same target weights and Frog template, with different
-drafting mechanisms. These are times to first submission, excluding startup
-and subsequent repairs. They do not establish time to accepted code.
+This is one checked task, not general coding reliability or human acceptance.
+The process counter omits some system costs and does not establish minimum
+machine RAM. The [Kapitsa reference](layouts/kapitsa-mlx4-reference.md) retains
+the Splash comparison, first-attempt failures, a separate pagination result
+favoring Splash and the long-input memory crossover.
 
-For document/source work on b10964 at 32k, per-request medians were
-107.18 newly processed input tokens/s and 8.68 generated tokens/s, with
-21.87 GiB peak engine RSS (15 September 2026).
+## What the document tests observed
 
-## Long documents with llama.cpp
+The llama.cpp cases used simulated tools and AI-assisted review. The records
+identify the engine builds; they do not establish general reliability or human
+acceptance.
 
-The 24 September capacity test used b11157 / llama-swap v257, UD-Q4_K_XL,
-Frog v22.5, medium thinking, three-token MTP, Q8 conversation memory,
-14 checkpoints, 2 GiB of extra cache RAM, and a 40,960-token window.
+| Work | Observed result |
+|---|---|
+| Registration, handover and notice revision | Four reserved jobs completed their checks on b10964. |
+| Combining sources and recovering edits | 7/10 jobs completed on b10964; JSON placement, counting and Swedish prose errors remained. |
+| Long-input lookup | A b11157 configuration retrieved facts and reused context; larger workloads encountered memory-pressure stops. |
 
-| Request | Newly processed input | Output | Input processing | Complete response |
-|---|---:|---:|---:|---:|
-| Initial fact lookup | 36,352 tokens | 232 tokens | 456–474 s | 488–506 s |
-| Follow-up | 94 tokens | 129 tokens | 3.24–3.26 s | 21.0–21.1 s |
-| Forced full-output check | 132 tokens | 4,096 tokens | 3.62 s | 535.64 s |
+The [llama.cpp reference](layouts/llama-cpp-reference.md) retains measured
+latency and memory, methods and failed cases for those document workloads.
+Those findings do not transfer to Kapitsa. [Context and caching](tuning.md)
+explains the related controls.
 
-The lookups passed twice in fresh sessions. The follow-up reused 36,348 tokens;
-peak sampled engine RSS was 20.83 GiB with no swap growth or pressure warning.
-The forced-output check disabled normal stopping and tested resource use,
-not answer quality.
-
-Larger short-answer lookups succeeded, but subsequent follow-ups or full-output
-requests triggered the memory-pressure guard. The cause remained unresolved;
-no model crash was observed. An earlier b10964 test handled about 100k input
-with only 512 output tokens, taking roughly 37 minutes and adding 87.7 MiB of
-swap. It does not establish that size with a full answer budget.
-
-These tests do not establish a maximum context, minimum machine RAM, or general
-long-document reasoning. [Context and conversation-cache guidance](tuning.md)
-explains the practical settings.
-
-[All models](../README.md) · [Choose a model](../../guides/choose-a-local-model.md).
+[All model records](../README.md) · [Tools and resources](../../tools.md).

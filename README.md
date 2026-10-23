@@ -1,78 +1,54 @@
 # Temper
 
-Find local AI models that can help with your work, with measured waiting times,
-known weaknesses and guidance on what fits your Mac. These are Temper's model
-assessments and practical guides.
+Temper sets up and maintains local AI models on Apple Silicon Macs. A **preset**
+combines particular model weights, an engine, settings and compatibility fixes.
+Temper installs those parts and connects them to the applications you use.
+Different presets can use different engines, according to the model and hardware.
 
-The **[Temper tool](https://github.com/temper-sh/temper)** installs a
-curated local stack: model weights, an engine selected for the model and
-hardware, and tuned settings, with llama-swap managing the local servers.
-[Install and set up Temper](https://github.com/temper-sh/temper#get-started).
+Use a local model for conversation, writing or coding, or a specialist for
+extraction, translation or search ranking. Once installed, local inference can
+work offline and keep prompts on your Mac. Online tools and cloud connections
+are separate choices.
 
-Start with [choosing a local model](guides/choose-a-local-model.md). Each
-assessment explains the tasks and configuration tested, the result, and how
-much checking and correction it still needs.
+**[Explore presets](catalog/README.md)** ·
+**[Install and set up Temper](https://github.com/temper-sh/temper#get-started)**
 
-## Contents
+## Explore the documentation
 
-| Subject | Pages |
+| What you need | Where to go |
 |---|---|
-| Fundamentals | [Making sense of local AI](guides/basics.md) |
-| Limited memory | [What has to fit](guides/basics.md#what-actually-has-to-fit) |
-| Model selection | [Choosing a local model](guides/choose-a-local-model.md) |
-| Local helpers for a cloud assistant | [Combining local and cloud models](guides/choose-a-local-model.md#use-a-local-model-beside-another-assistant) |
-| General assistants | [Models by memory tier](models/README.md) |
-| Pipeline components | [Specialists for extraction, reranking and translation](models/specialists/README.md) |
-| Installing a model | [Temper presets](catalog/README.md) |
-| Software | [Tools and resources](tools.md) |
-| Pi, web search and remote access | [Pi setup](guides/pi-setup.md) |
-| Tested claims and techniques | [Investigations](investigations/README.md) |
+| Understand the terminology | [Making sense of local AI](guides/basics.md): models, weights, engines, memory and context. |
+| See the prepared configurations | [Presets](catalog/README.md): what each contains, why it exists and links to observations. |
+| Work out what matters for your setup | [Models, tasks and hardware](guides/choose-a-local-model.md): questions to consider and examples to explore. |
+| Connect applications and use the models | [Setup and usage guides](guides/README.md#setup-and-use), including Pi. |
+| Discover software and learning resources | [Tools and resources](tools.md), grouped by their role. |
+| Understand the evidence or configure with an agent | [Technical references](guides/technical-reference.md) and [investigations](investigations/README.md). |
 
-Most local measurements here come from an Apple M5 with 32 GiB of memory.
-Fit on 8 or 16 GiB machines remains unmeasured. The model cards identify the
-configuration and hardware behind each result.
+## What Temper takes care of
 
-## Using several models
+Temper prepares the model files and serving software, applies the preset's
+settings, and provides a local connection for your apps. The preset pages explain
+the choices behind those configurations, including template fixes and adapters.
 
-A pipeline might use one model to extract facts, another to draft from them,
-and a program to check required fields. Running the steps in sequence can
-avoid keeping every model in memory at once. The extra loading, coordination
-and checking all count towards the cost of finishing the task.
+A **layout** groups the presets you want available. Models can load on demand
+through llama-swap, so selecting several does not keep them all in memory.
+Saved choices change through explicit updates.
 
-The [approach guide](guides/our-approach.md#improve-the-harness-as-well-as-the-model)
-explains how tools, instructions and checks affect an assistant's work. The
-[guide to combining models](guides/choose-a-local-model.md#use-a-local-model-beside-another-assistant)
-also considers local helpers for a cloud assistant.
+Small models can be main assistants or helpers, including on larger machines
+where you want to leave resources for other work. Most local measurements use
+an M5 with 32 GiB; some cover an M5 Pro with 64 GiB. Fit on actual 8 or 16 GiB
+machines remains unmeasured.
 
-## Testing
+## Reading the observations
 
-Claims about model quality, speed and token savings are starting points for
-experiments with specific tasks and configurations.
-
-In the [hashline editing comparison](investigations/hashline-editing.md),
-an alternative edit format reduced median output tokens by 20.8%, but
-Qwen3.6 27B produced the correct file in 24 of 32 attempts, down from 30.
-We kept Pi's built-in string replacement for that setup.
-
-Pages summarize the method, measured conditions and limitations so you can
-understand each conclusion here.
-
-## Projects
-
-| Project | What it does |
-|---|---|
-| [Temper](https://github.com/temper-sh/temper) | Installs models and serving software, applies configuration and checks the installed files. |
-| [Field Kit](https://github.com/temper-sh/field-kit) | Runs defined experiments and records the machine, configuration and results for review. |
-
-Each project documents its requirements and release status. A model assessment
-here does not mean that every tested configuration is available through Temper.
-
-## Corrections and contributions
+Our tests cover a limited set of tasks and configurations. The pages report
+what happened, the time and memory involved, and what the checks missed.
+They do not establish a general ranking or reliability across other work.
+Publisher claims and local observations are identified separately.
+[How we assess local AI](guides/our-approach.md) explains the method and limits.
 
 Corrections and results from other machines are welcome through
-[issues](https://github.com/temper-sh/temper-sh.github.io/issues). For a model
-result, include the machine, model build, serving software, settings and task.
-
-[Field Kit](https://github.com/temper-sh/field-kit) provides experiments that
-record those conditions. Results stay on the participant's machine until they
-choose to share them.
+[issues](https://github.com/temper-sh/temper-sh.github.io/issues).
+[Field Kit](https://github.com/temper-sh/field-kit) runs experiments that record
+the machine, configuration and results. Reports stay local until their owner
+chooses to share them.

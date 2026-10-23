@@ -1,92 +1,80 @@
-# Choose a local model for the work
+# Models, tasks and hardware
 
-Start with what you want to do and how much memory your Mac has.
-[Temper's setup](https://github.com/temper-sh/temper#get-started) offers curated
-presets: weights chosen for quality, an engine suited to the model and hardware,
-and tuned settings. You do not need to assemble those parts yourself.
+Start with the work you want to do, the resources you can spare and the application
+you want to use. [Temper's presets](../catalog/README.md) prepare particular
+combinations of weights, engines and settings. Their pages explain those choices
+and report observations from limited tests.
+
+If the terms are unfamiliar, [Making sense of local AI](basics.md) explains
+the pieces.
 
 ## Choose a general assistant
 
-| What you want to do | Starting point | Main limitation |
+A general assistant takes conversational instructions and may use tools supplied
+by its application. The records below cover different kinds of work; they are
+examples to inspect, not a ranking of the models.
+
+| Work to explore | Where there are observations | What to look for |
 |---|---|---|
-| Write scenes, revise dialogue and get explanations | [Gemma 4 26B-A4B](../models/gemma-4-26b-a4b/README.md) | Check facts, length and continuity. |
-| Try another model for creative writing | [Gemma 4 31B](../models/gemma-4-31b/README.md) | Much longer waits on the measured Mac; no demonstrated human preference advantage over 26B. |
-| Draft technical explanations and plans, or get a second review | [Muse Glimmer 30B](../models/muse-glimmer-30b/README.md) | Database details and operational guarantees still need checking. |
-| Combine sources and revise documents | [Qwen3.8 27B](../models/qwen3.8-27b/README.md) | Long inputs can take minutes to process; strict formatting and Swedish prose were uneven. |
-| Propose bug fixes and code changes | [Qwen3.8 27B with Splash](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md) | Faster first patches in two tests, but both needed review and corrections. |
-| Extract fields from short records | [Gemma E2B](../models/gemma-4-e2b/README.md) | Missing evidence and unfinished tool actions. |
-| Draft short messages from supplied facts | [Gemma E4B](../models/gemma-4-e4b/README.md) | Edits can change quantities or retain false claims. |
-| Classify records and handle short tool workflows | [Qwen3.5 4B](../models/qwen3.5-4b/README.md) | Longer writing, editing and changed instructions. |
+| Conversation, scenes and revision | [Gemma 26B](../models/gemma-4-26b-a4b/README.md) and [31B](../models/gemma-4-31b/README.md) | Preserved facts and continuity, response length, waiting time and memory. |
+| Technical drafts and explanations | [Muse Glimmer](../models/muse-glimmer-30b/README.md) | Source fidelity, operational details and unfinished work. |
+| Code changes on a 32 GiB Mac | [Qwen / Kapitsa](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md), our recommendation measured on M5 | Direct setup only; Splash is the installable alternative. Compare checked completion time, loaded/peak memory and large-input tradeoffs. |
+| Combining sources and editing documents | [Qwen3.8 27B](../models/qwen3.8-27b/README.md) | Format errors, source corrections, actual input size and cache behavior. |
+| Short records and messages with a smaller model | [Gemma E2B](../models/gemma-4-e2b/README.md), [E4B](../models/gemma-4-e4b/README.md) and [Qwen3.5 4B](../models/qwen3.5-4b/README.md) | Changed facts, missing fields and whether tool actions actually finished. |
 
-These are starting points for specific jobs. The cards explain what was tested
-and what failed. The [model index](../models/README.md) includes other assessed
-models; [Temper's presets](../catalog/README.md)
-show what you can install today. A historical test may use different settings
-or an older engine than the current preset.
-
-For Gemma's writing role, 26B is the practical starting point on the measured
-M5 with 32 GiB. Its tested scene and revision took 16 and 11.3 seconds, compared
-with 94.2 and 71.1 seconds for 31B. Both needed factual and continuity edits.
-The cards retain the configurations and review limits behind that comparison.
+The [model index](../models/README.md) includes other assessed configurations.
+An observation applies to its named engine, weights and settings; the current
+preset may differ.
 
 ## Choose a specialist for a pipeline step
 
-Use the [specialist catalog](../models/specialists/README.md) when your input
-and desired output are already defined. It compares extractors by record
-correctness, rerankers by candidate ordering, and translators by language pair
-and preserved meaning, alongside their memory use and request times.
+A specialist has a narrower input/output contract: text or an image to structured
+records, query and passages to ranking scores, or text to a translation.
+The [specialist index](../models/specialists/README.md) groups these by task.
 
-NuExtract3 is the text/image extraction choice. Ettin 150M is the compact
-English CPU reranker; Qwen3 Reranker 0.6B is the multilingual alternative with
-CPU and GPU placement. For translation, choose a Tiny Aya variant by language
-region and noncommercial terms, or a TranslateGemma size by resource budget.
-The specialist cards distinguish publisher guidance from local measurements.
+Check supported inputs, language coverage, license, interface and resource costs.
+Publisher coverage and local test coverage are separate. A successful component
+check does not establish the quality of a complete workflow using it.
 
 ## Match the configuration to your machine
 
-A model shares memory with its conversation history, macOS and your other
-applications. Temper shows an estimate before downloading; leave room for the
-work you plan to keep open.
+Consider how much memory can remain available while your other applications are
+open. A small model can be a main assistant or a helper on any machine where it
+fits. Longer documents and conversations add working-memory and processing costs.
 
-Most measurements here use an M5 with 32 GiB. The index's smaller memory tiers
-are estimates; fit on actual 8 or 16 GiB machines remains unmeasured.
+Most local measurements use an M5 with 32 GiB; selected Splash trials use an
+M5 Pro with 64 GiB. Smaller-machine placements are estimates. Actual 8 or 16 GiB
+fit remains unmeasured.
 
-Long documents and conversations need more memory and take longer to process.
-A model publisher's maximum context does not establish a usable size on your
-Mac. The cards report tested sizes and waiting times.
+Look for the measured workload, elapsed time and named memory counter together.
+A publisher's maximum context and a preset's configured window are different
+from a demonstrated workload. Process memory excludes some system costs.
 
-A **layout** lets you keep a setup for a particular use: writing, coding, or
-small local helpers alongside a cloud assistant. It groups your presets and
-chooses which model an application uses by default. Included models can load
-when needed; they do not all need to stay in memory.
+A **layout** groups your presets and chooses an application's default model.
+Included models can load on demand; they do not all need to remain in memory.
+Temper shows an estimate before preparing the selected setup.
 
 ## Try a representative job
 
-Start with something you can check: a familiar document, a small code change or
-a draft from known facts. Give the model the source and say what must stay
-unchanged.
+Use work you can check: a familiar document, a small code change or a draft from
+known facts. Check saved files and actions as well as the final response.
+Include your own review and repair time when deciding whether the setup helps.
 
-Check the finished result, including saved files and actions the model claims
-to have taken. Compare the total time, including your corrections. A smaller
-model is useful when it does the job with less waiting and repair.
+Our suite supplies observations to investigate. It does not predict reliability
+for your tasks. [The assessment guide](our-approach.md) explains the checks and
+their limits.
 
 ## Use a local model beside another assistant
 
-A local helper can handle a small, defined step while your main assistant stays
-in the cloud. For example, it might extract facts from documents before the
-main assistant drafts from them. Keep the source excerpts so you can check
-what was lost or assigned to the wrong record.
+A local helper can extract fields or select passages for another local or cloud
+assistant. Keep source excerpts available so lost or misassigned information can
+be checked. Passing extracted information to a cloud assistant sends that
+information outside the machine.
 
-This is a workflow pattern to evaluate, not an automatic Temper integration.
-Connecting the helper, passing context and checking its output are still part
-of the job. Running steps in sequence can save memory, but loading models again
-adds time and loses cached conversation state. Sending the extracted facts to
-a cloud assistant also sends that information outside your machine.
+This is a workflow pattern to evaluate. Connecting components, passing context,
+checking results and handling errors are part of the work. Sequential model
+loading can reduce simultaneous memory use, but adds loading time and may lose
+cached context.
 
-The [approach guide](our-approach.md#improve-the-harness-as-well-as-the-model)
-explains how tools and instructions affect the result.
-[Context and caching](../models/qwen3.8-27b/tuning.md) explains why follow-up
-messages can be faster than the first response.
-
-[All guides](README.md) · [Model index](../models/README.md) ·
-[Back to Temper](../README.md).
+[Explore presets](../catalog/README.md) · [All guides](README.md) ·
+[Tools and resources](../tools.md).

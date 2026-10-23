@@ -1,74 +1,61 @@
-# Qwen3.8 27B for coding with Splash
+# Qwen3.8 27B with Splash
 
-We recommend **Qwen3.8 27B with Splash** for local coding on the tested M5 with
-32 GiB. It produced useful first patches much sooner
-than llama.cpp on two Flask tasks. Review and repairs remain part of the work.
-This assessment is based on measurements and direct code review from
-25–26 September 2026.
+A text-only Qwen preset using Splash. It requires **Apple M3 or newer,
+macOS 26.4+ and 32 GiB+**.
 
-For installation, choose the Qwen/Splash preset in
-[Temper](https://github.com/temper-sh/temper#get-started). Temper installs the
-packaged engine and prepares the weights and template. That preset requires
-Apple M3 or newer and macOS 26.4 or newer.
+**[Set up with Temper](https://github.com/temper-sh/temper#get-started)** ·
+[Configuration and evidence](splash-ud-q4-k-xl-reference.md)
 
-The measurements here used the earlier source build identified below. They
-remain evidence for that exact setup, not a timing or quality test of the
-current packaged release. Separate llama.cpp document and capacity results
-are summarized on the [model card](../README.md).
+For a 32 GiB Mac, [Kapitsa is our recommended Qwen configuration](kapitsa-mlx4.md),
+based on M5 measurements. Splash remains the installable alternative and
+favored large cold inputs in the comparison. That comparison used thinking
+off; the offered Splash preset uses medium thinking.
 
-## What we measured
+## Why this combination
 
-| Component | Tested choice |
-|---|---|
-| Target weights | [Unsloth Qwen3.8 27B UD-Q4_K_XL GGUF](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/tree/4ca720788d1e01f1bff70c033e0d0028fd02e502), Dynamic 3.0 |
-| Engine | [Splash source fdc11c5](https://github.com/incoai/splash/tree/fdc11c5965313d7c0648c8be9b02ea385727fdd7) |
-| Chat template | [Froggeric v22.5](https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/blob/855bffc49448e299789730ff92c9b8d834d6cc14/chat_template.jinja), supplied through the Python server's tokenizer override |
-| Draft model | [Qwen3.8 27B DFlash2](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2/tree/dedf8df68adfb1afeaf7b7480c0a0243108177b4), prepared by Splash |
-| Request settings | Medium reasoning, previous thinking omitted; temperature 1, top-p 0.95, top-k 20 |
-| Runtime settings | Language only, int8 conversation cache, 24G Metal allocation limit, 118,000-token total ceiling |
+**Splash was selected to shorten the wait for a first code patch.** On an M5
+with 32 GiB, two coding tasks took **40m 27s and 19m 21s**, versus **102m 21s
+and 58m 23s** with llama.cpp. Both configurations needed review and corrections.
+Splash peaked at **20.3–20.5 GiB of native allocations**; loaded memory and a
+comparable llama.cpp measurement were not recorded. This
+[comparison used earlier engine builds](splash-ud-q4-k-xl-reference.md#m5--32-gib-matched-coding-comparison-with-llamacpp)
+and measured first submissions, not time to accepted code.
 
-The GGUF preserves Unsloth's mixture of quantization formats and precisions.
-DFlash2 is a separate draft model that proposes tokens for the target to verify.
-The comparison also tested Splash with a different Q4 weight package. It
-produced a syntax error and an invalid patch submission in the corresponding
-Frog tests. The engine build also changed, so those observations do not isolate
-weight compression as the cause.
+**The 112,000-token setting fits the selected 24 GiB engine allowance.**
+Splash 1.3.2 refused 118,000 under that allowance; 112,000 passed startup and
+short request checks. That supports the allocation, not useful work across
+the full window.
 
-## Measured coding work
+The [decision notes](splash-ud-q4-k-xl-reference.md#why-these-choices) explain
+the weight/template baseline, retained defaults and why Splash 1.4.0 was not
+selected for this preset.
 
-Apple M5, 32 GiB, macOS 26.6.1. Each row is one first attempt, with seed 17 and
-no repair feedback. Both engines received identical rendered prompts and token
-IDs, the same GGUF target and Frog template. llama.cpp b11157 used embedded MTP
-with three draft tokens and a 120,000-token ceiling; Splash used DFlash2 and
-118,000. These are comparisons of the complete configurations.
+## Behavior on tested hardware
 
-| Task | Input tokens | llama.cpp time to submission | Splash time to submission | Splash output tokens |
-|---|---:|---:|---:|---:|
-| Fix async streaming | 16,078 | 102m 21s | 40m 27s | 37,455 |
-| Extend template decorators | 23,398 | 58m 23s | 19m 21s | 21,902 |
+These observations use **Splash 1.3.2**, Unsloth UD-Q4_K_XL weights, Frog v22.5
+and medium thinking. Each row describes one workload.
 
-Combined request time fell by **62.8%**. Timings include input processing and
-reasoning, and exclude startup and subsequent review. No repair session was
-timed, so this is a first-submission improvement rather than a measured reduction
-in time to accepted code.
+| Machine | Configuration and work | Outcome | Elapsed time | Loaded → peak memory |
+|---|---|---|---:|---|
+| M5 · 32 GiB | 112,000-token window; six short interface/reuse requests | Passed; largest input 522 tokens | Prefix check: **2.60 s** cold / **0.36 s** reused | **19.46 → 20.46 GiB** engine physical footprint |
+| M5 Pro · 64 GiB | Evaluated 131,072-token window; coding | Submitted code failed independent tests | **22m 53s**, two responses | **19.22 → 21.63 GiB** system wired-memory growth |
 
-Both configurations passed the original and independent behavioral checks.
-Both bug submissions failed two of their own tests. Splash's failing assertions
-concerned when a streamed exception is raised and an inherited double-close
-behavior. A separate review probe found a more consequential issue: its patch
-suppressed a context-cleanup error outside the intended streaming fix. The
-llama.cpp patch preserved that error guard and used a narrower mechanism.
+The workloads and memory counters differ, so these rows do not compare the
+machines' speed or efficiency. Memory observations are not minimum RAM
+requirements. Neither trial filled its configured window.
 
-Splash's feature passed all 175 checks, including 26 authored tests. Review
-found an unnecessary second naming argument across six decorator APIs. Static
-typing was not checked. These are useful proposals requiring review; passing
-tests alone did not settle patch quality. The review knew candidate identities
-and timings, and two tasks do not establish general quality parity.
+## What to expect
 
-Splash reported peak native allocations of 20.3–20.5 GiB, with no swap growth
-or resource stop. This metric includes allocations that process RSS misses;
-it is not minimum machine RAM. Smaller machines were not tested. The largest
-observed sequence was 53,533 tokens, including reasoning and output. The 118k
-allocation does not qualify 118k input, multi-turn coding sessions or vision.
+Coding outcomes depend on the task and configuration. The
+[thinking-off comparison with Kapitsa](kapitsa-mlx4-reference.md#completed-code-changes)
+produced a submitted Flask patch passing behavior, source review and focused
+typing checks after corrections. A separate thinking-off trial retained a
+source-review concern and stopped before submission; other trials produced
+errors that ordinary tests missed. These outcomes do not establish general
+coding reliability or apply unchanged to the offered medium-thinking preset.
 
-[Model card](../README.md) · [Choose a model](../../../guides/choose-a-local-model.md).
+The larger 64 GiB variant is evaluated separately.
+[Technical details](splash-ud-q4-k-xl-reference.md) retain the settings, other
+workloads and review findings.
+
+[Qwen model overview](../README.md) · [Explore presets](../../../catalog/README.md).

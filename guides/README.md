@@ -1,19 +1,33 @@
 # Guides
 
-Explanations and setup notes for choosing models and using them in everyday
-work.
+## Understand the basics
 
-| Guide | Contents |
+[Making sense of local AI](basics.md) explains models, weights, engines,
+compression, memory and context. Start there when the terminology gets in the way.
+
+[Models, tasks and hardware](choose-a-local-model.md) connects those concepts to
+the work you want to do. [Explore presets](../catalog/README.md) for the prepared
+configurations and their rationale.
+
+## Setup and use
+
+| Guide | What it covers |
 |---|---|
-| [Making sense of local AI](basics.md) | Model names, engines, compression, memory and context. |
-| [Choosing a local model](choose-a-local-model.md) | Candidates by task, memory fit and local helpers for another assistant. |
-| [Pi setup](pi-setup.md) | Web search, remote access and the experience behind each component choice. |
-| [Assessing local AI](our-approach.md) | How we test tasks, workflows and claims, and interpret the results. |
-| [Tuning Qwen3.8 27B](../models/qwen3.8-27b/tuning.md) | Context, caching and generation settings for this model. |
+| [Install Temper](https://github.com/temper-sh/temper#get-started) | Install the tool and prepare a first setup. |
+| [Configure a layout](https://github.com/temper-sh/temper/blob/master/docs/contracts/init.md) | Select models, review requirements and connect supported applications. |
+| [Pi setup](pi-setup.md) | Web search and remote access, with the evidence behind the component choices. |
+| [Specialist requests](https://github.com/temper-sh/temper/blob/master/docs/SPECIALISTS.md) | Supply inputs to extractors, rerankers and translators. |
+| [Manage catalog updates](https://github.com/temper-sh/temper/blob/master/docs/CATALOG.md) | Inspect and update saved configurations. |
 
-Individual models are in the [model catalog](../models/README.md), and software
-is in [tools and resources](../tools.md). The
-[investigations](../investigations/README.md) cover specific experiments and
-their conclusions.
+## Go deeper
 
-[Back to Temper](../README.md).
+- [Technical references](technical-reference.md) — configuration details and
+  evidence, including a reading route for setup agents.
+- [How we assess local AI](our-approach.md) — what the tests establish and what
+  remains unknown.
+- [Qwen context and caching](../models/qwen3.8-27b/tuning.md) — interactions
+  between conversation length, cache settings and waiting time.
+- [Investigations](../investigations/README.md) — experiments on specific
+  questions, with methods and limitations.
+
+[Tools and resources](../tools.md) · [Back to Temper](../README.md).

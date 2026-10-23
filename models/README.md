@@ -1,7 +1,8 @@
-# General models
+# General model records
 
-Models assessed for extraction, writing, editing and tool use. Each card
-describes the tested configuration, observed results and limitations. Some
+Models examined in extraction, writing, editing and tool cases. Each card
+describes the tested configuration, observed results and limitations. The
+limited suite does not establish a ranking or general reliability. Some
 entries document setups that did not work well for the tested tasks.
 
 For a defined pipeline step, use the separate
@@ -29,7 +30,8 @@ Placement considers measured server memory and room for the operating system
 and other applications. A tier does not establish fit on every machine within
 its range, and unified memory and dedicated GPU memory need separate checks.
 
-**All local measurements below used an Apple M5 with 32 GiB.** The smaller
+**Most local measurements used an Apple M5 with 32 GiB; selected Splash trials
+also used an M5 Pro with 64 GiB.** The smaller
 machine placements are estimates; fit on actual 8 or 16 GiB machines remains
 unmeasured. Longer contexts, caches and other settings can change the fit.
 Unless stated otherwise, the listed configurations use Q4_K_M at 16k context.
@@ -88,10 +90,11 @@ reached 12.23 GiB of server memory.
 - [Ornith 1.5 35B A3B](ornith-1.5-35b-a3b/README.md) — Following corrections
   and checking evidence; longer workflows stopped before the final report.
   Q4_K_M, thinking budget 512, 32k.
-- [Qwen3.8 27B](qwen3.8-27b/README.md) — Recommended for coding with
-  [Splash](qwen3.8-27b/layouts/splash-ud-q4-k-xl.md)
-  on M5/32 GiB; patches need review. Separate llama.cpp results cover source
-  synthesis, document editing and a measured 40k context workload.
+- [Qwen3.8 27B](qwen3.8-27b/README.md) —
+  [Kapitsa is our 32 GiB Qwen recommendation](qwen3.8-27b/layouts/kapitsa-mlx4.md)
+  for reviewed coding work, measured on M5; direct setup only.
+  Splash remains an installable alternative. Separate llama.cpp results cover
+  source synthesis and document editing.
 
 ## Local fit unmeasured
 

@@ -1,6 +1,6 @@
 {
   "schema": "temper-catalog/v1",
-  "date": "2026-10-19",
+  "date": "2026-10-21",
   "platform": "apple-silicon",
   "runtime": {
     "router": {
@@ -55,7 +55,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Qwen3.8 27B",
-        "weights_name": "Unsloth UD-Q4_K_XL · GGUF"
+        "weights_name": "Unsloth UD-Q4_K_XL \u00b7 GGUF"
       }
     },
     "qwen3.5-4b-q4km": {
@@ -77,7 +77,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Qwen3.5 4B",
-        "weights_name": "Unsloth Q4_K_M · GGUF"
+        "weights_name": "Unsloth Q4_K_M \u00b7 GGUF"
       }
     },
     "gemma-4-e2b-q4km": {
@@ -99,7 +99,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Gemma 4 E2B",
-        "weights_name": "Unsloth Q4_K_M · GGUF"
+        "weights_name": "Unsloth Q4_K_M \u00b7 GGUF"
       }
     },
     "gemma-4-e4b-q4km": {
@@ -121,7 +121,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Gemma 4 E4B",
-        "weights_name": "Unsloth Q4_K_M · GGUF"
+        "weights_name": "Unsloth Q4_K_M \u00b7 GGUF"
       }
     },
     "qwen3.8-27b-dflash2": {
@@ -170,7 +170,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Muse Glimmer 30B",
-        "weights_name": "Unsloth UD-Q4_K_XL · GGUF"
+        "weights_name": "Unsloth UD-Q4_K_XL \u00b7 GGUF"
       }
     },
     "gemma-4-26b-a4b-qat-ud-q4-k-xl": {
@@ -192,7 +192,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Gemma 4 26B-A4B",
-        "weights_name": "Unsloth QAT UD-Q4_K_XL · GGUF"
+        "weights_name": "Unsloth QAT UD-Q4_K_XL \u00b7 GGUF"
       }
     },
     "gemma-4-31b-qat-ud-q4-k-xl": {
@@ -236,7 +236,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "NuExtract3 4B",
-        "weights_name": "NuMind Q4_K_M · GGUF"
+        "weights_name": "NuMind Q4_K_M \u00b7 GGUF"
       }
     },
     "nuextract3-projector-bf16": {
@@ -258,7 +258,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "NuExtract3 image projector",
-        "weights_name": "NuMind BF16 · GGUF"
+        "weights_name": "NuMind BF16 \u00b7 GGUF"
       }
     },
     "qwen3-reranker-0.6b-q8": {
@@ -280,7 +280,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Qwen3 Reranker 0.6B",
-        "weights_name": "Voodisss Q8_0 · GGUF"
+        "weights_name": "Voodisss Q8_0 \u00b7 GGUF"
       }
     },
     "ettin-reranker-150m-q8": {
@@ -302,7 +302,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Ettin Reranker 150M",
-        "weights_name": "CrispEmbed Q8_0 · GGUF"
+        "weights_name": "CrispEmbed Q8_0 \u00b7 GGUF"
       }
     },
     "translategemma-4b-q5km": {
@@ -324,7 +324,7 @@
       "license": "Gemma",
       "presentation": {
         "model_name": "TranslateGemma 4B",
-        "weights_name": "bullerwins Q5_K_M · GGUF"
+        "weights_name": "bullerwins Q5_K_M \u00b7 GGUF"
       }
     },
     "translategemma-12b-q5km": {
@@ -346,7 +346,7 @@
       "license": "Gemma",
       "presentation": {
         "model_name": "TranslateGemma 12B",
-        "weights_name": "bullerwins Q5_K_M · GGUF"
+        "weights_name": "bullerwins Q5_K_M \u00b7 GGUF"
       }
     },
     "translategemma-27b-q4km": {
@@ -368,7 +368,7 @@
       "license": "Gemma",
       "presentation": {
         "model_name": "TranslateGemma 27B",
-        "weights_name": "bullerwins Q4_K_M · GGUF"
+        "weights_name": "bullerwins Q4_K_M \u00b7 GGUF"
       }
     },
     "tiny-aya-global-q8": {
@@ -390,7 +390,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Global",
-        "weights_name": "Cohere Labs Q8_0 · GGUF"
+        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
       }
     },
     "tiny-aya-water-q8": {
@@ -412,7 +412,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Water",
-        "weights_name": "Cohere Labs Q8_0 · GGUF"
+        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
       }
     },
     "tiny-aya-fire-q8": {
@@ -434,7 +434,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Fire",
-        "weights_name": "Cohere Labs Q8_0 · GGUF"
+        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
       }
     },
     "tiny-aya-earth-q8": {
@@ -456,7 +456,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Earth",
-        "weights_name": "Cohere Labs Q8_0 · GGUF"
+        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
       }
     },
     "muse-glimmer-30b-dflash2-q4km": {
@@ -478,7 +478,7 @@
       ],
       "presentation": {
         "model_name": "Muse Glimmer 30B DFlash2",
-        "weights_name": "Inco Q4_K_M · GGUF"
+        "weights_name": "Inco Q4_K_M \u00b7 GGUF"
       }
     },
     "gemma-4-31b-mtp-q4-0": {
@@ -501,6 +501,88 @@
       "presentation": {
         "model_name": "Gemma 4 31B MTP",
         "weights_name": "Q4_0"
+      }
+    },
+    "qwen3.8-27b-mlx4": {
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "lmstudio-community/Qwen3.8-27B-MLX-4bit",
+          "revision": "6067b15cf581666a4aecf6af3afaba4bb5efc20c"
+        }
+      ],
+      "format": "mlx-safetensors",
+      "files": [
+        {
+          "path": "chat_template.jinja",
+          "bytes": 8952,
+          "sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041"
+        },
+        {
+          "path": "config.json",
+          "bytes": 4932,
+          "sha256": "14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85"
+        },
+        {
+          "path": "generation_config.json",
+          "bytes": 202,
+          "sha256": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e"
+        },
+        {
+          "path": "model-00001-of-00003.safetensors",
+          "bytes": 5343268752,
+          "sha256": "471a9a81b54dddbfef43e8a71960ca24ad3c727891c6b0750a9db9a214aab504"
+        },
+        {
+          "path": "model-00002-of-00003.safetensors",
+          "bytes": 5354185100,
+          "sha256": "e7474b8f968f4078dfd4889925961c5b0da9939219b614dba08eb63c46590de7"
+        },
+        {
+          "path": "model-00003-of-00003.safetensors",
+          "bytes": 5357087747,
+          "sha256": "1038989bed1346ecdb541a45c078df2aae99a9509f35bfd51e7a04802a5d8402"
+        },
+        {
+          "path": "model.safetensors.index.json",
+          "bytes": 218281,
+          "sha256": "13b840162b4cb35c66fef7df072f7dbb4717908204364f5e5d9f9655a2758fa8"
+        },
+        {
+          "path": "preprocessor_config.json",
+          "bytes": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+        },
+        {
+          "path": "processor_config.json",
+          "bytes": 991,
+          "sha256": "45fc17c8dd2474af6b493b52483c26c0584b0082d368c480f9fa611e73070040"
+        },
+        {
+          "path": "tokenizer.json",
+          "bytes": 19989325,
+          "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 10404,
+          "sha256": "47a7a8371379b07650b22f3c8a78c32fed85c4e35ea88e3da0c4b7a7611e8082"
+        },
+        {
+          "path": "video_preprocessor_config.json",
+          "bytes": 385,
+          "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+        },
+        {
+          "path": "vocab.json",
+          "bytes": 6722759,
+          "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+        }
+      ],
+      "license": "Apache-2.0",
+      "presentation": {
+        "model_name": "Qwen3.8 27B",
+        "weights_name": "LM Studio affine 4-bit / group 64 \u00b7 MLX"
       }
     }
   },
@@ -535,7 +617,7 @@
         {
           "hub": "huggingface",
           "repo": "peculiar-ragdoll/Qwen-Sharp-Chat-Templates",
-          "revision": "85461fc118aaf25e7319c7ecf2481f944aac3a32"
+          "revision": "6a78b888557f8c9987f51bca98d02d8f69682044"
         }
       ],
       "files": [
@@ -560,7 +642,7 @@
         {
           "hub": "huggingface",
           "repo": "meta-models/Muse-Glimmer-30B",
-          "revision": "a4e59da52a7bc87ae7251dd5545c0dd437c44b68"
+          "revision": "cec94fcfd6512f2cfe708138c32533b346ea4f69"
         }
       ],
       "files": [
@@ -808,11 +890,11 @@
             },
             {
               "name": "certifi",
-              "version": "2026.7.22",
+              "version": "2026.10.19",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl",
-                "sha256": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775",
-                "size": 136983
+                "locator": "https://files.pythonhosted.org/packages/c4/51/29046e48f693c54e5b7412216d447a1d8362c9653148d98c02cdf65fa733/certifi-2026.10.19-py3-none-any.whl",
+                "sha256": "42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b",
+                "size": 136464
               }
             },
             {
@@ -871,20 +953,20 @@
             },
             {
               "name": "fastapi",
-              "version": "0.143.3",
+              "version": "0.156.2",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/2c/1a/03d246befcf307219bb2161c97d8c5d314f84125bf7dd245730a28589828/fastapi-0.143.3-py3-none-any.whl",
-                "sha256": "75e8bd68e2f52f77d29b2879749c257d64de2d85282d25270caf2bfccce5efe5",
-                "size": 144849
+                "locator": "https://files.pythonhosted.org/packages/88/9d/fdd72314f3b6c52d1da8a75caa90719464d8997501b367edacbef1ee6f08/fastapi-0.156.2-py3-none-any.whl",
+                "sha256": "5ccf73cbadf1f74382194e8edd4cf3b79df773d6f33c7387bbe85b465ef7d517",
+                "size": 146787
               }
             },
             {
               "name": "filelock",
-              "version": "4.2.1",
+              "version": "4.2.4",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/28/00/db89d339bc4ecdc8087fa7b8607ba22ffc27bf96286f340c9620bea428b3/filelock-4.2.1-py3-none-any.whl",
-                "sha256": "7be2662e9e826b9bba28afc0f843a123280d799a2ea44bb5d35ccec67905ae44",
-                "size": 162455
+                "locator": "https://files.pythonhosted.org/packages/e0/1b/5e74289a1878e666bb4b65fe5805a04cafcac2aa5f519ef1ead67ef91c56/filelock-4.2.4-py3-none-any.whl",
+                "sha256": "301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e",
+                "size": 162475
               }
             },
             {
@@ -943,11 +1025,11 @@
             },
             {
               "name": "httpcore2",
-              "version": "2.13.1",
+              "version": "2.15.1",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/09/ba/a4568248771ce81957bfb7cc600264a40fbcda092391ee1c415c50be4bea/httpcore2-2.13.1-py3-none-any.whl",
-                "sha256": "e1e05d4f25f7d7d496bfb96748f6f4b67657b03da069b3a68c36069f3db73d0a",
-                "size": 83423
+                "locator": "https://files.pythonhosted.org/packages/0d/9b/e2b556e26fbc67716ab1dfc18832eb6fe196d88363f7094cb1da3d7c0d3e/httpcore2-2.15.1-py3-none-any.whl",
+                "sha256": "730f603058c260a3288378217b464713350c23e3b8fe8bba753701054032d98a",
+                "size": 85055
               }
             },
             {
@@ -961,11 +1043,11 @@
             },
             {
               "name": "httpx2",
-              "version": "2.13.1",
+              "version": "2.15.1",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/d8/9c/6fe8931fd9f381042a9e4c7d5a7b4cbf7016b252bec0c99a49fce42c3326/httpx2-2.13.1-py3-none-any.whl",
-                "sha256": "6dff50fabc270ee5fd25d845d0b078ed20564579744d6d962850975996d2f9a4",
-                "size": 95597
+                "locator": "https://files.pythonhosted.org/packages/7a/bf/56068f774620330c8330e4b4915fae889a5b2d4b52667b3b7c8f66c4a9ad/httpx2-2.15.1-py3-none-any.whl",
+                "sha256": "75841cd83d16b417f7d6da8f2089ce8120806efdbf96af37d46c5129c49015be",
+                "size": 96411
               }
             },
             {
@@ -1141,11 +1223,11 @@
             },
             {
               "name": "mlx-audio",
-              "version": "0.5.9",
+              "version": "0.6.1",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/57/3c/5864cf8c30661049db2ed22d6c2ab1137691f3f49df3c1fd4c7b885953da/mlx_audio-0.5.9-py3-none-any.whl",
-                "sha256": "fa662cf24cbca69cdd912612cdb677e65f77c6329a95906cc80b50e5b4689d6b",
-                "size": 2136508
+                "locator": "https://files.pythonhosted.org/packages/5c/35/831928ee30f7509e8298411aed20b124dccbef6030d668e98e644d49564d/mlx_audio-0.6.1-py3-none-any.whl",
+                "sha256": "4c5e4ef3f2a453dcc1c84c9aaf1e43701f62f5a32632aff50bfa6be9047d0f10",
+                "size": 2305453
               }
             },
             {
@@ -1267,11 +1349,11 @@
             },
             {
               "name": "platformdirs",
-              "version": "4.13.4",
+              "version": "4.13.5",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/58/51/5614d0537dd830ca64d95a2f254bd66bdf3ac61d41cffcccaec62121fcfd/platformdirs-4.13.4-py3-none-any.whl",
-                "sha256": "502ce08e9d36cf90579ee44e1e764838842fa658e4975ef47344fd053011d2c8",
-                "size": 32782
+                "locator": "https://files.pythonhosted.org/packages/6c/8a/1d8cb3842909dc193a73835adedf412e32e18f8ffd59f43983949622fe6f/platformdirs-4.13.5-py3-none-any.whl",
+                "sha256": "53d3ec4280b815c1e0b02edad7f9ee8fda1ba9c0865dd9c2e6e63849ce82fc1e",
+                "size": 32779
               }
             },
             {
@@ -1384,11 +1466,11 @@
             },
             {
               "name": "rapid-mlx",
-              "version": "0.16.3",
+              "version": "0.16.5",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/65/9b/610f91cede0ef14dfa653b62b541944f89c75b3378a038e0995965871d07/rapid_mlx-0.16.3-py3-none-any.whl",
-                "sha256": "3f2621a81391c4ee601b2bf7a8215b9c6bf6c52fec5c19415fbd5e9f8a06da80",
-                "size": 4903460
+                "locator": "https://files.pythonhosted.org/packages/83/ed/4d6129e3ae2d129cd6d746fce4ff6e3261e41155ebf1e9cbb711cc823860/rapid_mlx-0.16.5-py3-none-any.whl",
+                "sha256": "628c276b417e1f32613d99ed7ccc6ead1edb2ec40ab1ea8daffd9d58e0e2b8fd",
+                "size": 4970867
               }
             },
             {
@@ -1465,11 +1547,11 @@
             },
             {
               "name": "setuptools",
-              "version": "84.0.0",
+              "version": "84.2.1",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl",
-                "sha256": "51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670",
-                "size": 818216
+                "locator": "https://files.pythonhosted.org/packages/ef/55/6dc6d6bb953bdfc52519a0059592c52b6e3b8ad51cf8256dffceb55b0610/setuptools-84.2.1-py3-none-any.whl",
+                "sha256": "ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2",
+                "size": 876263
               }
             },
             {
@@ -1519,11 +1601,11 @@
             },
             {
               "name": "starlette",
-              "version": "1.8.0",
+              "version": "1.9.0",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/c1/b0/5742e4ac7af5eb58ec3470a537a49d7aa507e5539413e504b3a65ef50ba8/starlette-1.8.0-py3-none-any.whl",
-                "sha256": "dfdd6b29c26483288088d990eee59631dedadd66ce20d203402a7ca8e3c4656f",
-                "size": 79612
+                "locator": "https://files.pythonhosted.org/packages/f3/93/181df62699d9b5aca1d87e5cfda131dac87e3cdaebf668662f7206ca3470/starlette-1.9.0-py3-none-any.whl",
+                "sha256": "fd3f159936e882d06c1108f84688f7cda2cf85fc6a592a50edbd175e882c2ddc",
+                "size": 80335
               }
             },
             {
@@ -1663,18 +1745,18 @@
             },
             {
               "name": "websockets",
-              "version": "17.2",
+              "version": "17.3",
               "artifact": {
-                "locator": "https://files.pythonhosted.org/packages/3b/6e/82c78b595aee05be76a7ee78539323da1593c1848e4fef51c704c696568f/websockets-17.2-cp312-cp312-macosx_11_0_arm64.whl",
-                "sha256": "a81e19710d48da88653473b6b9c366d47e99fe4f58e37ce415be47966748f31f",
-                "size": 215703
+                "locator": "https://files.pythonhosted.org/packages/22/7d/a27f25451c4cc62141992b51005688481210f3d3e63de3dc66f9e882ba59/websockets-17.3-cp312-cp312-macosx_11_0_arm64.whl",
+                "sha256": "d68da281ac208b6236ffa8beef23fe7c7c956d8bf09b421d447232fd94441b35",
+                "size": 216196
               }
             }
           ]
         }
       },
       "presentation": {
-        "display_name": "Rapid MLX 0.16.3 (experimental)"
+        "display_name": "Rapid MLX 0.16.5 (experimental)"
       }
     },
     "vllm-metal": {
@@ -3212,6 +3294,44 @@
       "presentation": {
         "display_name": "llama.cpp"
       }
+    },
+    "kapitsa": {
+      "adapter": "kapitsa/v1",
+      "minimum_temper": "0.4.0",
+      "interfaces": [
+        "chat-completions"
+      ],
+      "modalities": [
+        "text"
+      ],
+      "supply": {
+        "package": "kapitsa",
+        "target": {
+          "os": "darwin",
+          "arch": "arm64"
+        },
+        "source": {
+          "repository": "nace-ai/kapitsa",
+          "asset": "kapitsa-{number}-darwin-arm64.tar.gz",
+          "archive_root": "kapitsa-{number}-darwin-arm64"
+        },
+        "release": {
+          "version": "v0.2.9",
+          "revision": "e86dea79b2751d04a3fa78bfa7746f4ebf981515",
+          "artifact": {
+            "locator": "https://github.com/nace-ai/kapitsa/releases/download/v0.2.9/kapitsa-0.2.9-darwin-arm64.tar.gz",
+            "sha256": "370b2ec86b0d27fcb6cf9e19a563e30174e89146889bdf3adc1c3c5d01898d19",
+            "size": 3501620,
+            "unpacked_size": 9571933,
+            "installed_entries": 72,
+            "format": "tar.gz",
+            "archive_root": "kapitsa-0.2.9-darwin-arm64"
+          }
+        }
+      },
+      "presentation": {
+        "display_name": "Kapitsa"
+      }
     }
   },
   "presets": {
@@ -3573,11 +3693,76 @@
               }
             }
           }
+        },
+        {
+          "min_memory_gib": 64,
+          "context_window_tokens": 131072,
+          "engine_config": {
+            "kind": "splash/v2",
+            "kv_cache": "int8",
+            "max_memory_bytes": 51539607552,
+            "reasoning_effort": "medium",
+            "request_timeout_seconds": 14400
+          },
+          "memory": {
+            "observed_on": "2026-10-20",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "131,072-token allocation; two-response async-stream coding workflow with medium thinking, temperature 1, top-p 0.95 and top-k 20. First response: 16,369 input and 43,375 generated tokens including reasoning; second: 20,846 input and 4,018 generated tokens. Workflow 1,372.72 seconds. Loaded after readiness; peak sampled across the workflow.",
+            "counter": "system-wired-growth",
+            "loaded_bytes": 20637466624,
+            "peak_bytes": 23228186624,
+            "limitations": "System wired memory above the trial baseline includes other applications and is not dedicated GPU allocation. Sampling about every five seconds can miss short peaks. No swap growth, thermal warning or resource stop. The submitted patch failed eight independent tests; this is runtime resource evidence, not coding acceptance. The largest occupied sequence was 59,744 tokens; full 131,072-token use and minimum machine RAM are unmeasured.",
+            "machine": {
+              "chip": "Apple M5 Pro",
+              "physical_memory_bytes": 68719476736,
+              "metal_memory_mib": 53084,
+              "os": "macOS 26.7.1 (25G241)"
+            },
+            "execution": {
+              "engine_version": "1.3.2",
+              "engine_files": [
+                "c3deb1dd971461ffafcf6b82c318789d6698b22aa865e490a11a0ed943686c0b"
+              ],
+              "weights": [
+                {
+                  "path": "Qwen3.8-27B-UD-Q4_K_XL.gguf",
+                  "bytes": 17559178144,
+                  "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
+                }
+              ],
+              "draft": [
+                {
+                  "path": "config.json",
+                  "bytes": 1239,
+                  "sha256": "873e3556509b0da06e29654ba00d4944888d4b5e8a33afde25f7eb27d321e980"
+                },
+                {
+                  "path": "model.safetensors",
+                  "bytes": 3848817896,
+                  "sha256": "67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 131072,
+              "engine_config": {
+                "kind": "splash/v2",
+                "kv_cache": "int8",
+                "max_memory_bytes": 51539607552,
+                "reasoning_effort": "medium",
+                "request_timeout_seconds": 14400
+              },
+              "speculation": {
+                "method": "dflash2",
+                "source": "artifact",
+                "max_draft_tokens": 0
+              }
+            }
+          }
         }
       ],
       "presentation": {
-        "display_name": "Qwen–Splash / DFlash2",
-        "description": "Our top choice in size S for coding tasks. Combines Unsloth’s UD3.0 quantization with Splash and DFlash2, delivering up to twice llama.cpp’s throughput. Requires extra disk space for its native weight cache.",
+        "display_name": "Qwen\u2013Splash / DFlash2",
+        "description": "Our top choice in size S for coding tasks. Combines Unsloth\u2019s UD3.0 quantization with Splash and DFlash2, delivering up to twice llama.cpp\u2019s throughput. Requires extra disk space for its native weight cache.",
         "group": "general",
         "memory_tier": "S"
       }
@@ -4022,7 +4207,7 @@
         }
       ],
       "presentation": {
-        "display_name": "NuExtract3 4B · llama.cpp",
+        "display_name": "NuExtract3 4B \u00b7 llama.cpp",
         "description": "Extracts structured data from text and document images, and converts documents to Markdown. CPU keeps the GPU available for other models; GPU is faster and recommended for images.",
         "group": "specialist",
         "section": "extraction",
@@ -4058,7 +4243,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Ettin Reranker 150M · CrispEmbed",
+        "display_name": "Ettin Reranker 150M \u00b7 CrispEmbed",
         "description": "A compact English reranker that runs on CPU, leaving the GPU available for other models.",
         "group": "specialist",
         "section": "reranking",
@@ -4113,7 +4298,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Qwen3 Reranker 0.6B · llama.cpp",
+        "display_name": "Qwen3 Reranker 0.6B \u00b7 llama.cpp",
         "description": "A multilingual alternative to Ettin with a larger memory footprint. CPU keeps the GPU available for other models; GPU gives faster reranking.",
         "group": "specialist",
         "section": "reranking",
@@ -4235,7 +4420,7 @@
         }
       ],
       "presentation": {
-        "display_name": "TranslateGemma 4B · llama.cpp",
+        "display_name": "TranslateGemma 4B \u00b7 llama.cpp",
         "description": "The smallest TranslateGemma option, prioritizing translation speed and low memory use.",
         "group": "specialist",
         "section": "translation",
@@ -4306,7 +4491,7 @@
         }
       ],
       "presentation": {
-        "display_name": "TranslateGemma 12B · llama.cpp",
+        "display_name": "TranslateGemma 12B \u00b7 llama.cpp",
         "description": "The middle TranslateGemma option, with better fidelity expected than 4B and lower memory use and faster responses than 27B.",
         "group": "specialist",
         "section": "translation",
@@ -4377,7 +4562,7 @@
         }
       ],
       "presentation": {
-        "display_name": "TranslateGemma 27B · llama.cpp",
+        "display_name": "TranslateGemma 27B \u00b7 llama.cpp",
         "description": "The largest TranslateGemma option, offering the highest expected translation fidelity at the cost of speed and memory.",
         "group": "specialist",
         "section": "translation",
@@ -4448,7 +4633,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Global · llama.cpp",
+        "display_name": "Tiny Aya Global \u00b7 llama.cpp",
         "description": "The balanced Tiny Aya option for translation across language regions. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
@@ -4513,7 +4698,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Water · llama.cpp",
+        "display_name": "Tiny Aya Water \u00b7 llama.cpp",
         "description": "Tiny Aya focused on European and Asia-Pacific languages, including Swedish, German, French, Chinese, Japanese and Korean. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
@@ -4578,7 +4763,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Fire · llama.cpp",
+        "display_name": "Tiny Aya Fire \u00b7 llama.cpp",
         "description": "Tiny Aya focused on South Asian languages, including Hindi, Bengali, Gujarati, Marathi, Tamil, Telugu and Nepali. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
@@ -4643,7 +4828,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Earth · llama.cpp",
+        "display_name": "Tiny Aya Earth \u00b7 llama.cpp",
         "description": "Tiny Aya focused on West Asian and African languages, including Arabic, Persian, Turkish, Hebrew, Swahili, Amharic, Hausa and Yoruba. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
@@ -4780,6 +4965,172 @@
         "group": "general",
         "memory_tier": "S"
       }
+    },
+    "qwen3.8-27b-mlx4-kapitsa": {
+      "artifact": "qwen3.8-27b-mlx4",
+      "template": "builtin",
+      "engine": "kapitsa",
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "request_defaults": {
+        "reasoning": "off",
+        "sampling": {
+          "temperature": 1.0,
+          "top_k": 20,
+          "top_p": 0.95,
+          "min_p": 0.0,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0,
+          "seed": 421
+        }
+      },
+      "speculation": {
+        "method": "dflash2",
+        "source": "artifact",
+        "max_draft_tokens": 0,
+        "draft_artifact": "qwen3.8-27b-dflash2"
+      },
+      "context_limit_tokens": 262144,
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "profiles": [
+        {
+          "min_memory_gib": 32,
+          "context_window_tokens": 98304,
+          "engine_config": {
+            "kind": "kapitsa/v1",
+            "slots": 1,
+            "max_memory_bytes": 25769803776,
+            "prefill_chunk_tokens": 1024,
+            "ane": true
+          },
+          "memory": {
+            "observed_on": "2026-10-23",
+            "source": "https://temper-sh.github.io/models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.html",
+            "workload": "98,304-token allocation, one slot, thinking off, temperature 1, top-p 0.95, top-k 20, seed 421. Cold lookup at 85,565 input tokens, appended lookup, early edit, complete 7,895-token output, and continued lookup near 93.6k input. Loaded after readiness; peak across the five-request sequence.",
+            "counter": "engine-physical-footprint",
+            "loaded_bytes": 17040962472,
+            "peak_bytes": 25761248456,
+            "limitations": "Engine process physical footprint, five-second sampling including OS lifetime peak. Separate ANE-service and router allocations excluded; overlapping wired/RSS counters are not summed. No swap or pressure stop in this workload. Not full-window quality or minimum RAM evidence. Fresh installations calibrate locally; the tested KFlash calibration SHA-256 was 3b01f5a4dd0d4764410d842541ff91b79fb0559c2a8e6dec6c39a30fcbb5abcd.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "v0.2.9",
+              "engine_files": [
+                "370b2ec86b0d27fcb6cf9e19a563e30174e89146889bdf3adc1c3c5d01898d19"
+              ],
+              "weights": [
+                {
+                  "path": "chat_template.jinja",
+                  "bytes": 8952,
+                  "sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041"
+                },
+                {
+                  "path": "config.json",
+                  "bytes": 4932,
+                  "sha256": "14b65a0ee06517060a6bbd979bb1a8ff54e7b304b1a1f01d54344b88b8285e85"
+                },
+                {
+                  "path": "generation_config.json",
+                  "bytes": 202,
+                  "sha256": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e"
+                },
+                {
+                  "path": "model-00001-of-00003.safetensors",
+                  "bytes": 5343268752,
+                  "sha256": "471a9a81b54dddbfef43e8a71960ca24ad3c727891c6b0750a9db9a214aab504"
+                },
+                {
+                  "path": "model-00002-of-00003.safetensors",
+                  "bytes": 5354185100,
+                  "sha256": "e7474b8f968f4078dfd4889925961c5b0da9939219b614dba08eb63c46590de7"
+                },
+                {
+                  "path": "model-00003-of-00003.safetensors",
+                  "bytes": 5357087747,
+                  "sha256": "1038989bed1346ecdb541a45c078df2aae99a9509f35bfd51e7a04802a5d8402"
+                },
+                {
+                  "path": "model.safetensors.index.json",
+                  "bytes": 218281,
+                  "sha256": "13b840162b4cb35c66fef7df072f7dbb4717908204364f5e5d9f9655a2758fa8"
+                },
+                {
+                  "path": "preprocessor_config.json",
+                  "bytes": 390,
+                  "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+                },
+                {
+                  "path": "processor_config.json",
+                  "bytes": 991,
+                  "sha256": "45fc17c8dd2474af6b493b52483c26c0584b0082d368c480f9fa611e73070040"
+                },
+                {
+                  "path": "tokenizer.json",
+                  "bytes": 19989325,
+                  "sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523"
+                },
+                {
+                  "path": "tokenizer_config.json",
+                  "bytes": 10404,
+                  "sha256": "47a7a8371379b07650b22f3c8a78c32fed85c4e35ea88e3da0c4b7a7611e8082"
+                },
+                {
+                  "path": "video_preprocessor_config.json",
+                  "bytes": 385,
+                  "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+                },
+                {
+                  "path": "vocab.json",
+                  "bytes": 6722759,
+                  "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+                }
+              ],
+              "draft": [
+                {
+                  "path": "config.json",
+                  "bytes": 1239,
+                  "sha256": "873e3556509b0da06e29654ba00d4944888d4b5e8a33afde25f7eb27d321e980"
+                },
+                {
+                  "path": "model.safetensors",
+                  "bytes": 3848817896,
+                  "sha256": "67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 98304,
+              "engine_config": {
+                "kind": "kapitsa/v1",
+                "slots": 1,
+                "max_memory_bytes": 25769803776,
+                "prefill_chunk_tokens": 1024,
+                "ane": true
+              },
+              "speculation": {
+                "method": "dflash2",
+                "source": "artifact",
+                "max_draft_tokens": 0
+              }
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Qwen\u2013Kapitsa / MLX4 DFlash2",
+        "description": "Measured 32 GiB coding configuration: thinking off, 98,304-token window, ANE prefill and native template. Other chips are unmeasured; the engine allowance is not minimum machine RAM.",
+        "assessment_url": "https://temper-sh.github.io/models/qwen3.8-27b/layouts/kapitsa-mlx4.html",
+        "group": "general",
+        "memory_tier": "S"
+      }
     }
   },
   "presentation": {
@@ -4837,7 +5188,8 @@
       "tiny-aya-global-q8-llama",
       "tiny-aya-water-q8-llama",
       "tiny-aya-fire-q8-llama",
-      "tiny-aya-earth-q8-llama"
+      "tiny-aya-earth-q8-llama",
+      "qwen3.8-27b-mlx4-kapitsa"
     ]
   }
 }

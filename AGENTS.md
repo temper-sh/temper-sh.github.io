@@ -15,7 +15,10 @@ detail when present. Planning documents are not tracked or published.
 
 Maintain one current assessment. Apply new evidence by revising the relevant
 content in place, not appending updates, progress reports or next steps. Dates
-and versions identify evidence; they do not organize a research history.
+belong in provenance or optional evidence details, not the main public reading
+path, unless timing changes the reader's decision or action. Publication dates,
+release sequences and undated progress narration also stay out. Keep versions
+where they determine compatibility or distinguish measured configurations.
 Keep older findings only where they still support a useful claim, limitation or
 comparison. Follow the authoritative
 [Results maintenance rule](../PUBLIC-DOCS.md#results-has-no-yesterday), including
@@ -30,16 +33,19 @@ pages by their purpose:
 |---|---|
 | `README.md` | Public entry point and routes to useful pages |
 | `tools.md` | Curated links to tools and resources, grouped by purpose |
-| `catalog/README.md` | Temper's preset choices: what each installable preset is for, its license and limits |
+| `catalog/README.md` | Temper's preset directory: configuration rationale, license and links to observations |
+| `catalog/reference.md` | Configuration and measurement details, including evaluated variants; not installation authority |
 | `catalog/sources/`, `catalog/v1/` | Temper's authored catalog and its signed publication (see below) |
 | `models/README.md` | General-model index: memory tiers, linked names and one-line uses |
 | `models/<model>/README.md` | One compact card per model, shared across its configurations |
-| `models/<model>/layouts/<configuration>.md` | Optional detail for a configuration worth comparing or choosing |
+| `models/<model>/layouts/<configuration>.md` | Short page for a materially different preset choice |
+| `models/<model>/layouts/<configuration>-reference.md` | Optional public configuration details and evidence for advanced readers and setup agents |
 | `models/<model>/chat-templates.md`, `tuning.md` | Optional model-specific template guidance and performance tweaks |
 | `models/specialists/README.md` | Separate specialist index, grouped by task |
 | `models/specialists/<model>/` | Specialist card and optional notes, using the same model-directory structure |
 | `guides/README.md`, `guides/<topic>.md` | Guide index and explanations of concepts, choices and tasks |
 | `guides/pi-setup.md` | Recommended Pi components, setup guidance and the evidence behind each choice |
+| `guides/technical-reference.md` | Reference index and reading route for setup agents |
 | `investigations/README.md`, `investigations/<question>.md` | Investigation index, comparisons and practical verdicts |
 | `templates/model-card.md` | Editorial template for general assistants, including coding models |
 | `templates/specialist-card.md` | Editorial template for pipeline components, with task-specific evidence |
@@ -94,6 +100,28 @@ delete anything under `catalog/v1/` by hand; snapshots are immutable.
 
 ## Publishing and maintenance
 
+- Preserve the existing beginner's guide. Build navigation around it, the
+  preset directory, setup guides, the tools/resources directory and references.
+- Explain why a preset has its particular weights, engine, settings and fixes.
+  State documented reasons; do not invent superiority claims to justify a choice.
+  Minimize judgment and recommendations. Limited test cases establish their
+  observed outcomes, not broad suitability, reliability or a ranking.
+- Preserve reasons for relevant model/engine alternatives not selected and for
+  consequential setting values. A rationale names a concrete problem, constraint
+  or comparison and its tradeoff; a description of how a component works is not
+  enough. Label inherited/default settings honestly. Distinguish unevaluated,
+  evaluated but not selected here, and incompatible under named conditions.
+  Keep decisive reasons on short pages and detailed alternatives in references;
+  shared reasons have one linked home. Follow the
+  [decision-rationale guideline](../PUBLIC-DOCS.md#explain-choices-and-alternatives).
+- Keep short pages readable without the technical reference. Move detailed
+  methods and configuration evidence into linked public references; retain
+  decision-changing limitations on the short page. Distinguish publisher
+  descriptions, observations and estimates. Agents use the published catalog
+  for installation values, not authoring candidates or historical test settings.
+- Tools/resource entries explain a project's role and link relevant experience.
+  Listing a project does not imply endorsement or local validation.
+
 - Use the voice of a maintainer solving practical problems and sharing the
   work. Describe what was tried, observed, fixed and made available. Avoid
   promotional slogans, sales pitches and promises to make the reader's work
@@ -116,9 +144,10 @@ delete anything under `catalog/v1/` by hand; snapshots are immutable.
 - Keep the landing page's routes and model indexes useful and descriptive;
   visitors should not need to browse directories.
 - Keep official facts, project assessment and measured performance distinct.
-  State the machine and engine version above a table that uses one configuration;
-  name them per row when comparing configurations. When configurations differ,
-  identify them in both the capability matrix and performance table.
+  The main hardware table has one row per machine, with a representative measured
+  configuration and workload. Put additional workloads and variants in evidence
+  details. State shared engine/settings once; identify differing configurations
+  in their rows and capability results. Never blend separate runs into one result.
 - Labs and Workshop remain private. Public summaries must contain the tested
   conditions, method, useful measurements and limitations needed to assess a
   conclusion. Do not link to private workspace paths or copy logs into Results.

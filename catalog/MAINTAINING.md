@@ -7,13 +7,20 @@ their next `temper update`.
 
 | Path | Content |
 |---|---|
-| `README.md` | The "Choose a preset" page: what each preset is for, its license, size and limits |
+| `README.md` | The "Explore presets" page: configuration rationale, licenses and observation links |
+| `reference.md` | Technical configurations and measurements, distinguishing offered presets from evaluated variants |
 | `sources/<platform>.json` | The authored catalog for one platform, for example `apple-silicon` |
 | `v1/channels/stable/` | The signed channel: one sequence number and the current catalog per platform |
 | `v1/snapshots/<sha256>/` | One signed catalog, the exact bytes of a source; never changed or removed |
 
 Files under `v1/` are written only by `temper-catalog publish`. Do not edit,
 rename or delete them by hand.
+
+Editorial-only changes to the pages do not republish or change installation
+inputs. Preserve evidence destinations referenced by catalog records, including
+`README.md#memory-observations`, when moving details to a technical reference.
+For availability claims, read the snapshot identified by the stable channel;
+the authoring source may contain unpublished candidates.
 
 ## Change the catalog
 

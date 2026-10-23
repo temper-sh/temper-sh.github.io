@@ -1,63 +1,68 @@
 # Tools and resources
 
-Software used in the experiments and setups documented here. Each entry
-describes its role and links to setup details or test results.
+A directory of local-AI software, integrations and learning material, grouped
+by role. Entries explain what a project does. Linked setup notes and experiments
+identify what we have used or tested; inclusion alone does not establish how
+well a tool or combination works.
 
-## Models
+## Learn the pieces
 
-- [General models](models/README.md) — Assessed models grouped by estimated
-  memory fit, with links to capabilities, limitations and measurements.
-- [Specialist models](models/specialists/README.md) — Models intended for a
-  particular kind of work, grouped by task.
-- [Choosing a local model](guides/choose-a-local-model.md) — Candidates by
-  task and the main tradeoffs.
+- [Making sense of local AI](guides/basics.md) — Our beginner's guide to models,
+  weights, engines, compression, memory and context.
+- [Models, tasks and hardware](guides/choose-a-local-model.md) — Questions to
+  consider when putting together a setup.
+- [How we assess local AI](guides/our-approach.md) — The scope and limits of our
+  experiments.
+- [Technical references](guides/technical-reference.md) — Configuration details,
+  evidence and a reading route for setup agents.
 
-## Running models
+## Find models and prepared configurations
 
+- [Temper presets](catalog/README.md) — Prepared weights/engine/settings
+  combinations, with reasons for the choices and links to observations.
+- [General models](models/README.md) — Model records grouped by estimated
+  memory fit, including configurations outside the installable catalog.
+- [Specialist models](models/specialists/README.md) — Extraction, reranking and
+  translation models, with their input/output interfaces and resource costs.
+
+## Run and manage models
+
+- [Temper](https://github.com/temper-sh/temper) — Prepares selected model files,
+  engines and settings; manages layouts and explicit updates.
+  [Explore its presets](catalog/README.md).
 - [llama.cpp](https://github.com/ggml-org/llama.cpp) — Runs GGUF model files.
-  Its `llama-server` provides an HTTP interface for local applications.
-  Model cards identify the engine build used in each measurement.
+  Its `llama-server` provides an HTTP interface for applications.
+- [Splash](https://github.com/incoai/splash) — An Apple Silicon engine with
+  draft-model acceleration. [Qwen / Splash](models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md)
+  documents one Temper preset and its observed behavior.
 - [llama-swap](https://github.com/mostlygeek/llama-swap) — Routes requests to
-  local model servers and can load or unload models as needed.
-- [Splash](https://github.com/incoai/splash) — An Apple Silicon engine using a
-  separate draft model to accelerate generation. Recommended for coding with
-  the [tested Qwen3.8 27B GGUF and Frog configuration](models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md)
-  on M5/32 GiB. Temper offers a ready-to-install Splash preset for M3 or newer
-  on macOS 26.4+. The comparison identifies the older source build measured.
-- [Temper](https://github.com/temper-sh/temper) — Installs and checks a selected
-  configuration of model files, engine and settings. The
-  [preset guide](catalog/README.md)
-  explains the available choices.
+  local model servers and loads or unloads models as needed.
 
-## Working with models
+## Work with models
 
 - [Pi](https://github.com/earendil-works/pi/tree/main/packages/coding-agent) — A
-  terminal coding agent with tools, sessions and extensions. The
-  [Pi setup guide](guides/pi-setup.md) covers web search and remote access.
+  terminal coding agent with tools, sessions and extensions.
+  [Our setup notes](guides/pi-setup.md) cover web search and remote access.
 
-## Web search
+## Add web search
 
 - [Pi Web Access](https://github.com/nicobailon/pi-web-access) — Adds web search
-  and page fetching to Pi. Selected after a
-  [review of alternatives and local integration trials](investigations/pi-web-search.md).
-  Queries go to the configured external search provider, including when
-  Pi's main model runs locally.
+  and page fetching to Pi. Queries go to an external search provider, including
+  when the main model runs locally.
+  [Integration trials and alternatives](investigations/pi-web-search.md).
 
-## Remote access
+## Access sessions remotely
 
 - [Un Bien](https://github.com/georgeharker/un-bien) — Connects a phone to Pi
-  sessions through a relay. Used by Temper's maintainer; the
-  [Pi setup guide](guides/pi-setup.md#remote-access-with-un-bien) explains
-  the app, extension and relay.
+  sessions through a relay. [Setup notes](guides/pi-setup.md#remote-access-with-un-bien)
+  describe the app, extension and relay used by Temper's maintainer.
 
-## Running experiments
+## Run experiments
 
 - [Field Kit](https://github.com/temper-sh/field-kit) — Runs defined experiments
-  and records the machine, configuration and results. Reports stay local
-  until the participant chooses to share them.
+  and records the machine, configuration and results. Reports stay local until
+  the participant chooses to share them.
+- [Investigations](investigations/README.md) — Our experiments on particular
+  tools and techniques, with their methods and limitations.
 
-Tests of individual components do not establish how well every combination
-works. The linked guides and investigations describe the setups actually used.
-
-[Guides](guides/README.md) · [Investigations](investigations/README.md) ·
-[Back to Temper](README.md).
+[Guides](guides/README.md) · [Back to Temper](README.md).
