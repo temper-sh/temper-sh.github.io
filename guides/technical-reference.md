@@ -7,7 +7,7 @@ someone set up local AI.
 | Reference | Contents |
 |---|---|
 | [Preset configuration and measurements](../catalog/reference.md) | Published versus evaluated settings, resource observations and specialist interfaces. |
-| [Qwen / Kapitsa](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) | Recommended 32 GiB configuration, exact inputs and Splash comparison; direct setup, no Temper backend yet. |
+| [Qwen / Kapitsa](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) | Recommended 32 GiB configuration, exact inputs and Splash comparison; available in Temper 0.4.0+. |
 | [Qwen / Splash](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md) | Decision rationale, alternatives not selected, exact configurations, coding outcomes and resource measurements. |
 | [Qwen / llama.cpp](../models/qwen3.8-27b/layouts/llama-cpp-reference.md) | Document tasks, context/cache trials and their failed cases. |
 | [Qwen context and caching](../models/qwen3.8-27b/tuning.md) | Parameter interactions and the conditions behind tuning guidance. |

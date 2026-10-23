@@ -82,17 +82,17 @@ reached 12.23 GiB of server memory.
   DFlash2, 128k; plain decoding at 56k is the lower-memory alternative.
 - [Gemma 4 26B-A4B](gemma-4-26b-a4b/README.md) — Creative drafting, dialogue,
   tone revision and general explanations, with substantially shorter waits than
-  31B on the M5. Unsloth QAT UD-Q4_K_XL, plain decoding, 96k; check factual
+  31B on the M5. Unsloth QAT UD-Q4_K_XL, plain decoding, 128k; check factual
   constraints and continuity.
 - [Gemma 4 31B](gemma-4-31b/README.md) — Coherent scenes and tone revision,
   with much longer waits; the sample establishes no human preference advantage
-  over 26B. Unsloth QAT UD-Q4_K_XL, plain decoding, 40k.
+  over 26B. Unsloth QAT UD-Q4_K_XL, MTP width 3, 40k.
 - [Ornith 1.5 35B A3B](ornith-1.5-35b-a3b/README.md) — Following corrections
   and checking evidence; longer workflows stopped before the final report.
   Q4_K_M, thinking budget 512, 32k.
 - [Qwen3.8 27B](qwen3.8-27b/README.md) —
   [Kapitsa is our 32 GiB Qwen recommendation](qwen3.8-27b/layouts/kapitsa-mlx4.md)
-  for reviewed coding work, measured on M5; direct setup only.
+  for reviewed coding work, measured on M5; available in Temper 0.4.0+.
   Splash remains an installable alternative. Separate llama.cpp results cover
   source synthesis and document editing.
 

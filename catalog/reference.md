@@ -16,15 +16,15 @@ an experiment's settings to prepare a setup.
 | Configuration | Published preset | Additional evaluated configuration |
 |---|---|---|
 | Qwen / Splash | 112,000-token window for 32 GiB+ | 131,072-token profile for 64 GiB |
-| Muse Glimmer | Plain decoding, 57,344-token window | DFlash2, 131,072-token window |
-| Gemma 26B | Plain decoding, 98,304-token window | 131,072-token window and a 1,024-token reasoning budget |
-| Gemma 31B | Plain decoding, 40,960-token window | MTP width 3 at the same window, with a 1,024-token reasoning budget |
+| Qwen / Kapitsa | MLX4/DFlash2, 98,304-token window, thinking off | Larger prefill chunks and alternative contexts are retained in the [reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) |
+| Muse Glimmer | DFlash2 at 131,072 tokens, or plain decoding at 57,344 | Matched plain/DFlash2 comparison at 57,344 tokens |
+| Gemma 26B | Plain decoding, 131,072-token window and a 1,024-token reasoning budget | Earlier 98,304-token configuration and draft experiments |
+| Gemma 31B | MTP width 3, 40,960-token window and a 1,024-token reasoning budget | Plain decoding, other MTP widths and draft methods |
 
-The measurements below describe the named executions. The evaluated Gemma
-settings and memory observations are present in the authoring source; that does
-not make them available through the stable channel. Profiles containing memory
-observations require Temper 0.4.0 or newer. Other documented presets require
-0.2.0, except Ettin Reranker, which also works with 0.1.0.
+The measurements below describe the named executions. Kapitsa and profiles
+containing memory observations require Temper 0.4.0 or newer. Temper checks
+each preset's compatibility before offering it; the signed catalog owns those
+requirements.
 
 ## Response and reasoning settings
 
@@ -62,7 +62,7 @@ In the earlier matched 57,344-window comparison, short 512-token probes took
 17.47/17.72 GiB versus 15.79/15.82 GiB. Both modes confused values in a dense
 directory and invented an unsupported publication condition in an announcement.
 The [Muse assessment](../models/muse-glimmer-30b/README.md) gives the methods
-and limits. The published Muse preset uses plain decoding at 57,344 tokens.
+and limits. The plain Muse preset retains its 57,344-token window.
 Both configurations use the same target weights.
 
 ## Gemma writing configurations
@@ -96,7 +96,7 @@ do not establish general long-document reasoning quality.
 A reserved short writing brief at these windows passed the factual and
 140–180-word requirements with thinking on and the 1,024-token budget: 26B
 took 27.92 seconds (16.37 → 16.44 GiB RSS), and 31B MTP-3 took 93.20 seconds
-(18.95 → 19.13 GiB). The authoring catalog records the larger capacity-workload peaks for
+(18.95 → 19.13 GiB). The catalog records the larger capacity-workload peaks for
 memory accounting. All these tests used llama-swap v265 and macOS 26.6.1,
 one resident model and two-second memory sampling. They do not isolate an
 engine-upgrade effect or establish vision, tool-use or multilingual quality.

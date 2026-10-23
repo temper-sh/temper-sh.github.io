@@ -5,9 +5,10 @@ measured M5 configuration completed a checked Flask change faster than Splash
 and used less memory on that task. Other chips are unmeasured; large cold
 inputs favor Splash.
 
-**Temper does not offer this configuration yet.** Direct setup uses
-[Kapitsa](https://github.com/nace-ai/kapitsa) with the
-[tested version, model files and settings](kapitsa-mlx4-reference.md#tested-configuration).
+**Available in Temper 0.4.0 or newer** as `qwen3.8-27b-mlx4-kapitsa`.
+Choose it in `temper init` or `temper configure`; Temper prepares the
+[pinned engine, model files and settings](kapitsa-mlx4-reference.md#tested-configuration).
+The runtime requires Apple M1 or newer and macOS 14 or later.
 [Splash remains an installable alternative](splash-ud-q4-k-xl.md).
 
 ## Why this configuration

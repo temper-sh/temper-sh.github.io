@@ -1,6 +1,6 @@
 {
   "schema": "temper-catalog/v1",
-  "date": "2026-10-21",
+  "date": "2026-10-23",
   "platform": "apple-silicon",
   "runtime": {
     "router": {

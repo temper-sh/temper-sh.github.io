@@ -4,8 +4,7 @@
 [Kapitsa with MLX 4-bit weights](layouts/kapitsa-mlx4.md).** The evidence is
 from an M5; other chips are unmeasured. It completed a checked Flask change
 faster and with less memory than the Splash control, while Splash favored
-large cold inputs. Kapitsa requires direct setup; Temper integration is not
-available yet.
+large cold inputs. The Kapitsa preset requires Temper 0.4.0 or newer.
 
 **Publisher description:** A dense 27B model accepting text, images and video,
 with a 262,144-token native context. Apache 2.0.
@@ -20,7 +19,7 @@ not establish those capabilities in these local configurations.
 
 | Configuration | Purpose and availability | Observations and details |
 |---|---|---|
-| Kapitsa | Recommended 32 GiB Qwen configuration for reviewed coding work; MLX 4-bit, DFlash2, thinking off, 98,304-token window. Direct setup only. | [Recommendation and hardware table](layouts/kapitsa-mlx4.md); slower large cold prefill and long-context memory tradeoffs. |
+| Kapitsa | Recommended 32 GiB Qwen configuration for reviewed coding work; MLX 4-bit, DFlash2, thinking off, 98,304-token window. Available in Temper 0.4.0+. | [Recommendation and hardware table](layouts/kapitsa-mlx4.md); slower large cold prefill and long-context memory tradeoffs. |
 | Splash | Installable alternative with DFlash2 and Frog integration. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
 | llama.cpp | Installable preset with built-in draft prediction. Document and tool cases were also run through this engine. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
 

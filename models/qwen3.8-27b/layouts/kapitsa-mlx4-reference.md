@@ -1,8 +1,10 @@
 # Qwen3.8 27B / Kapitsa: technical reference
 
 Configuration and evidence behind the
-[32 GiB recommendation](kapitsa-mlx4.md). This is a measured direct-engine
-configuration; **Temper has no Kapitsa backend or installable preset yet**.
+[32 GiB recommendation](kapitsa-mlx4.md). Temper 0.4.0 or newer offers this
+configuration as `qwen3.8-27b-mlx4-kapitsa`; use `temper init` or
+`temper configure` to prepare it. The measurements below used direct engine
+runs; each fresh Temper installation keeps its own local calibration.
 The comparison is between usable compositions: weights, prompt rendering,
 KV precision and engine all differ.
 

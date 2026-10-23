@@ -18,7 +18,7 @@ examples to inspect, not a ranking of the models.
 |---|---|---|
 | Conversation, scenes and revision | [Gemma 26B](../models/gemma-4-26b-a4b/README.md) and [31B](../models/gemma-4-31b/README.md) | Preserved facts and continuity, response length, waiting time and memory. |
 | Technical drafts and explanations | [Muse Glimmer](../models/muse-glimmer-30b/README.md) | Source fidelity, operational details and unfinished work. |
-| Code changes on a 32 GiB Mac | [Qwen / Kapitsa](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md), our recommendation measured on M5 | Direct setup only; Splash is the installable alternative. Compare checked completion time, loaded/peak memory and large-input tradeoffs. |
+| Code changes on a 32 GiB Mac | [Qwen / Kapitsa](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md), our recommendation measured on M5 | Available in Temper 0.4.0+; Splash is another installable choice. Compare checked completion time, loaded/peak memory and large-input tradeoffs. |
 | Combining sources and editing documents | [Qwen3.8 27B](../models/qwen3.8-27b/README.md) | Format errors, source corrections, actual input size and cache behavior. |
 | Short records and messages with a smaller model | [Gemma E2B](../models/gemma-4-e2b/README.md), [E4B](../models/gemma-4-e4b/README.md) and [Qwen3.5 4B](../models/qwen3.5-4b/README.md) | Changed facts, missing fields and whether tool actions actually finished. |
 

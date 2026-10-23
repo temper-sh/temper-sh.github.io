@@ -15,25 +15,22 @@ requirements and memory estimate before preparing the selected models.
 
 | Preset | Why this configuration exists | Observations |
 |---|---|---|
+| Qwen3.8 27B with Kapitsa | Our 32 GiB recommendation, measured on M5: MLX 4-bit weights, DFlash2 and a 98,304-token window. Requires Temper 0.4.0, Apple M1+ and macOS 14+. | [Checked coding work, memory and large-input tradeoffs](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md). |
 | Qwen3.8 27B with Splash | Uses the Unsloth weight build with a draft model and the Frog template integration. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
 | Qwen3.8 27B with llama.cpp | Runs the same target weights through another engine, with the Frog template and built-in draft prediction. | [Coding and document-work cases](../models/qwen3.8-27b/README.md). |
-| Muse Glimmer 30B | Uses plain decoding, keeping the setup free of a separate draft model. | [Technical writing and workflow observations](../models/muse-glimmer-30b/README.md). |
-| Gemma 4 26B-A4B | Pairs Unsloth QAT weights with llama.cpp and the embedded template; the published preset uses plain decoding. | [Writing and conversation cases](../models/gemma-4-26b-a4b/README.md). |
-| Gemma 4 31B | Offers the larger Gemma model with the same weight-build family; the published preset also uses plain decoding. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
+| Muse Glimmer 30B | DFlash2 accelerates generation on the tested M5 at a 131,072-token window; the plain 57,344-token option uses less memory. | [Technical writing and workflow observations](../models/muse-glimmer-30b/README.md). |
+| Gemma 4 26B-A4B | Unsloth QAT weights, plain decoding and a 131,072-token window, with a 1,024-token reasoning default. | [Writing and conversation cases](../models/gemma-4-26b-a4b/README.md). |
+| Gemma 4 31B | The larger Gemma model uses MTP width 3 at a 40,960-token window, with a 1,024-token reasoning default. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
 
 These models use the [Apache-2.0 license][apache-license]. Shared model files are
-reused when selecting both Qwen presets. Splash also creates a native weight
+reused between the Qwen Splash and llama.cpp presets; Kapitsa uses separate MLX
+weights. Splash also creates a native weight
 cache, adding disk use and first-startup work.
 
-The linked observations include configurations beyond the published presets.
-The [32 GiB Qwen recommendation uses Kapitsa](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md)
-and requires direct setup with the published Temper version. The authored
-catalog candidate `qwen3.8-27b-mlx4-kapitsa` requires Temper 0.4.0 and is not
-available in the signed catalog yet. It uses native Kapitsa v0.2.9, MLX4 target
-weights and DFlash2 at 98,304 tokens, with the configuration and memory evidence
-in the [Kapitsa reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md).
-Splash's larger 64 GiB profile, Muse DFlash2, and the larger-context or draft-assisted
-Gemma variants are evaluated configurations. The
+Kapitsa and profiles containing memory observations require Temper 0.4.0 or
+newer. The linked observations also include configurations beyond the published
+presets, including Splash's larger 64 GiB profile and alternative Gemma draft
+settings. The
 [configuration reference](reference.md#published-settings-and-evaluated-variants)
 distinguishes them from the offerings in the signed catalog.
 
