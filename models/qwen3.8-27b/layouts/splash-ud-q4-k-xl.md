@@ -6,10 +6,10 @@ macOS 26.4+ and 32 GiB+**.
 **[Set up with Temper](https://github.com/temper-sh/temper#get-started)** ·
 [Configuration and evidence](splash-ud-q4-k-xl-reference.md)
 
-For a 32 GiB Mac, [Kapitsa is our recommended Qwen configuration](kapitsa-mlx4.md),
-based on M5 measurements. Splash remains the installable alternative and
-favored large cold inputs in the comparison. That comparison used thinking
-off; the offered Splash preset uses medium thinking.
+[Kapitsa is parked experimental](kapitsa-mlx4.md) after coding failures.
+Splash remains offered and favored large cold inputs in the comparison;
+both configurations failed a held-out streaming repair. That comparison used
+thinking off; the offered Splash preset uses medium thinking.
 
 ## Why this combination
 

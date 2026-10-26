@@ -15,7 +15,6 @@ requirements and memory estimate before preparing the selected models.
 
 | Preset | Why this configuration exists | Observations |
 |---|---|---|
-| Qwen3.8 27B with Kapitsa | Our 32 GiB recommendation, measured on M5: MLX 4-bit weights, DFlash2 and a 98,304-token window. Requires Temper 0.4.0, Apple M1+ and macOS 14+. | [Checked coding work, memory and large-input tradeoffs](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md). |
 | Qwen3.8 27B with Splash | Uses the Unsloth weight build with a draft model and the Frog template integration. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
 | Qwen3.8 27B with llama.cpp | Runs the same target weights through another engine, with the Frog template and built-in draft prediction. | [Coding and document-work cases](../models/qwen3.8-27b/README.md). |
 | Muse Glimmer 30B | DFlash2 accelerates generation on the tested M5 at a 131,072-token window; the plain 57,344-token option uses less memory. | [Technical writing and workflow observations](../models/muse-glimmer-30b/README.md). |
@@ -23,11 +22,15 @@ requirements and memory estimate before preparing the selected models.
 | Gemma 4 31B | The larger Gemma model uses MTP width 3 at a 40,960-token window, with a 1,024-token reasoning default. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
 
 These models use the [Apache-2.0 license][apache-license]. Shared model files are
-reused between the Qwen Splash and llama.cpp presets; Kapitsa uses separate MLX
-weights. Splash also creates a native weight
-cache, adding disk use and first-startup work.
+reused between the Qwen Splash and llama.cpp presets. Splash also creates a
+native weight cache, adding disk use and first-startup work.
 
-Kapitsa and profiles containing memory observations require Temper 0.4.0 or
+The [Qwen / Kapitsa layout](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md) is
+parked experimental and is not offered in the current catalog. Coding failures
+prevent a recommendation; its measured outcomes remain available for review.
+Existing saved presets remain under **Other** when the catalog is updated.
+
+Profiles containing memory observations require Temper 0.4.0 or
 newer. The linked observations also include configurations beyond the published
 presets, including Splash's larger 64 GiB profile and alternative Gemma draft
 settings. The
@@ -73,7 +76,7 @@ that grouping is not a measured quality score.
 
 ## Check what fits
 
-Most measurements use an M5 with 32 GiB; some Splash measurements use an M5 Pro
+Most measurements use an M5 with 32 GiB; some Qwen measurements use an M5 Pro
 with 64 GiB. Conversation history, the engine and other applications also need
 memory. Weight-file size and a measured process peak are not minimum machine RAM.
 

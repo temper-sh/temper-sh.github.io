@@ -8,8 +8,10 @@ are not all offered presets. See [how to use the technical references](../../../
 
 The [Kapitsa reference](kapitsa-mlx4-reference.md) documents the thinking-off
 comparison of completed code changes, long-input latency and loaded/peak
-memory. Kapitsa is the recommended 32 GiB Qwen configuration; Splash remains
-the installable alternative. Results for the medium-thinking preset retain
+memory. Kapitsa is parked experimental after coding failures; Splash remains
+offered. Both thinking-off configurations failed a held-out streaming repair,
+so the comparison does not establish general coding reliability.
+Results for the medium-thinking preset retain
 their own settings and do not inherit the thinking-off outcomes.
 
 ## Why these choices

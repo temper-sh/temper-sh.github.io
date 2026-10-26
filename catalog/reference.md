@@ -16,13 +16,13 @@ an experiment's settings to prepare a setup.
 | Configuration | Published preset | Additional evaluated configuration |
 |---|---|---|
 | Qwen / Splash | 112,000-token window for 32 GiB+ | 131,072-token profile for 64 GiB |
-| Qwen / Kapitsa | MLX4/DFlash2, 98,304-token window, thinking off | Larger prefill chunks and alternative contexts are retained in the [reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) |
+| Qwen / Kapitsa | Not offered; parked experimental layout | MLX4/DFlash2 coding failures, successful cases and context measurements remain in the [reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) |
 | Muse Glimmer | DFlash2 at 131,072 tokens, or plain decoding at 57,344 | Matched plain/DFlash2 comparison at 57,344 tokens |
 | Gemma 26B | Plain decoding, 131,072-token window and a 1,024-token reasoning budget | Earlier 98,304-token configuration and draft experiments |
 | Gemma 31B | MTP width 3, 40,960-token window and a 1,024-token reasoning budget | Plain decoding, other MTP widths and draft methods |
 
-The measurements below describe the named executions. Kapitsa and profiles
-containing memory observations require Temper 0.4.0 or newer. Temper checks
+The measurements below describe the named executions. Profiles containing
+memory observations require Temper 0.4.0 or newer. Temper checks
 each preset's compatibility before offering it; the signed catalog owns those
 requirements.
 

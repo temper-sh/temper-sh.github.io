@@ -91,10 +91,10 @@ reached 12.23 GiB of server memory.
   and checking evidence; longer workflows stopped before the final report.
   Q4_K_M, thinking budget 512, 32k.
 - [Qwen3.8 27B](qwen3.8-27b/README.md) —
-  [Kapitsa is our 32 GiB Qwen recommendation](qwen3.8-27b/layouts/kapitsa-mlx4.md)
-  for reviewed coding work, measured on M5; available in Temper 0.4.0+.
-  Splash remains an installable alternative. Separate llama.cpp results cover
-  source synthesis and document editing.
+  Splash and llama.cpp presets remain offered.
+  [Kapitsa is parked experimental](qwen3.8-27b/layouts/kapitsa-mlx4.md)
+  following coding failures on M5 Pro; the successful M5 cases remain recorded.
+  Separate llama.cpp results cover source synthesis and document editing.
 
 ## Local fit unmeasured
 

@@ -1,10 +1,11 @@
 # Qwen3.8 27B
 
-**For a 32 GiB Apple Silicon Mac, our recommended Qwen configuration is
-[Kapitsa with MLX 4-bit weights](layouts/kapitsa-mlx4.md).** The evidence is
-from an M5; other chips are unmeasured. It completed a checked Flask change
-faster and with less memory than the Splash control, while Splash favored
-large cold inputs. The Kapitsa preset requires Temper 0.4.0 or newer.
+**Splash and llama.cpp presets are offered; the
+[Kapitsa layout is parked experimental](layouts/kapitsa-mlx4.md).** Kapitsa
+completed a checked Flask change on a 32 GiB M5, but failed pagination,
+revision-store and held-out streaming repairs on a 64 GiB M5 Pro. Those
+results do not support recommending it. Splash also failed the held-out repair;
+the comparison does not establish a generally reliable coding configuration.
 
 **Publisher description:** A dense 27B model accepting text, images and video,
 with a 262,144-token native context. Apache 2.0.
@@ -19,8 +20,8 @@ not establish those capabilities in these local configurations.
 
 | Configuration | Purpose and availability | Observations and details |
 |---|---|---|
-| Kapitsa | Recommended 32 GiB Qwen configuration for reviewed coding work; MLX 4-bit, DFlash2, thinking off, 98,304-token window. Available in Temper 0.4.0+. | [Recommendation and hardware table](layouts/kapitsa-mlx4.md); slower large cold prefill and long-context memory tradeoffs. |
-| Splash | Installable alternative with DFlash2 and Frog integration. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
+| Kapitsa | Parked experimental; not offered in the current catalog. Tested MLX 4-bit, DFlash2, thinking off, 98,304-token window. | [Assessment and hardware table](layouts/kapitsa-mlx4.md); coding failures and retained successful cases. |
+| Splash | Installable preset with DFlash2 and Frog integration. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
 | llama.cpp | Installable preset with built-in draft prediction. Document and tool cases were also run through this engine. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
 
 [Explore the presets and set up Temper](../../catalog/README.md).
@@ -33,12 +34,13 @@ Kapitsa 0.2.9, MLX affine 4-bit/group-64, DFlash2, ANE on, thinking off;
 | Machine | Work | Outcome and elapsed time | Loaded → peak memory |
 |---|---|---|---|
 | M5 · 32 GiB | Flask decorator change with bounded corrections | Final behavior, AI-assisted source review and focused typing checks pass; **13m14s**, four responses | **15.87 → 21.14 GiB** engine physical footprint |
+| M5 Pro · 64 GiB | Held-out streaming repair, one response | Defective implementation; required test module missing; **99.07 s** | **15.87 → 18.92 GiB** engine physical footprint |
 
-This is one checked task, not general coding reliability or human acceptance.
+These are separate tasks on separate machines, not a memory-capacity comparison.
 The process counter omits some system costs and does not establish minimum
 machine RAM. The [Kapitsa reference](layouts/kapitsa-mlx4-reference.md) retains
-the Splash comparison, first-attempt failures, a separate pagination result
-favoring Splash and the long-input memory crossover.
+the Splash comparisons, first-attempt failures, independent test results and
+long-input memory tradeoffs. No human acceptance time was measured.
 
 ## What the document tests observed
 
