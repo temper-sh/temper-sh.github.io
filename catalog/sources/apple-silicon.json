@@ -1,6 +1,6 @@
 {
   "schema": "temper-catalog/v1",
-  "date": "2026-10-26",
+  "date": "2026-10-30",
   "platform": "apple-silicon",
   "runtime": {
     "router": {
@@ -55,7 +55,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Qwen3.8 27B",
-        "weights_name": "Unsloth UD-Q4_K_XL \u00b7 GGUF"
+        "weights_name": "Unsloth UD-Q4_K_XL · GGUF"
       }
     },
     "qwen3.5-4b-q4km": {
@@ -77,7 +77,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Qwen3.5 4B",
-        "weights_name": "Unsloth Q4_K_M \u00b7 GGUF"
+        "weights_name": "Unsloth Q4_K_M · GGUF"
       }
     },
     "gemma-4-e2b-q4km": {
@@ -99,7 +99,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Gemma 4 E2B",
-        "weights_name": "Unsloth Q4_K_M \u00b7 GGUF"
+        "weights_name": "Unsloth Q4_K_M · GGUF"
       }
     },
     "gemma-4-e4b-q4km": {
@@ -121,7 +121,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Gemma 4 E4B",
-        "weights_name": "Unsloth Q4_K_M \u00b7 GGUF"
+        "weights_name": "Unsloth Q4_K_M · GGUF"
       }
     },
     "qwen3.8-27b-dflash2": {
@@ -170,7 +170,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Muse Glimmer 30B",
-        "weights_name": "Unsloth UD-Q4_K_XL \u00b7 GGUF"
+        "weights_name": "Unsloth UD-Q4_K_XL · GGUF"
       }
     },
     "gemma-4-26b-a4b-qat-ud-q4-k-xl": {
@@ -192,7 +192,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Gemma 4 26B-A4B",
-        "weights_name": "Unsloth QAT UD-Q4_K_XL \u00b7 GGUF"
+        "weights_name": "Unsloth QAT UD-Q4_K_XL · GGUF"
       }
     },
     "gemma-4-31b-qat-ud-q4-k-xl": {
@@ -236,7 +236,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "NuExtract3 4B",
-        "weights_name": "NuMind Q4_K_M \u00b7 GGUF"
+        "weights_name": "NuMind Q4_K_M · GGUF"
       }
     },
     "nuextract3-projector-bf16": {
@@ -258,7 +258,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "NuExtract3 image projector",
-        "weights_name": "NuMind BF16 \u00b7 GGUF"
+        "weights_name": "NuMind BF16 · GGUF"
       }
     },
     "qwen3-reranker-0.6b-q8": {
@@ -280,7 +280,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Qwen3 Reranker 0.6B",
-        "weights_name": "Voodisss Q8_0 \u00b7 GGUF"
+        "weights_name": "Voodisss Q8_0 · GGUF"
       }
     },
     "ettin-reranker-150m-q8": {
@@ -302,7 +302,7 @@
       "license": "Apache-2.0",
       "presentation": {
         "model_name": "Ettin Reranker 150M",
-        "weights_name": "CrispEmbed Q8_0 \u00b7 GGUF"
+        "weights_name": "CrispEmbed Q8_0 · GGUF"
       }
     },
     "translategemma-4b-q5km": {
@@ -324,7 +324,7 @@
       "license": "Gemma",
       "presentation": {
         "model_name": "TranslateGemma 4B",
-        "weights_name": "bullerwins Q5_K_M \u00b7 GGUF"
+        "weights_name": "bullerwins Q5_K_M · GGUF"
       }
     },
     "translategemma-12b-q5km": {
@@ -346,7 +346,7 @@
       "license": "Gemma",
       "presentation": {
         "model_name": "TranslateGemma 12B",
-        "weights_name": "bullerwins Q5_K_M \u00b7 GGUF"
+        "weights_name": "bullerwins Q5_K_M · GGUF"
       }
     },
     "translategemma-27b-q4km": {
@@ -368,7 +368,7 @@
       "license": "Gemma",
       "presentation": {
         "model_name": "TranslateGemma 27B",
-        "weights_name": "bullerwins Q4_K_M \u00b7 GGUF"
+        "weights_name": "bullerwins Q4_K_M · GGUF"
       }
     },
     "tiny-aya-global-q8": {
@@ -390,7 +390,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Global",
-        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
+        "weights_name": "Cohere Labs Q8_0 · GGUF"
       }
     },
     "tiny-aya-water-q8": {
@@ -412,7 +412,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Water",
-        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
+        "weights_name": "Cohere Labs Q8_0 · GGUF"
       }
     },
     "tiny-aya-fire-q8": {
@@ -434,7 +434,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Fire",
-        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
+        "weights_name": "Cohere Labs Q8_0 · GGUF"
       }
     },
     "tiny-aya-earth-q8": {
@@ -456,7 +456,7 @@
       "license": "CC-BY-NC-4.0",
       "presentation": {
         "model_name": "Tiny Aya Earth",
-        "weights_name": "Cohere Labs Q8_0 \u00b7 GGUF"
+        "weights_name": "Cohere Labs Q8_0 · GGUF"
       }
     },
     "muse-glimmer-30b-dflash2-q4km": {
@@ -478,7 +478,7 @@
       ],
       "presentation": {
         "model_name": "Muse Glimmer 30B DFlash2",
-        "weights_name": "Inco Q4_K_M \u00b7 GGUF"
+        "weights_name": "Inco Q4_K_M · GGUF"
       }
     },
     "gemma-4-31b-mtp-q4-0": {
@@ -501,6 +501,72 @@
       "presentation": {
         "model_name": "Gemma 4 31B MTP",
         "weights_name": "Q4_0"
+      }
+    },
+    "bolt-draft-bf16": {
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB-DFlash",
+          "revision": "0949a2eb7152ec6fda1a91ff9302aecbcd464fbf"
+        }
+      ],
+      "format": "gguf",
+      "files": [
+        {
+          "path": "Nemotron-3.5-Bolt-E4B-DFlash-BF16.gguf",
+          "bytes": 736812096,
+          "sha256": "8103aa42fd31fb661c3fbe8701d04d698ea2c5d09351dc3e8c9da639958de989"
+        }
+      ],
+      "license": "OpenMDW-1.1",
+      "presentation": {
+        "model_name": "Nemotron Bolt E4B DFlash",
+        "weights_name": "NVIDIA BF16"
+      }
+    },
+    "nemotron-bolt-e4b-q4xl": {
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "unsloth/NVIDIA-Nemotron-3.5-Bolt-E4B-GGUF",
+          "revision": "b738967d6da3441a7d1c71fcec15e49e32e16ecd"
+        }
+      ],
+      "format": "gguf",
+      "files": [
+        {
+          "path": "NVIDIA-Nemotron-3.5-Bolt-E4B-UD-Q4_K_XL.gguf",
+          "bytes": 5060482240,
+          "sha256": "84ff34f5834b929043f5ae74799e8d562d4056998f6a5923ceb44831e8ad84d6"
+        }
+      ],
+      "license": "OpenMDW-1.1",
+      "presentation": {
+        "model_name": "Nemotron 3.5 Bolt E4B",
+        "weights_name": "UD-Q4_K_XL"
+      }
+    },
+    "spark-x2.6-4b-q4km": {
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "XHToken/Spark-X2.6-4B-GGUF",
+          "revision": "fe31f8d64890302cc3a1d365d700357b4b75ba77"
+        }
+      ],
+      "format": "gguf",
+      "files": [
+        {
+          "path": "Spark-X2.6-4B-Q4_K_M.gguf",
+          "bytes": 3543441312,
+          "sha256": "91cb2811aebb47ac916aa619d27d4cdd7f4143106b7917accb8ead4cd7f5cbd9"
+        }
+      ],
+      "license": "apache-2.0",
+      "presentation": {
+        "model_name": "Spark X2.6 4B",
+        "weights_name": "Q4_K_M"
       }
     }
   },
@@ -3212,6 +3278,44 @@
       "presentation": {
         "display_name": "llama.cpp"
       }
+    },
+    "llama-cpp-small": {
+      "adapter": "llama-server/v1",
+      "minimum_temper": "0.4.0",
+      "interfaces": [
+        "chat-completions"
+      ],
+      "modalities": [
+        "text"
+      ],
+      "supply": {
+        "package": "llama-cpp",
+        "target": {
+          "os": "darwin",
+          "arch": "arm64"
+        },
+        "source": {
+          "repository": "ggml-org/llama.cpp",
+          "asset": "llama-{version}-bin-macos-arm64.tar.gz",
+          "archive_root": "llama-{version}"
+        },
+        "release": {
+          "version": "b11869",
+          "revision": "d327bf1f0780f87b8c01b367b61853b0c291d7c4",
+          "artifact": {
+            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11869/llama-b11869-bin-macos-arm64.tar.gz",
+            "sha256": "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f",
+            "size": 16248800,
+            "unpacked_size": 41137446,
+            "installed_entries": 61,
+            "format": "tar.gz",
+            "archive_root": "llama-b11869"
+          }
+        }
+      },
+      "presentation": {
+        "display_name": "llama.cpp"
+      }
     }
   },
   "presets": {
@@ -3278,12 +3382,13 @@
         "description": "A battle-tested default for coding and general use. It trades some speed for the predictability and familiarity of llama.cpp.",
         "group": "general",
         "memory_tier": "S"
-      }
+      },
+      "reasoning_capability": "switchable"
     },
     "qwen3.5-4b-q4km-off": {
       "artifact": "qwen3.5-4b-q4km",
       "template": "builtin",
-      "engine": "llama-cpp",
+      "engine": "llama-cpp-small",
       "interface": "chat-completions",
       "modalities": [
         "text"
@@ -3291,11 +3396,11 @@
       "request_defaults": {
         "reasoning": "on",
         "sampling": {
-          "temperature": 0.7,
+          "temperature": 1.0,
           "top_k": 20,
-          "top_p": 0.8,
-          "min_p": 0.0,
-          "repeat_penalty": 1.0,
+          "top_p": 0.95,
+          "min_p": 0,
+          "repeat_penalty": 1,
           "presence_penalty": 1.5
         }
       },
@@ -3311,21 +3416,20 @@
       ],
       "profiles": [
         {
-          "min_memory_gib": 32,
+          "min_memory_gib": 8,
           "context_window_tokens": 16384,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
             "kv_cache": "q8",
             "flash_attention": "on",
-            "batch_tokens": 256,
-            "microbatch_tokens": 256,
-            "context_checkpoints": 0,
+            "batch_tokens": 512,
+            "microbatch_tokens": 512,
+            "context_checkpoints": 1,
             "prompt_cache_ram_mib": 0,
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": true,
@@ -3334,97 +3438,91 @@
               "threads_batch": 4,
               "load_mode": "mmap"
             }
+          },
+          "memory": {
+            "observed_on": "2026-10-25",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "16,384-token allocation. Publisher off sampling, one checkpoint; 512-record cold/append/early-edit lookup. Wrong values retained; append reuses12,268tokens. Quality failure does not invalidate resource observations. Actual inputs 12261–12357, outputs 35–53 tokens/request.",
+            "counter": "engine-rss",
+            "loaded_bytes": 3268329472,
+            "peak_bytes": 3394879488,
+            "limitations": "One M5/32 GiB host, one GPU slot; engine RSS excludes router and can omit GPU allocations. Five-second sampling can miss peaks. No observed swap growth. Not total runtime memory, full-window/long-output proof or actual 8/16 GiB fit.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11869",
+              "engine_files": [
+                "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f"
+              ],
+              "weights": [
+                {
+                  "path": "Qwen3.5-4B-Q4_K_M.gguf",
+                  "bytes": 2740937888,
+                  "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 16384,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "q8",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 1,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
+            }
           }
         }
       ],
       "presentation": {
-        "display_name": "Qwen3.5 4B Q4_K_M / text",
-        "description": "A very compact model for general use.",
+        "display_name": "Qwen3.5 4B / llama.cpp",
+        "description": "Compact helper with the publisher's thinking-on fallback and one context checkpoint. Booking/export observations used thinking off; verify ownership claims and long lookups.",
         "group": "other",
         "memory_tier": "XS"
-      }
+      },
+      "reasoning_capability": "switchable"
     },
     "gemma-4-e2b-q4km-off": {
       "artifact": "gemma-4-e2b-q4km",
       "template": "builtin",
-      "engine": "llama-cpp",
+      "engine": "llama-cpp-small",
       "interface": "chat-completions",
       "modalities": [
         "text"
       ],
       "request_defaults": {
-        "reasoning": "on",
+        "reasoning": "off",
         "sampling": {
-          "temperature": 0.0,
-          "top_k": 1,
-          "top_p": 1.0,
-          "min_p": 0.0,
-          "repeat_penalty": 1.0,
-          "presence_penalty": 0.0
-        }
-      },
-      "speculation": {
-        "method": "none",
-        "source": "none",
-        "max_draft_tokens": 0
-      },
-      "context_limit_tokens": 131072,
-      "compute": "gpu",
-      "compute_options": [
-        "gpu"
-      ],
-      "profiles": [
-        {
-          "min_memory_gib": 32,
-          "context_window_tokens": 16384,
-          "engine_config": {
-            "kind": "llama-server/v1",
-            "parallel": 1,
-            "kv_cache": "q8",
-            "flash_attention": "on",
-            "batch_tokens": 256,
-            "microbatch_tokens": 256,
-            "context_checkpoints": 0,
-            "prompt_cache_ram_mib": 0,
-            "gpu_layers": 99,
-            "controls": {
-              "cache_reuse": 0,
-              "reasoning_effort": "medium",
-              "preserve_reasoning": false,
-              "context_shift": false,
-              "cache_prompt": true,
-              "fit": "off",
-              "threads": 4,
-              "threads_batch": 4,
-              "load_mode": "mmap"
-            }
-          }
-        }
-      ],
-      "presentation": {
-        "display_name": "Gemma 4 E2B Q4_K_M / text",
-        "description": "Our smallest Gemma option for short text tasks and simple tool workflows.",
-        "group": "other",
-        "memory_tier": "XS"
-      }
-    },
-    "gemma-4-e4b-q4km-off": {
-      "artifact": "gemma-4-e4b-q4km",
-      "template": "builtin",
-      "engine": "llama-cpp",
-      "interface": "chat-completions",
-      "modalities": [
-        "text"
-      ],
-      "request_defaults": {
-        "reasoning": "on",
-        "sampling": {
-          "temperature": 1.0,
-          "top_k": 64,
+          "temperature": 1,
+          "top_k": 0,
           "top_p": 0.95,
-          "min_p": 0.0,
-          "repeat_penalty": 1.0,
-          "presence_penalty": 0.0
+          "min_p": 0,
+          "repeat_penalty": 1,
+          "presence_penalty": 0
         }
       },
       "speculation": {
@@ -3439,21 +3537,20 @@
       ],
       "profiles": [
         {
-          "min_memory_gib": 32,
-          "context_window_tokens": 16384,
+          "min_memory_gib": 8,
+          "context_window_tokens": 32768,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
             "kv_cache": "q8",
             "flash_attention": "on",
-            "batch_tokens": 256,
-            "microbatch_tokens": 256,
+            "batch_tokens": 512,
+            "microbatch_tokens": 512,
             "context_checkpoints": 0,
             "prompt_cache_ram_mib": 0,
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": true,
@@ -3462,15 +3559,73 @@
               "threads_batch": 4,
               "load_mode": "mmap"
             }
+          },
+          "memory": {
+            "observed_on": "2026-10-25",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "32,768-token allocation. Thinking off; 1,024-record cold/append/early-edit lookup. Correct semantic values, JSON fences; 4,096 output tokens reserved but not filled. Actual inputs 24496–24606, outputs 57–67 tokens/request.",
+            "counter": "engine-rss",
+            "loaded_bytes": 3429433344,
+            "peak_bytes": 3551248384,
+            "limitations": "One M5/32 GiB host, one GPU slot; engine RSS excludes router and can omit GPU allocations. Five-second sampling can miss peaks. No observed swap growth. Not total runtime memory, full-window/long-output proof or actual 8/16 GiB fit.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11869",
+              "engine_files": [
+                "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f"
+              ],
+              "weights": [
+                {
+                  "path": "gemma-4-E2B-it-Q4_K_M.gguf",
+                  "bytes": 3106738272,
+                  "sha256": "740185b21d22ceb83a11c3aa62ad5842ef32c70f6096d756bbee85a1e4ec34b8"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 32768,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "q8",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 0,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
+            }
           }
         }
       ],
       "presentation": {
-        "display_name": "Gemma 4 E4B Q4_K_M / text",
-        "description": "A larger alternative to E2B for everyday text and tool tasks. Expected to offer better fidelity and broader knowledge at a higher memory cost.",
+        "display_name": "Gemma 4 E2B / fast helper",
+        "description": "Fast helper for note lookups and export conversations. Inventory answers can confuse unknown stock with zero, and the app must enforce edit permissions.",
         "group": "other",
         "memory_tier": "XS"
-      }
+      },
+      "reasoning_capability": "switchable"
     },
     "qwen3.8-27b-q4xl-splash": {
       "artifact": "qwen3.8-27b-q4xl",
@@ -3485,10 +3640,7 @@
         "sampling": {
           "temperature": 1.0,
           "top_k": 20,
-          "top_p": 0.95,
-          "min_p": 0.0,
-          "repeat_penalty": 1.0,
-          "presence_penalty": 0.0
+          "top_p": 0.95
         }
       },
       "speculation": {
@@ -3641,11 +3793,12 @@
         }
       ],
       "presentation": {
-        "display_name": "Qwen\u2013Splash / DFlash2",
-        "description": "Our top choice in size S for coding tasks. Combines Unsloth\u2019s UD3.0 quantization with Splash and DFlash2, delivering up to twice llama.cpp\u2019s throughput. Requires extra disk space for its native weight cache.",
+        "display_name": "Qwen–Splash / DFlash2",
+        "description": "Our top choice in size S for coding tasks. Combines Unsloth’s UD3.0 quantization with Splash and DFlash2, delivering up to twice llama.cpp’s throughput. Requires extra disk space for its native weight cache.",
         "group": "general",
         "memory_tier": "S"
-      }
+      },
+      "reasoning_capability": "switchable"
     },
     "muse-glimmer-30b-q4xl-llama": {
       "artifact": "muse-glimmer-30b-q4xl",
@@ -3693,7 +3846,6 @@
             "controls": {
               "checkpoint_min_step": 8192,
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": true,
@@ -3768,7 +3920,8 @@
         "description": "The lower-memory Muse option for technical writing, planning and review. Slower generation than DFlash2 on the tested M5; facts and operational constraints still need checking.",
         "group": "other",
         "memory_tier": "S"
-      }
+      },
+      "reasoning_capability": "always"
     },
     "gemma-4-26b-a4b-qat-ud-q4-k-xl-llama": {
       "artifact": "gemma-4-26b-a4b-qat-ud-q4-k-xl",
@@ -3817,7 +3970,6 @@
             "controls": {
               "checkpoint_min_step": 8192,
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": true,
@@ -3892,7 +4044,8 @@
         "description": "A lighter Gemma option for creative drafting and conversation. Plain decoding with bounded thinking preserved the tested facts; source details and length constraints still need review.",
         "group": "general",
         "memory_tier": "S"
-      }
+      },
+      "reasoning_capability": "switchable"
     },
     "gemma-4-31b-qat-ud-q4-k-xl-llama": {
       "artifact": "gemma-4-31b-qat-ud-q4-k-xl",
@@ -3942,7 +4095,6 @@
             "controls": {
               "checkpoint_min_step": 8192,
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": true,
@@ -4024,7 +4176,8 @@
         "description": "Creative drafting and revision with a small draft predictor to reduce waits. Bounded thinking preserved the tested facts; length and coverage still need review.",
         "group": "general",
         "memory_tier": "S"
-      }
+      },
+      "reasoning_capability": "switchable"
     },
     "nuextract3-q4km-llama": {
       "artifact": "nuextract3-q4km",
@@ -4074,7 +4227,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4087,12 +4239,13 @@
         }
       ],
       "presentation": {
-        "display_name": "NuExtract3 4B \u00b7 llama.cpp",
+        "display_name": "NuExtract3 4B · llama.cpp",
         "description": "Extracts structured data from text and document images, and converts documents to Markdown. CPU keeps the GPU available for other models; GPU is faster and recommended for images.",
         "group": "specialist",
         "section": "extraction",
         "memory_tier": "XS"
-      }
+      },
+      "reasoning_capability": "switchable"
     },
     "ettin-reranker-150m-q8-crispembed": {
       "artifact": "ettin-reranker-150m-q8",
@@ -4123,7 +4276,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Ettin Reranker 150M \u00b7 CrispEmbed",
+        "display_name": "Ettin Reranker 150M · CrispEmbed",
         "description": "A compact English reranker that runs on CPU, leaving the GPU available for other models.",
         "group": "specialist",
         "section": "reranking",
@@ -4165,7 +4318,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4178,7 +4330,7 @@
         }
       ],
       "presentation": {
-        "display_name": "Qwen3 Reranker 0.6B \u00b7 llama.cpp",
+        "display_name": "Qwen3 Reranker 0.6B · llama.cpp",
         "description": "A multilingual alternative to Ettin with a larger memory footprint. CPU keeps the GPU available for other models; GPU gives faster reranking.",
         "group": "specialist",
         "section": "reranking",
@@ -4230,7 +4382,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4300,7 +4451,7 @@
         }
       ],
       "presentation": {
-        "display_name": "TranslateGemma 4B \u00b7 llama.cpp",
+        "display_name": "TranslateGemma 4B · llama.cpp",
         "description": "The smallest TranslateGemma option, prioritizing translation speed and low memory use.",
         "group": "specialist",
         "section": "translation",
@@ -4311,7 +4462,8 @@
           "range": "< b11485",
           "reason": "needs llama.cpp b11485 or newer: native TranslateGemma text input and language-code handling"
         }
-      ]
+      ],
+      "reasoning_capability": "none"
     },
     "translategemma-12b-q5km-llama": {
       "artifact": "translategemma-12b-q5km",
@@ -4358,7 +4510,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4371,7 +4522,7 @@
         }
       ],
       "presentation": {
-        "display_name": "TranslateGemma 12B \u00b7 llama.cpp",
+        "display_name": "TranslateGemma 12B · llama.cpp",
         "description": "The middle TranslateGemma option, with better fidelity expected than 4B and lower memory use and faster responses than 27B.",
         "group": "specialist",
         "section": "translation",
@@ -4382,7 +4533,8 @@
           "range": "< b11485",
           "reason": "needs llama.cpp b11485 or newer: native TranslateGemma text input and language-code handling"
         }
-      ]
+      ],
+      "reasoning_capability": "none"
     },
     "translategemma-27b-q4km-llama": {
       "artifact": "translategemma-27b-q4km",
@@ -4429,7 +4581,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4442,7 +4593,7 @@
         }
       ],
       "presentation": {
-        "display_name": "TranslateGemma 27B \u00b7 llama.cpp",
+        "display_name": "TranslateGemma 27B · llama.cpp",
         "description": "The largest TranslateGemma option, offering the highest expected translation fidelity at the cost of speed and memory.",
         "group": "specialist",
         "section": "translation",
@@ -4453,7 +4604,8 @@
           "range": "< b11485",
           "reason": "needs llama.cpp b11485 or newer: native TranslateGemma text input and language-code handling"
         }
-      ]
+      ],
+      "reasoning_capability": "none"
     },
     "tiny-aya-global-q8-llama": {
       "artifact": "tiny-aya-global-q8",
@@ -4500,7 +4652,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4513,12 +4664,13 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Global \u00b7 llama.cpp",
+        "display_name": "Tiny Aya Global · llama.cpp",
         "description": "The balanced Tiny Aya option for translation across language regions. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
         "memory_tier": "XS"
-      }
+      },
+      "reasoning_capability": "none"
     },
     "tiny-aya-water-q8-llama": {
       "artifact": "tiny-aya-water-q8",
@@ -4565,7 +4717,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4578,12 +4729,13 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Water \u00b7 llama.cpp",
+        "display_name": "Tiny Aya Water · llama.cpp",
         "description": "Tiny Aya focused on European and Asia-Pacific languages, including Swedish, German, French, Chinese, Japanese and Korean. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
         "memory_tier": "XS"
-      }
+      },
+      "reasoning_capability": "none"
     },
     "tiny-aya-fire-q8-llama": {
       "artifact": "tiny-aya-fire-q8",
@@ -4630,7 +4782,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4643,12 +4794,13 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Fire \u00b7 llama.cpp",
+        "display_name": "Tiny Aya Fire · llama.cpp",
         "description": "Tiny Aya focused on South Asian languages, including Hindi, Bengali, Gujarati, Marathi, Tamil, Telugu and Nepali. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
         "memory_tier": "XS"
-      }
+      },
+      "reasoning_capability": "none"
     },
     "tiny-aya-earth-q8-llama": {
       "artifact": "tiny-aya-earth-q8",
@@ -4695,7 +4847,6 @@
             "gpu_layers": 99,
             "controls": {
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": false,
@@ -4708,12 +4859,13 @@
         }
       ],
       "presentation": {
-        "display_name": "Tiny Aya Earth \u00b7 llama.cpp",
+        "display_name": "Tiny Aya Earth · llama.cpp",
         "description": "Tiny Aya focused on West Asian and African languages, including Arabic, Persian, Turkish, Hebrew, Swahili, Amharic, Hausa and Yoruba. Includes translation to and from English.",
         "group": "specialist",
         "section": "translation",
         "memory_tier": "XS"
-      }
+      },
+      "reasoning_capability": "none"
     },
     "muse-glimmer-30b-q4xl-dflash2-llama": {
       "artifact": "muse-glimmer-30b-q4xl",
@@ -4762,7 +4914,6 @@
             "controls": {
               "checkpoint_min_step": 8192,
               "cache_reuse": 0,
-              "reasoning_effort": "medium",
               "preserve_reasoning": false,
               "context_shift": false,
               "cache_prompt": true,
@@ -4844,7 +4995,504 @@
         "description": "Technical explanations, structured drafts, plans and a second review. A small draft model speeds replies; check facts and operational constraints.",
         "group": "general",
         "memory_tier": "S"
-      }
+      },
+      "reasoning_capability": "always"
+    },
+    "gemma-4-e4b-q4km-llama": {
+      "artifact": "gemma-4-e4b-q4km",
+      "template": "builtin",
+      "engine": "llama-cpp-small",
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "context_limit_tokens": 131072,
+      "request_defaults": {
+        "reasoning": "on",
+        "reasoning_budget_tokens": 512,
+        "sampling": {
+          "temperature": 1,
+          "top_k": 0,
+          "top_p": 0.95,
+          "min_p": 0,
+          "repeat_penalty": 1,
+          "presence_penalty": 0
+        }
+      },
+      "speculation": {
+        "method": "none",
+        "source": "none",
+        "max_draft_tokens": 0
+      },
+      "profiles": [
+        {
+          "min_memory_gib": 16,
+          "context_window_tokens": 16384,
+          "engine_config": {
+            "kind": "llama-server/v1",
+            "parallel": 1,
+            "kv_cache": "q8",
+            "flash_attention": "on",
+            "batch_tokens": 512,
+            "microbatch_tokens": 512,
+            "context_checkpoints": 0,
+            "prompt_cache_ram_mib": 0,
+            "gpu_layers": 99,
+            "controls": {
+              "cache_reuse": 0,
+              "preserve_reasoning": false,
+              "context_shift": false,
+              "cache_prompt": true,
+              "fit": "off",
+              "threads": 4,
+              "threads_batch": 4,
+              "load_mode": "mmap"
+            }
+          },
+          "memory": {
+            "observed_on": "2026-10-25",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "16,384-token allocation. Thinking 512; 512-record cold/append/early-edit lookup. Correct values, JSON fences. Actual inputs 12279–12385, outputs 179–239 tokens/request.",
+            "counter": "engine-rss",
+            "loaded_bytes": 5355421696,
+            "peak_bytes": 5471617024,
+            "limitations": "One M5/32 GiB host, one GPU slot; engine RSS excludes router and can omit GPU allocations. Five-second sampling can miss peaks. No observed swap growth. Not total runtime memory, full-window/long-output proof or actual 8/16 GiB fit.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11869",
+              "engine_files": [
+                "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f"
+              ],
+              "weights": [
+                {
+                  "path": "gemma-4-E4B-it-Q4_K_M.gguf",
+                  "bytes": 4977171584,
+                  "sha256": "85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 16384,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "q8",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 0,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Gemma 4 E4B / llama.cpp",
+        "description": "A thinking helper for booking corrections and inventory workflows. It completes actions the tested off mode sometimes refused, with longer waits, but still trusts false ownership claims.",
+        "group": "other",
+        "memory_tier": "XS"
+      },
+      "reasoning_capability": "switchable"
+    },
+    "nemotron-bolt-e4b-q4xl-dflash-llama": {
+      "artifact": "nemotron-bolt-e4b-q4xl",
+      "template": "builtin",
+      "engine": "llama-cpp-small",
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "context_limit_tokens": 65536,
+      "request_defaults": {
+        "reasoning": "on",
+        "reasoning_budget_tokens": 512,
+        "sampling": {
+          "temperature": 1,
+          "top_k": 0,
+          "top_p": 0.95,
+          "min_p": 0,
+          "repeat_penalty": 1,
+          "presence_penalty": 0
+        }
+      },
+      "speculation": {
+        "draft_artifact": "bolt-draft-bf16",
+        "method": "dflash",
+        "source": "artifact",
+        "max_draft_tokens": 7
+      },
+      "profiles": [
+        {
+          "min_memory_gib": 16,
+          "context_window_tokens": 16384,
+          "engine_config": {
+            "kind": "llama-server/v1",
+            "parallel": 1,
+            "kv_cache": "q8",
+            "flash_attention": "on",
+            "batch_tokens": 512,
+            "microbatch_tokens": 512,
+            "context_checkpoints": 0,
+            "prompt_cache_ram_mib": 0,
+            "gpu_layers": 99,
+            "controls": {
+              "cache_reuse": 0,
+              "preserve_reasoning": false,
+              "context_shift": false,
+              "cache_prompt": true,
+              "fit": "off",
+              "threads": 4,
+              "threads_batch": 4,
+              "load_mode": "mmap"
+            }
+          },
+          "memory": {
+            "observed_on": "2026-10-25",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "16,384-token allocation. Thinking512, DFlash7. Eight short application conversations/24turns/43responses,133–841input tokens/request,6,682total output. Correct named stateful outcomes and false-ownership refusal; reception omissions retained. Populated lookup separately tested, not this memory run.",
+            "counter": "engine-rss",
+            "loaded_bytes": 6291275776,
+            "peak_bytes": 6748684288,
+            "limitations": "One M5/32 GiB host, one GPU slot; engine RSS excludes router and can omit GPU allocations. Five-second sampling can miss peaks. No observed swap growth. Not total runtime memory, full-window/long-output proof or actual 8/16 GiB fit.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11869",
+              "engine_files": [
+                "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f"
+              ],
+              "weights": [
+                {
+                  "path": "NVIDIA-Nemotron-3.5-Bolt-E4B-UD-Q4_K_XL.gguf",
+                  "bytes": 5060482240,
+                  "sha256": "84ff34f5834b929043f5ae74799e8d562d4056998f6a5923ceb44831e8ad84d6"
+                }
+              ],
+              "draft": [
+                {
+                  "path": "Nemotron-3.5-Bolt-E4B-DFlash-BF16.gguf",
+                  "bytes": 736812096,
+                  "sha256": "8103aa42fd31fb661c3fbe8701d04d698ea2c5d09351dc3e8c9da639958de989"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 16384,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "q8",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 0,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "dflash",
+                "source": "artifact",
+                "max_draft_tokens": 7
+              }
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Nemotron 3.5 Bolt E4B / DFlash",
+        "description": "Shorter waits for Bolt's thinking workflows, using DFlash and extra memory for a draft model. It preserved the tested booking, ownership and inventory actions; plain decoding uses less memory.",
+        "group": "other",
+        "memory_tier": "XS"
+      },
+      "reasoning_capability": "switchable"
+    },
+    "nemotron-bolt-e4b-q4xl-llama": {
+      "artifact": "nemotron-bolt-e4b-q4xl",
+      "template": "builtin",
+      "engine": "llama-cpp-small",
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "context_limit_tokens": 65536,
+      "request_defaults": {
+        "reasoning": "on",
+        "reasoning_budget_tokens": 512,
+        "sampling": {
+          "temperature": 1,
+          "top_k": 0,
+          "top_p": 0.95,
+          "min_p": 0,
+          "repeat_penalty": 1,
+          "presence_penalty": 0
+        }
+      },
+      "speculation": {
+        "method": "none",
+        "source": "none",
+        "max_draft_tokens": 0
+      },
+      "profiles": [
+        {
+          "min_memory_gib": 16,
+          "context_window_tokens": 16384,
+          "engine_config": {
+            "kind": "llama-server/v1",
+            "parallel": 1,
+            "kv_cache": "q8",
+            "flash_attention": "on",
+            "batch_tokens": 512,
+            "microbatch_tokens": 512,
+            "context_checkpoints": 0,
+            "prompt_cache_ram_mib": 0,
+            "gpu_layers": 99,
+            "controls": {
+              "cache_reuse": 0,
+              "preserve_reasoning": false,
+              "context_shift": false,
+              "cache_prompt": true,
+              "fit": "off",
+              "threads": 4,
+              "threads_batch": 4,
+              "load_mode": "mmap"
+            }
+          },
+          "memory": {
+            "observed_on": "2026-10-25",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "16,384-token allocation. Thinking 512; 512-record cold/append/early-edit lookup. Correct bare JSON throughout. Actual inputs 12279–12371, outputs 163–314 tokens/request.",
+            "counter": "engine-rss",
+            "loaded_bytes": 5440438272,
+            "peak_bytes": 5555961856,
+            "limitations": "One M5/32 GiB host, one GPU slot; engine RSS excludes router and can omit GPU allocations. Five-second sampling can miss peaks. No observed swap growth. Not total runtime memory, full-window/long-output proof or actual 8/16 GiB fit.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11869",
+              "engine_files": [
+                "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f"
+              ],
+              "weights": [
+                {
+                  "path": "NVIDIA-Nemotron-3.5-Bolt-E4B-UD-Q4_K_XL.gguf",
+                  "bytes": 5060482240,
+                  "sha256": "84ff34f5834b929043f5ae74799e8d562d4056998f6a5923ceb44831e8ad84d6"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 16384,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "q8",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 0,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "cache_reuse": 0,
+                  "reasoning_effort": "medium",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Nemotron 3.5 Bolt E4B / llama.cpp",
+        "description": "A thinking helper for booking changes, note edits and inventory workflows. It checked ownership and fresh stock in the tested tasks, with longer waits than the fast helpers.",
+        "group": "other",
+        "memory_tier": "XS"
+      },
+      "reasoning_capability": "switchable"
+    },
+    "spark-x2.6-4b-q4km-llama": {
+      "artifact": "spark-x2.6-4b-q4km",
+      "template": "builtin",
+      "engine": "llama-cpp-small",
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "context_limit_tokens": 1048576,
+      "request_defaults": {
+        "reasoning": "on",
+        "sampling": {
+          "temperature": 1,
+          "top_k": 0,
+          "top_p": 0.95,
+          "min_p": 0,
+          "repeat_penalty": 1,
+          "presence_penalty": 0
+        }
+      },
+      "speculation": {
+        "method": "none",
+        "source": "none",
+        "max_draft_tokens": 0
+      },
+      "profiles": [
+        {
+          "min_memory_gib": 16,
+          "context_window_tokens": 16384,
+          "engine_config": {
+            "kind": "llama-server/v1",
+            "parallel": 1,
+            "kv_cache": "q8",
+            "flash_attention": "on",
+            "batch_tokens": 512,
+            "microbatch_tokens": 512,
+            "context_checkpoints": 0,
+            "prompt_cache_ram_mib": 0,
+            "gpu_layers": 99,
+            "controls": {
+              "cache_reuse": 0,
+              "reasoning_effort": "high",
+              "preserve_reasoning": false,
+              "context_shift": false,
+              "cache_prompt": true,
+              "fit": "off",
+              "threads": 4,
+              "threads_batch": 4,
+              "load_mode": "mmap"
+            }
+          },
+          "memory": {
+            "observed_on": "2026-10-25",
+            "source": "https://temper-sh.github.io/catalog/#memory-observations",
+            "workload": "16,384-token allocation. Thinking off; eight short application conversations, 24 user turns, 39 responses, 136–869 input tokens/request and 946 total output tokens. Includes prohibited edit and inventory errors. Populated context unmeasured.",
+            "counter": "engine-rss",
+            "loaded_bytes": 4067983360,
+            "peak_bytes": 4122968064,
+            "limitations": "One M5/32 GiB host, one GPU slot; engine RSS excludes router and can omit GPU allocations. Five-second sampling can miss peaks. No observed swap growth. Not total runtime memory, full-window/long-output proof or actual 8/16 GiB fit.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "b11869",
+              "engine_files": [
+                "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f"
+              ],
+              "weights": [
+                {
+                  "path": "Spark-X2.6-4B-Q4_K_M.gguf",
+                  "bytes": 3543441312,
+                  "sha256": "91cb2811aebb47ac916aa619d27d4cdd7f4143106b7917accb8ead4cd7f5cbd9"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 16384,
+              "engine_config": {
+                "kind": "llama-server/v1",
+                "parallel": 1,
+                "kv_cache": "q8",
+                "flash_attention": "on",
+                "batch_tokens": 512,
+                "microbatch_tokens": 512,
+                "context_checkpoints": 0,
+                "prompt_cache_ram_mib": 0,
+                "gpu_layers": 99,
+                "controls": {
+                  "cache_reuse": 0,
+                  "reasoning_effort": "high",
+                  "preserve_reasoning": false,
+                  "context_shift": false,
+                  "cache_prompt": true,
+                  "fit": "off",
+                  "threads": 4,
+                  "threads_batch": 4,
+                  "load_mode": "mmap"
+                }
+              },
+              "speculation": {
+                "method": "none",
+                "source": "none",
+                "max_draft_tokens": 0
+              }
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Spark X2.6 4B / llama.cpp",
+        "description": "English helper with the publisher's thinking-on fallback. Fast booking, note and export observations used thinking off; stock answers and longer work need independent checks.",
+        "group": "other",
+        "memory_tier": "XS"
+      },
+      "reasoning_capability": "switchable"
     }
   },
   "presentation": {
@@ -4891,8 +5539,11 @@
       "qwen3.8-27b-q4xl-mtp",
       "muse-glimmer-30b-q4xl-llama",
       "gemma-4-e2b-q4km-off",
-      "gemma-4-e4b-q4km-off",
       "qwen3.5-4b-q4km-off",
+      "spark-x2.6-4b-q4km-llama",
+      "gemma-4-e4b-q4km-llama",
+      "nemotron-bolt-e4b-q4xl-dflash-llama",
+      "nemotron-bolt-e4b-q4xl-llama",
       "nuextract3-q4km-llama",
       "ettin-reranker-150m-q8-crispembed",
       "qwen3-reranker-0.6b-q8-llama",

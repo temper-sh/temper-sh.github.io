@@ -1,20 +1,46 @@
 # Granite 4.2 3B
 
-**Our assessment:** Both reasoning settings completed extraction and
-copyediting. Low reasoning preserved another edit to the same file; reasoning
-off overwrote it. Other answers still changed source facts.
+Useful for field extraction, constrained copyediting and export conversations.
+It is not selected as another action-helper preset: both tested reasoning modes
+edit another person's explicitly prohibited note in two of three dialogues.
+Thinking adds waiting time and can also invent replacement approval.
 
-**Official:** IBM 3B dense text model with reasoning support. Apache 2.0; 128k
-native context. [Model
-details](https://huggingface.co/ibm-granite/granite-4.2-3b), checked 13
-September 2026.
+**Official:** IBM's dense 3B text model with reasoning support, Apache 2.0.
+[Model details](https://huggingface.co/ibm-granite/granite-4.2-3b).
 
-Tested with **Q4_K_M**, **16,384-token context**, and the two settings below.
-Answer allowances were 4,096 tokens off and 8,192 with reasoning. The
-comparison therefore includes changes to both reasoning and the output
-allowance.
+## Helper work and cost
 
-## Capabilities
+Seven simulated application conversations use three seeds per mode. Unblinded
+AI review checks actual calls, intermediate state and delivered replies; no
+person independently accepted the work. Q4_K_M, llama.cpp b11808, embedded
+template, 16K/F16, one GPU slot, four threads, mmap, batch/microbatch 512,
+prompt caching and T1/top_p .95/top_k 0. Requests allow 512 tokens off or
+2,048 total with 512 thinking tokens. These are study allowances.
+
+Both modes complete export and cancellation in all three seeds, retaining
+cancellation after a stale completion. Thinking preserves both booking
+corrections in 3/3 versus 2/3 off, but stale-stock errors remain. Off invents
+unavailable archiving; thinking falsely approves a replacement in one dialogue.
+The 512-record lookup also returns wrong values. These findings limit delegated
+actions without erasing the useful bounded copyediting evidence below.
+
+| Machine | Execution and work | Median turn / first visible | Engine RSS loaded → peak | Wired growth loaded → peak |
+|---|---|---:|---:|---:|
+| Apple M5 · 32 GiB · macOS 26.6.1 | b11808, 16K/F16, off; 21 dialogues / 66 turns | 2.51 / 0.24 s | 3.47 → 3.50 GiB | 3.33 → 3.45 GiB |
+
+Actual off-mode inputs are 126–1,253 tokens/request; total generated output is 5,009 tokens. Incurred task time is 179.02 s, including wrong work. Thinking takes 13.68 s median, with RSS 3.47 → 3.51 GiB and wired growth
+3.29 → 3.54 GiB at the same allocation. RSS and wired growth overlap; do not
+add them. Process counters can omit GPU allocations, system growth includes
+other applications, and five-second sampling can miss peaks. No observed swap
+growth. Actual 8/16 GiB fit and human time saved remain unmeasured.
+
+<details>
+<summary>Earlier capability and copyediting comparison</summary>
+
+These b10655 observations use Q4_K_M/16K, with 4,096 output tokens off and
+8,192 with low reasoning. Their different output/reasoning conditions remain
+separate from the helper comparison above.
+
 
 AI reviewers assessed selected cases against supplied sources. Tools were
 simulated; the work was not independently accepted by a person.
@@ -51,5 +77,10 @@ Generation includes reasoning tokens when enabled. Memory is sampled resident
 memory (RSS) of the server process; it does not establish the machine's RAM
 requirement. The tasks vary, which limits speed comparisons with other
 workloads.
+
+
+Measured helper work 24 October 2026; earlier comparison 12 September 2026.
+
+</details>
 
 [All models](../README.md).

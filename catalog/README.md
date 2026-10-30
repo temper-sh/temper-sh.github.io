@@ -61,18 +61,40 @@ The cards identify the actual cases and review method.
 
 <a id="other-presets"></a>
 
-These presets use smaller model builds for lower resource budgets. They can be
-main assistants or helpers, including on larger machines. Their measurements
-do not establish fit on actual 8 or 16 GiB machines.
+These configurations serve different small application jobs rather than one
+universal assistant role. Actual fit on 8 or 16 GiB machines remains unmeasured.
 
-| Preset | Configuration | Recorded work |
+**Availability:** the signed catalog contains the earlier Gemma E2B, Gemma E4B
+and Qwen3.5 presets. The assessed configurations below are prepared in the
+[authoring source](sources/apple-silicon.json), awaiting signed publication;
+`temper update` continues to use the signed choices. Their memory observations
+require Temper 0.4.0 or newer. Existing saved selections are unchanged.
+
+| Prepared preset | Useful distinction | Assessment |
 |---|---|---|
-| Gemma 4 E2B | llama.cpp, Q4_K_M, embedded template | [Field extraction and short tool cases](../models/gemma-4-e2b/README.md). |
-| Gemma 4 E4B | llama.cpp, Q4_K_M, embedded template | [Short drafts and editing cases](../models/gemma-4-e4b/README.md). |
-| Qwen3.5 4B | llama.cpp, Q4_K_M | [Extraction, classification and tool cases](../models/qwen3.5-4b/README.md). |
+| Gemma 4 E2B, 32K | Fast note reads and export conversations; correct populated lookups with unwanted JSON fences | [Behavior and memory](../models/gemma-4-e2b/README.md). |
+| Qwen3.5 4B, 16K | Thinking on by default; one checkpoint for continuation reuse. Helper measurements used off. | [Ownership and lookup limits](../models/qwen3.5-4b/README.md). |
+| Spark X2.6 4B, 16K | Publisher thinking-on default; fast helper observations used off. | [Stock errors and reasoning limits](../models/spark-x2.6-4b/README.md). |
+| Gemma 4 E4B, 16K | More deliberate booking and inventory actions; longer waits and false-ownership failures | [Observed work](../models/gemma-4-e4b/README.md). |
+| Nemotron Bolt E4B, DFlash 7, 16K | Faster Bolt actions at a higher memory cost | [Matched speed/memory comparison](../models/nemotron-3.5-bolt-e4b/README.md). |
+| Nemotron Bolt E4B, plain, 16K | The lower-memory Bolt alternative | [Actions, grounding and limitations](../models/nemotron-3.5-bolt-e4b/README.md). |
 
-All three use [Apache-2.0][apache-license]. Temper may show these under **Other**;
-that grouping is not a measured quality score.
+Thinking is a preset default that the harness can override where supported.
+[Defaults, capabilities and publisher guidance](reference.md#thinking-defaults-and-operator-controls)
+explain the exceptions and distinguish prepared settings from measured modes.
+
+All use Q4 weights and Q8 conversation memory; these are different precision
+choices. Gemma, Qwen and Spark use [Apache-2.0][apache-license]; Bolt and its
+independent NVIDIA draft use [OpenMDW-1.1](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16).
+Temper shows these under **Other**, which is not a quality ranking. Applications
+must enforce permissions even where the ownership sample succeeds.
+
+[FrogNano's imported native MTP configuration](../models/frognano-4b/README.md)
+is also a useful measured collaborator, but Temper cannot express that runtime
+composition, and Kapitsa is parked. These are experimental measurements,
+not an installable native preset.
+[Exact configurations and memory records](reference.md#small-collaborator-configurations)
+keep these choices separate from historical tests.
 
 ## Check what fits
 

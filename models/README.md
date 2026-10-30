@@ -42,12 +42,16 @@ Unless stated otherwise, the listed configurations use Q4_K_M at 16k context.
 larger entries in this group are candidates for the 16 GB end of the range;
 placement here does not imply that they all fit an 8 GB machine.
 
-- [Gemma 4 E2B](gemma-4-e2b/README.md) — Field extraction and short tool tasks;
-  writing accuracy and recovery from conflicting edits need checking.
-- [Gemma 4 E4B](gemma-4-e4b/README.md) — Short drafts from supplied facts and
-  tool workflows; longer editing retained errors after feedback.
+- [Gemma 4 E2B](gemma-4-e2b/README.md) — Fast note reads and export conversations;
+  correct populated lookups at 32K with unwanted JSON fences. Inventory and
+  ownership failures limit delegated actions.
+- [Gemma 4 E4B](gemma-4-e4b/README.md) — Thinking helps booking and inventory
+  actions, with longer waits; false ownership claims still cause wrong edits.
+- [FrogNano 4B](frognano-4b/README.md) — Native MTP accelerates booking, note
+  and export work; stock grounding and larger lookups remain weak. The imported
+  native composition is not a Temper preset.
 - [Granite 4.2 3B](granite-4.2-3b/README.md) — Extraction and copyediting;
-  reasoning off and low differed when handling another edit to the same file.
+  low reasoning preserved a concurrent edit. Ownership failures limit delegated actions.
 - [Granite 4.2 8B](granite-4.2-8b/README.md) — Copyediting and short tool tasks;
   policy summaries and calendar messages needed correction.
 - [MiniCPM5 1B](minicpm5-1b/README.md) — Simple field extraction and lookups;
@@ -62,7 +66,14 @@ placement here does not imply that they all fit an 8 GB machine.
   coding-focused assistant; the tested tool integration left repository work
   unfinished. Q4_K_M, 16k context, 5.17 GiB measured process RSS.
 - [Qwen3.5 4B](qwen3.5-4b/README.md) — Extraction, classification and short
-  tool workflows; longer writing needed close checking.
+  booking/export workflows; one checkpoint speeds continuation, while ownership
+  and larger lookup errors remain.
+- [Nemotron 3.5 Bolt E4B](nemotron-3.5-bolt-e4b/README.md) — Thinking completes
+  the tested grounded actions; DFlash shortens waits at a higher memory cost.
+  Unsloth UD-Q4_K_XL.
+- [Spark X2.6 4B](spark-x2.6-4b/README.md) — Fast English booking/note/export
+  helper with thinking off; stock errors and missing reasoning-mode answers
+  limit broader work.
 - [Spark X2.5 4B](spark-x2.5-4b/README.md) — With thinking on, completed short
   policy, copyediting and recovery tasks on official llama.cpp. Broader tests
   on the XHToken fork found limitations in longer writing and translation.
@@ -78,7 +89,7 @@ reached 12.23 GiB of server memory.
   failures remained.
 - [Muse Glimmer 30B](muse-glimmer-30b/README.md) — Technical explanations,
   structured drafts and a second review; completed a conflict-recovery workflow.
-  Check operational details and source fidelity. UD-Q4_K_XL, medium reasoning,
+  Check operational details and source fidelity. UD-Q4_K_XL, template-default high strength,
   DFlash2, 128k; plain decoding at 56k is the lower-memory alternative.
 - [Gemma 4 26B-A4B](gemma-4-26b-a4b/README.md) — Creative drafting, dialogue,
   tone revision and general explanations, with substantially shorter waits than

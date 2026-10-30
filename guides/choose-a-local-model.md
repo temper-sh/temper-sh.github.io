@@ -20,7 +20,8 @@ examples to inspect, not a ranking of the models.
 | Technical drafts and explanations | [Muse Glimmer](../models/muse-glimmer-30b/README.md) | Source fidelity, operational details and unfinished work. |
 | Code changes | [Qwen3.8 27B configurations](../models/qwen3.8-27b/README.md#configuration-choices) | Check task failures alongside completion time and loaded/peak memory. Kapitsa is parked experimental; Splash and llama.cpp remain offered. |
 | Combining sources and editing documents | [Qwen3.8 27B](../models/qwen3.8-27b/README.md) | Format errors, source corrections, actual input size and cache behavior. |
-| Short records and messages with a smaller model | [Gemma E2B](../models/gemma-4-e2b/README.md), [E4B](../models/gemma-4-e4b/README.md) and [Qwen3.5 4B](../models/qwen3.5-4b/README.md) | Changed facts, missing fields and whether tool actions actually finished. |
+| Fast small application conversations | [Gemma E2B](../models/gemma-4-e2b/README.md), [Qwen3.5 4B](../models/qwen3.5-4b/README.md) and [Spark X2.6](../models/spark-x2.6-4b/README.md) | Actual booking/export effects, stock uncertainty, ownership claims and lookup errors. |
+| More deliberate small application actions | [Gemma E4B](../models/gemma-4-e4b/README.md) and [Nemotron Bolt E4B](../models/nemotron-3.5-bolt-e4b/README.md) | Whether thinking improves the needed action, its waiting time and memory cost. Bolt offers a measured DFlash speed/memory alternative. |
 
 The [model index](../models/README.md) includes other assessed configurations.
 An observation applies to its named engine, weights and settings; the current

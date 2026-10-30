@@ -12,11 +12,15 @@ native context. Apache 2.0.
 19 October 2026.
 
 [Choose a Muse preset in Temper](../../catalog/README.md).
-Both choices use Unsloth UD-Q4_K_XL, Meta's template, medium reasoning, F16
+Both choices use Unsloth UD-Q4_K_XL, Meta's template, its default high reasoning strength, F16
 conversation memory and two context checkpoints. DFlash2 uses a 131,072-token
 window; plain decoding retains its tested 57,344-token window.
 The DFlash2 choice adds a small model that proposes tokens for Muse to verify;
 the plain choice uses less memory. Both run through llama.cpp.
+The template always thinks and reads `reasoning_strength`, not `reasoning_effort`.
+Choose strength through template kwargs or an explicit system directive;
+[the catalog review](../../catalog/reference.md#thinking-defaults-and-operator-controls)
+explains why an effort label alone does not establish the historical strength.
 
 ## What it did well, and what needed correction
 

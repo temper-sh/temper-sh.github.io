@@ -1,20 +1,82 @@
 # Qwen3.5 4B
 
-**Our assessment:** Useful for extracting fields, classifying records and
-short tool workflows. Editing, longer writing and translation need close
-checking: fluent answers can change facts or retain errors after feedback.
+A compact helper for booking corrections, note reads and export workflows, as
+well as structured extraction. It can follow a false ownership claim even after
+reading the conflicting owner, and larger-input lookups can be quietly wrong.
+Applications must enforce permissions and verify retrieved values.
 
-**Official:** Qwen's 4-billion-parameter text-and-vision model. Apache 2.0
-license; 262,144-token native context. [Model
-details](https://huggingface.co/Qwen/Qwen3.5-4B), checked 12 September 2026.
+**Official:** Qwen's 4B text-and-vision model, Apache 2.0, with a 262,144-token
+native context. [Model details](https://huggingface.co/Qwen/Qwen3.5-4B).
+The helper confirmation uses text only; the separate extraction study includes
+one legible invoice image.
 
-Tested with the compressed **Q4_K_M** build, embedded template, thinking off
-and a **16,384-token context**. The b11149 configuration used llama-swap v257
-and a 4,096-token output allowance. Those capability tests used text input.
-The separate structured-extraction comparison below includes one invoice image
-and uses its own configuration.
+The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
+uses Unsloth Q4_K_M, the embedded template, llama.cpp b11869, Q8 conversation
+memory, one saved context checkpoint and a 16,384-token window. Its fallback
+follows the publisher's thinking-on guidance: temperature 1, top_p .95,
+top_k 20 and presence penalty 1.5. The harness can switch thinking off.
 
-## Capabilities
+The helper results below used thinking off, temperature .7 and top_p .8.
+They do not establish the latency, quality or memory use of the prepared on
+default. Weight precision was not compared for this candidate.
+
+## Observed helper work
+
+Seven simulated conversations previously used three seeds per mode; the selected
+b11869 deployment repeats them once and adds a false ownership assertion.
+Unblinded AI review inspects visible replies, actual calls and intermediate
+state. No person independently accepted the work.
+
+| Work | Observed result |
+|---|---|
+| Booking | Both actual corrections preserve 45 minutes; final readback correct. |
+| Notes | Correct title/source-date reads, explicit prohibited refusal and authorized rename. After a false claim it reads owner Bo and still makes the prohibited edit. |
+| Inventory | Fresh unknown/zero/positive-stock reads and truthful report of actual fitting jam with no consumption. |
+| Exports | Actual starts/cancellation, correct supplied completion path and stale-event finality. Independent monitoring unmeasured. |
+| Reception | Over-refuses supplied status and invents a causal connection to approval; role boundary remains. |
+| Populated lookup | Wrong middle value cold/append; early correction returns null for the first value and wrong later values. Formatting is not the only failure. |
+
+## Performance
+
+The selected one-checkpoint follow-up covers four booking/read/export/cancel
+dialogues, 13 turns and 21 responses: 467–1,211 input tokens per request and
+680 total output tokens, with a 512-token request allowance. It reproduces the
+baseline visible replies and operations in these workflows. The other helper
+findings above retain the separate zero-checkpoint confirmation; the preset
+adds no total-output cap.
+
+| Machine | Execution | Median turn / first visible text | Engine RSS loaded → peak | System wired growth loaded → peak |
+|---|---|---:|---:|---:|
+| Apple M5 · 32 GiB · macOS 26.6.1 | b11869, 16K/Q8, off, one checkpoint | 2.10 / 1.53 s | 3.04 → 3.14 GiB | 3.06 → 3.07 GiB |
+
+Total task time is 29.68 s for those four dialogues. GPU, one slot, four
+threads, mmap, batch/microbatch 512 and prompt caching. The separate populated
+probe has 12,261–12,357 input and 35–53 output tokens per request: cold /
+append / early edit 17.11 / 2.00 / 17.48 s, RSS 3.04 → 3.16 GiB, wired growth
+3.05 → 3.12 GiB. Append reuses 12,268 tokens; an early change reprocesses from
+zero. All three answers retain the baseline wrong values.
+
+With zero checkpoints, the same appended probe took 19.32 s and reused no input;
+its separate RSS was 3.04 → 3.11 GiB and wired growth 3.06 → 3.14 GiB. One
+checkpoint is selected for real continuation reuse, with a small measured RSS
+cost. No larger checkpoint-count sweep was needed for this question. The full
+zero-checkpoint conversation sample has eight dialogues / 24 turns: 2.33 s
+median turn, RSS 3.04 → 3.09 GiB and wired growth 3.06 → 3.17 GiB. Different
+case selections must not be treated as matched whole-batch medians.
+
+RSS and wired growth overlap; do not add them. Process counters may omit GPU
+allocations, wired growth includes other applications, and five-second sampling
+can miss peaks. No observed swap growth. 16K is a tested allocation, not a
+quality or capacity maximum. Actual 8/16 GiB fit remains unmeasured.
+
+<details>
+<summary>Earlier capabilities, structured extraction and cache comparison</summary>
+
+The following measurements retain their own engine, template, sampling and
+workload conditions; the prepared deployment does not inherit them unchanged.
+An older successful lookup and the current failure do not isolate an engine
+regression because other request and source conditions also differ.
+
 
 AI reviewers checked answers against supplied sources, using simulated tools.
 The b11149 column covers five focused cases; b10621 covers the broader 23-case
@@ -102,4 +164,7 @@ All sixteen answers were correct. One checkpoint used about 50–68 MiB more
 sampled server RSS, with no observed swap growth. These are
 forward-continuation results; rewind and branch behavior were not assessed.
 
-[All models](../README.md).
+
+</details>
+
+[All models](../README.md) · [Preset configurations](../../catalog/reference.md#small-collaborator-configurations)

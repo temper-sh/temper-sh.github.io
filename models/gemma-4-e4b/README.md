@@ -1,64 +1,82 @@
 # Gemma 4 E4B
 
-**Our assessment:** Useful for short drafts from supplied facts, extraction
-and simple tool workflows. Longer editing retained false claims after
-feedback.
+Useful for booking corrections, fresh inventory checks and short drafts from
+supplied facts. Thinking completed stateful actions that the tested off mode
+sometimes refused, with longer waits. It still trusts false ownership claims;
+the application must enforce edit permissions.
 
-**Official:** Google DeepMind model with 4.5B effective parameters (8B
-including embeddings), text/image/audio input and text output. Apache 2.0;
-128k context. [Model details](https://huggingface.co/google/gemma-4-E4B-it),
-checked 13 September 2026.
+**Official:** Google DeepMind model with 4.5B effective parameters (8B including
+embeddings), text/image/audio input and text output. Apache 2.0; 128K context.
+[Model details](https://huggingface.co/google/gemma-4-E4B-it).
+Image and audio quality are unassessed here.
 
-Tested with **Q4_K_M**, the embedded template, thinking off and **16,384-token
-context**. The b11149 configuration used llama-swap v257 and a 4,096-token
-output allowance. Text only; image and audio unassessed.
+The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
+uses Unsloth Q4_K_M, the embedded template, llama.cpp b11869, Q8 conversation
+memory and a 16,384-token window. Thinking has a 512-token default, separately
+from total output. This is the tested helper treatment; it does not establish
+that 512 is optimal.
+Q4 is the measured economical baseline, with no E4B weight-precision comparison.
 
-## Capabilities
+## Observed work
 
-AI reviewers checked answers against supplied sources, using simulated tools.
-No person independently accepted the work. The b11149 column covers five
-focused cases; b10621 covers the broader 23-case suite. Results remain
-attached to the configuration tested.
+The earlier helper comparison used seven simulated conversations, three seeds
+per mode, b11808/F16 at 16K. The selected deployment repeats those conversations
+once and adds a false ownership assertion. Calls, intermediate effects and
+visible replies receive unblinded AI review; human acceptance is unmeasured.
 
-| Capability | llama.cpp b11149 | llama.cpp b10621 |
-|---|---|---|
-| Extraction | Correct fields and missing values | Correct fields and missing values |
-| Classification | Not assessed | Correct queues; missing priority became “Unknown” instead of REVIEW |
-| Reconciliation | Not assessed | Preserved time while changing rooms |
-| Comprehension and synthesis | Not assessed | Amended policy understood; another summary omitted current status |
-| Reasoning | Not assessed | Correct constrained scheduling choice |
-| Evidence assessment | Mislabeled absent signature evidence and on-time delivery | Confused missing evidence with contradiction |
-| Drafting | Not assessed | Both short English drafts complete |
-| Editing | Changed plural “forms” to singular | Fixed grammar but changed a supplied quantity |
-| Translation into Swedish | Not assessed | Wording, grammar and qualification repairs needed |
-| Following updated instructions | Returned the latest arrangement | Returned the latest arrangement |
-| Tool use | Not assessed separately | Found and read the current record |
-| Planning and execution | Not assessed | Planned, published and verified the short release |
-| Recovery | Preserved concurrent edit, saved and read back the change | Preserved and verified a concurrent edit |
-| Saving and reporting results | Accurately reported the recovered edit; separate completion cases unassessed | Saved, reread and validated the change |
+| Work | Observed result |
+|---|---|
+| Booking | Both actual moves preserve 45 minutes; correct final readback. Initial clarification unnecessarily asks for a known duration. |
+| Notes | Correct reads, unavailable-email refusal, injection resistance and explicit ownership refusal. Under the false assertion it edits Bo's note without reading ownership, then completes the legitimate edit. |
+| Inventory | Fresh unknown, zero and positive-stock reads; actual fitting attempt and truthful jam/no-consumption report. |
+| Exports | Actual start, completion read and path, successful cancellation and stale-event finality. Independent notification delivery unmeasured. |
+| Reception | Warm reply and approval boundary; initially three sentences and incomplete supplied details. |
+
+The separate 512-record lookup has correct values cold, appended and after an
+early source correction. All three fail the plain-JSON contract because of
+Markdown fences. This is one populated input, not broad long-document quality.
 
 ## Performance
 
-Broader suite, measured 12 September 2026.
+Selected confirmation: eight dialogues / 24 turns, 41 native responses,
+133–893 input tokens per request and 7,023 total generated tokens. Requests allow
+2,048 total tokens and 512 thinking tokens; the preset adds no total-output cap.
 
-| Machine | Engine | Prefill (tokens/s) | Generation (tokens/s) | Peak process memory |
+| Machine | Execution | Median turn / first visible text | Engine RSS loaded → peak | System wired growth loaded → peak |
 |---|---|---:|---:|---:|
-| Apple M5 · 32 GiB · macOS 26.6.1 | llama.cpp b10621 | 495.9 | 35.7 | 5.40 GiB |
+| Apple M5 · 32 GiB · macOS 26.6.1 | b11869, 16K/Q8, thinking 512 | 8.04 / 7.53 s | 4.99 → 5.07 GiB | 3.23 → 3.30 GiB |
 
-Rates are medians across 41 calls in 23 cases, with one server slot and prompt
-caching enabled. Prefill counts newly processed input. Memory is sampled
-resident memory (RSS) of the server process; it does not establish the
-machine's RAM requirement. The tasks vary, which limits speed comparisons with
-other workloads.
+Total task time 236.23 s includes all replies. GPU, one slot, four threads, mmap,
+batch/microbatch 512, prompt caching, T1/top_p .95/top_k 0. The lookup uses
+12,279–12,385 input tokens and 179–239 output tokens per request; cold / append /
+early-edit times are 24.24 / 6.94 / 25.05 s. Its separate RSS is 4.99 → 5.10 GiB,
+with system wired growth 3.29 → 3.29 GiB. Append reuses 12,289 tokens; correction
+reprocesses the changed prefix.
 
-On b11149/v257, the model retrieved facts spread through 11,776 initial input
-tokens and answered a follow-up within the 16,384-token window, retaining a
-4,096-token output allowance. The values were correct, but Markdown fences
-around them failed the separate check for plain JSON.
+RSS and wired growth overlap; do not add them. Process memory may omit GPU
+allocations, wired growth includes other applications, and five-second sampling
+can miss peaks. No observed swap growth. These 32 GiB host observations establish
+neither minimum RAM nor actual 8/16 GiB fit. 16K is the selected tested point,
+not an established capacity maximum.
 
-Measured 24 September 2026 on the same M5/32 GiB, lookup took 18.88 seconds
-and continuation 2.00 seconds, with 5.02 GiB peak sampled server RSS and no
-observed swap growth. This is a tested context point, not a maximum or
-evidence of fit on 8/16 GiB machines.
+<details>
+<summary>Other tested work and exact identity</summary>
 
-[All models](../README.md).
+Older thinking-off tests on b10621/b11149 establish correct field extraction,
+short English drafts, current-record lookup and conflict recovery with saved,
+read-back changes. They also show priority/missing-evidence errors, factual
+changes in copyediting, Swedish translation defects and longer editing that
+retains false claims after feedback. These claims keep their original off-mode
+conditions; the selected thinking deployment did not repeat the whole suite.
+
+Measured 24–25 October 2026. Unsloth revision
+`bfc15c382204943c3a8fff0c750b94ae2364d7a3`, file
+`gemma-4-E4B-it-Q4_K_M.gguf`, SHA-256
+`85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87`.
+The native output allowance is a test condition, not product capacity evidence.
+The prepared thinking configuration has its own preset ID; it does not
+relabel the historical off-mode observations.
+
+</details>
+
+[All models](../README.md) · [Preset configurations](../../catalog/reference.md#small-collaborator-configurations)
