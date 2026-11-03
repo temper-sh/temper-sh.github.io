@@ -15,7 +15,7 @@ an experiment's settings to prepare a setup.
 
 | Configuration | Published preset | Additional evaluated configuration |
 |---|---|---|
-| Qwen / Splash | 112,000-token window for 32 GiB+ | 131,072-token profile for 64 GiB |
+| Qwen / Splash | Unsloth K_XL, 112,000 tokens for 32 GiB+ and 131,072 for 64 GiB+ | Prepared BaseQuant Medium only, at 114,681; Unsloth retired from authoring |
 | Qwen / Kapitsa | Not offered; parked experimental layout | MLX4/DFlash2 coding failures, successful cases and context measurements remain in the [reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) |
 | Muse Glimmer | DFlash2 at 131,072 tokens, or plain decoding at 57,344 | Matched plain/DFlash2 comparison at 57,344 tokens |
 | Gemma 26B | Plain decoding, 131,072-token window and a 1,024-token reasoning budget | Earlier 98,304-token configuration and draft experiments |
@@ -38,7 +38,7 @@ normal publication/update path.
 
 | Reviewed presets | Capability and prepared fallback | Guidance and template finding |
 |---|---|---|
-| Qwen3.8 27B, MTP and Splash (2) | Switchable, on | [Publisher](https://huggingface.co/Qwen/Qwen3.8-27B) defaults on. The selected [Froggeric template](https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/blob/855bffc49448e299789730ff92c9b8d834d6cc14/chat_template.jinja) accepts `enable_thinking` and effort; the reviewed medium preset default is retained. |
+| Qwen3.8 27B, BaseQuant Splash (1) | Switchable, on | [Publisher](https://huggingface.co/Qwen/Qwen3.8-27B) defaults on. The selected [Froggeric template](https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/blob/855bffc49448e299789730ff92c9b8d834d6cc14/chat_template.jinja) accepts `enable_thinking` and effort; the reviewed medium preset default is retained. Retired Unsloth Splash/MTP observations remain separate. |
 | Qwen3.5 4B (1) | Switchable, on | [Publisher guidance](https://huggingface.co/Qwen/Qwen3.5-4B#best-practices) defaults on. The consumed GGUF template defaults off unless enabled. The prepared fallback explicitly enables it, with general-task thinking sampling T1 / top_p .95 / top_k 20 / presence penalty 1.5. |
 | Gemma 4 E2B (1) | Switchable, off | [Google's card](https://huggingface.co/google/gemma-4-E2B-it) documents both modes and demonstrates off. The tested helper default is retained; no publisher requirement to enable thinking was found. |
 | Gemma 4 E4B, 26B-A4B and 31B (3) | Switchable, on | [Google's card](https://huggingface.co/google/gemma-4-E4B-it) documents the switch. Consumed templates default off; explicit on preserves the assessed choices. The 512/1,024-token budgets remain overridable defaults grounded in the named local workloads, not universal model limits. |
@@ -235,6 +235,8 @@ is available.
 
 | Preset and tested engine | Date | Loaded → peak | Measured workload |
 |---|---|---|---|
+| Qwen/BaseQuant Medium, Splash 1.3.2, 114,681-token window | 2026-11-01 | 18.27 → 21.11 GiB system wired-memory growth | Actual-history CSV review repair; maximum occupied 41,769 tokens. Passed 15 frozen checks, rejected after source review. |
+| Qwen/Unsloth K_XL, Splash 1.3.2, 114,681-token window | 2026-11-01 | 18.89 → 21.70 GiB system wired-memory growth | Actual-history CSV review repair; maximum occupied 60,314 tokens. Passed 15 frozen checks, rejected after source review. |
 | Qwen/Splash 1.3.2, 112,000-token window | 2026-10-17 | 19.46 → 20.46 GiB engine physical footprint | Six short interface/reuse requests, largest input 522 tokens. Loaded after the first response. |
 | Qwen/Splash 1.3.2, M5 Pro / 64 GiB, 131,072-token window | 2026-10-20 | 19.22 → 21.63 GiB system wired-memory growth | Two-response coding workflow, thinking on; 16,369 input + 43,375 generated tokens in the first response, then 20,846 input + 4,018 generated. Loaded after readiness. Submitted code failed independent tests; resource measurements remain applicable. |
 | Muse plain, llama.cpp b11741, 57,344-token window | 2026-10-19 | 15.79 → 16.13 GiB engine RSS | 49,152-token ledger retrieval, appended lookup, source correction, 512 generated tokens and follow-up. |

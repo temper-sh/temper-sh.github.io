@@ -4,7 +4,10 @@ Configuration details and evidence behind the [short preset page](splash-ud-q4-k
 For installation, use Temper's published catalog; the evaluated variants here
 are not all offered presets. See [how to use the technical references](../../../guides/technical-reference.md).
 
-**Preset ID:** `qwen3.8-27b-q4xl-splash`.
+**Prepared preset:** `qwen3.8-27b-basequant-medium-splash`.
+`qwen3.8-27b-q4xl-splash` is retired from the authoring catalog; the signed
+catalog still supplies it until publication. Existing saved copies retain
+Unsloth weights. Its ID is not repurposed for a different quantization.
 
 The [Kapitsa reference](kapitsa-mlx4-reference.md) documents the thinking-off
 comparison of completed code changes, long-input latency and loaded/peak
@@ -13,6 +16,117 @@ offered. Both thinking-off configurations failed a held-out streaming repair,
 so the comparison does not establish general coding reliability.
 Results for the medium-thinking preset retain
 their own settings and do not inherit the thinking-off outcomes.
+
+## BaseQuant Medium and Unsloth K_XL
+
+**Prefer Medium for its measured memory saving on M5 / 32 GiB.** The coding
+observations support neither a consistent quality winner nor a general speed
+advantage. K_XL remains comparison evidence. Its Splash and llama.cpp/MTP
+presets are retired from authoring; the signed catalog still supplies both
+until publication. Only Medium is prepared as a Qwen3.8 27B choice; Large
+is not offered for this composition.
+
+### Completed work and review
+
+Both candidates implemented a Ruby webhook inbox, then a retry-policy and
+operator-replay change, using each candidate's own accepted initial source and
+actual conversation. Both required concrete review feedback. Medium submitted
+the correct follow-up. K_XL retained a correct complete tested proposal, then
+exhausted context while redundantly repeating it as its final submission.
+That is a submission-protocol failure, not evidence that its corrected source
+was wrong. Total active model/visible-test cost across initial work and
+follow-up was about 2h01m for Medium and 3h07m for K_XL, including K_XL's
+18m22s partial repeat. Human review effort was not instrumented.
+For the 114,681-token follow-up phases, loaded/peak system wired growth was
+18.27/21.46 GiB for Medium and 18.88/22.29 GiB for K_XL, with zero swap growth.
+These are follow-up workload measurements, not the peak of all combined stages.
+
+The separate CSV order-report task starts both from the same source and request.
+Both passed the original tests but source review found malformed quoting plus
+business-rule defects. After one actual-history review repair each, both passed
+the 15 independent checks frozen for that round. Both still accepted balanced
+malformed input such as `"open"x`, publishing a report instead of failing the
+whole input. Source review rejects both. Two additional checks catch that
+remaining defect in the maintained 17-check suite; the native 15-check scores
+retain their original oracle identity.
+
+| CSV observation | Medium | K_XL |
+|---|---:|---:|
+| Initial active model time | 38m00s | 47m35s |
+| One review repair, active model time | 28m04s | 18m14s |
+| Combined active model cost, still unaccepted | 1h06m04s | 1h05m49s |
+| Repair output / reasoning tokens | 27,153 / 10,271 | 14,283 / 5,314 |
+| Maximum occupied context in repair | 41,769 | 60,314 |
+| Repair system wired growth, loaded / peak GiB | 18.27 / 21.11 | 18.89 / 21.70 |
+| Repair engine physical footprint, loaded / peak GiB | 18.62 / 21.61 | 19.43 / 22.24 |
+| Repair native allocator, loaded current / peak GiB | 18.03 / 20.95 | 18.83 / 21.58 |
+
+Medium's longer repair includes another 7m44s proposal correcting its own
+invalid test fixture; its production source was unchanged between its two
+repair proposals. Native decode rates were close, 18.34 versus 18.79 tokens/s.
+Different histories, output volume and cache reuse prevent treating these
+episodes as an intrinsic quant-throughput comparison. Earlier small Flask
+samples also had mixed quality and timing outcomes. Artificial 32k truncation
+does not qualify either quant as worse.
+
+### Context, cache and memory boundaries
+
+The comparison used Apple M5 / 32 GiB / macOS 26.6.1, Splash 1.3.2,
+router v265, Frog v22.5, the same DFlash2 draft, int8 KV, FP32 recurrent state,
+no SSD prefix cache and a selected 24 GiB engine allowance. Reasoning was on
+at medium effort, temperature 1, top-p .95, top-k 20, min-p 0 and neutral
+penalties. CSV used seed 421. No separate reasoning/output allowance, task
+deadline or response-count limit shortened the repair; the recorded engine
+and Field Kit watchdogs were seven days, deliberately nonbinding for this
+comparison. That is a reproduction condition, not a measured latency default.
+
+Both follow-ups and CSV episodes allocated **114,681 tokens**. K_XL's native
+admission refusal at 128,000 reported 114,681 as its maximum under the selected
+composition and budget; Medium's individual admission ceiling remains open.
+The Ruby histories reached 94,539 occupied tokens for Medium and 114,425 for
+K_XL. The latter filled the usable window after a 256-token framing reserve;
+it does not establish full-window coding reliability. Neither 128k for Medium
+nor the model's 262,144-token limit was validated on this machine.
+
+BaseQuant Large was refused at **112,000 tokens** with this same draft,
+precision and memory allowance; the engine reported a **12,281-token maximum**.
+There is no completed-work quality result or loaded/peak runtime-memory
+measurement for Large. This does not reject other Large compositions or machines.
+
+System wired growth is relative to the run baseline and includes other
+applications. Process footprint excludes the separate frontend/router; native
+allocator figures cover the engine's own accounting. These counters overlap
+and must not be added. Five-second samples can miss peaks. Both CSV repairs
+started with 360.25 MiB existing swap and had zero swap growth, engine restart
+or resource stop. None of these counters establishes minimum machine RAM.
+
+A separate K_XL prefix check at about 24.5k input took about 128s cold and 9s
+for exact-repeat/append requests, reusing 24,448 tokens; an early edit
+invalidated that prefix. Loaded/peak wired growth was 18.87/21.27 GiB, with
+zero swap growth. Older 103k/110k misses remain unexplained: zero matched-prefix
+tokens did not mean zero KV reuse. A general long-history cache guarantee is
+not established.
+
+### Exact composition and prepared catalog
+
+| Consumed artifact | Revision | File SHA-256 |
+|---|---|---|
+| [BaseQuant Medium](https://huggingface.co/basecompute/Qwen3.8-27B-BaseQuant-V1) · 16,410,453,536 bytes | `d341d3fec922b9b4343f91d38b3400b6632d1746` | `277099522be39e070d7d82861976b551aec18daec8a168fee3510e8cc12d0d5c` |
+| [Unsloth UD-Q4_K_XL](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) · 17,559,178,144 bytes | `4ca720788d1e01f1bff70c033e0d0028fd02e502` | `3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e` |
+| [DFlash2](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2) · target-independent draft | `015e795645c74b1a0eeef3b570031fb62e769bc5` | `model.safetensors`: `67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c` |
+
+The prepared Medium authoring profile repeats the tested 114,681 allocation and
+seven-day engine watchdog, with the CSV repair's exact memory observation.
+Medium has one measured 32 GiB profile; no 64 GiB observation is inherited
+from K_XL. K_XL's separate 64 GiB profile remains historical evidence.
+The signed catalog still owns availability and preserves its 112,000-token
+32 GiB default until publication and an explicit user update.
+
+The harness now permits final submission by immutable tested-proposal ID,
+avoiding the redundant full-patch transmission that exhausted K_XL's Ruby
+history. That change preserves the original failure; it does not establish
+quality or timing for a rerun. Reviews were AI-assisted and label-aware;
+there were no operator edits to candidate source, skills or repeated seed grid.
 
 ## Why these choices
 
@@ -61,8 +175,9 @@ the release change and template-maintenance cost, not every possible 1.4.0 setup
 
 The preset requires Apple M3 or newer, macOS 26.4+ and at least 32 GiB.
 Temper supplies the Frog template through the Python server's tokenizer
-override. Selecting the llama.cpp alternative reuses the target GGUF; Splash's
-first startup also prepares a native weight cache, adding time and disk use.
+override. The signed Unsloth Splash/llama.cpp presets share a target GGUF;
+the prepared BaseQuant preset uses its own target. Splash's first startup
+also prepares a native weight cache, adding time and disk use.
 The tested profile calibrates ANE prefill during startup and disables SSD
 prefix caching. The engine memory allowance is a cap, not reserved memory.
 
@@ -94,7 +209,7 @@ The offered preset and the evaluated 64 GiB configuration use the same weights,
 draft model and precision. The latter allocates a larger context and more
 runtime headroom.
 
-| Setting | Published preset · 32 GiB+ | Evaluated variant · 64 GiB |
+| Setting | Published profile · 32 GiB+ | Published profile · 64 GiB+ |
 |---|---:|---:|
 | Input + output window | 112,000 tokens | 131,072 tokens |
 | Engine memory allowance | 24 GiB | 48 GiB |

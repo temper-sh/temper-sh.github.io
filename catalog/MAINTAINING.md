@@ -36,7 +36,18 @@ defines the commands.
    page always describes the published presets. Set the source's `date` to
    the day of publication (UTC). Preset, engine and artifact IDs are
    permanent: a user's saved preset remembers the ID it came from. Removing a
-   preset is safe; users who saved it keep it under **Other**.
+   preset is safe; users who saved it retain its exact configuration.
+
+   `retired_presets` lists withdrawn permanent IDs, each with `retired_on`, a
+   reason and an optional successor. For newly withdrawn presets, set
+   `retired_on` and the source date to the actual UTC publication day. Notices
+   accumulate: keep each one for a month or two after publication, then remove
+   it; historical snapshots retain it. To reverse a mistaken retirement, remove
+   its notice and offer the ID again. A retained notice's original date cannot
+   change. Use the updated publisher: it checks these rules and rejects cycles,
+   missing successors and active/retired ID collisions. Older clients retain
+   saved choices under Other; current clients expose the notices through
+   Retired without automatically migrating or deleting anything.
 
    When adopting a measured preset, include its reviewed `profile.memory`
    observation under the

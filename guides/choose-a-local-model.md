@@ -18,7 +18,7 @@ examples to inspect, not a ranking of the models.
 |---|---|---|
 | Conversation, scenes and revision | [Gemma 26B](../models/gemma-4-26b-a4b/README.md) and [31B](../models/gemma-4-31b/README.md) | Preserved facts and continuity, response length, waiting time and memory. |
 | Technical drafts and explanations | [Muse Glimmer](../models/muse-glimmer-30b/README.md) | Source fidelity, operational details and unfinished work. |
-| Code changes | [Qwen3.8 27B configurations](../models/qwen3.8-27b/README.md#configuration-choices) | Check task failures alongside completion time and loaded/peak memory. Kapitsa is parked experimental; Splash and llama.cpp remain offered. |
+| Code changes | [Qwen3.8 27B configurations](../models/qwen3.8-27b/README.md#configuration-choices) | BaseQuant Medium/Splash is the sole prepared choice; signed Unsloth presets await retirement. Check task failures alongside completion time and loaded/peak memory. Kapitsa is parked experimental. |
 | Combining sources and editing documents | [Qwen3.8 27B](../models/qwen3.8-27b/README.md) | Format errors, source corrections, actual input size and cache behavior. |
 | Fast small application conversations | [Gemma E2B](../models/gemma-4-e2b/README.md), [Qwen3.5 4B](../models/qwen3.5-4b/README.md) and [Spark X2.6](../models/spark-x2.6-4b/README.md) | Actual booking/export effects, stock uncertainty, ownership claims and lookup errors. |
 | More deliberate small application actions | [Gemma E4B](../models/gemma-4-e4b/README.md) and [Nemotron Bolt E4B](../models/nemotron-3.5-bolt-e4b/README.md) | Whether thinking improves the needed action, its waiting time and memory cost. Bolt offers a measured DFlash speed/memory alternative. |

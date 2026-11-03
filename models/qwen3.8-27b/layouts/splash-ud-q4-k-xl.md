@@ -3,6 +3,27 @@
 A text-only Qwen preset using Splash. It requires **Apple M3 or newer,
 macOS 26.4+ and 32 GiB+**.
 
+**BaseQuant Medium is the lower-memory choice on the tested M5 / 32 GiB.**
+It and Unsloth K_XL produced correct Ruby changes after review, but both
+retained a malformed-CSV parsing defect after a focused repair. The trials do
+not establish a consistent coding-quality winner.
+
+| CSV initial work plus one review repair | BaseQuant Medium | Unsloth K_XL |
+|---|---:|---:|
+| Model active time; neither accepted | 1h06m04s | 1h05m49s |
+| Repair loaded / peak system wired growth | 18.27 / 21.11 GiB | 18.89 / 21.70 GiB |
+
+Both used a 114,681-token allocation, Splash 1.3.2, DFlash2 and medium thinking.
+System wired growth includes other applications; five-second samples can miss
+peaks. These workloads neither fill the window nor establish minimum machine RAM.
+The [comparison and exact boundaries](splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl)
+also explain the Ruby submission failure and the rejected Large allocation.
+
+The signed preset still uses Unsloth at 112,000 tokens on 32 GiB.
+The authoring catalog prepares only BaseQuant Medium at the tested 114,681
+allocation and retires the Unsloth Splash preset. Existing saved presets keep
+their weights and settings; selecting BaseQuant is an explicit change.
+
 **[Set up with Temper](https://github.com/temper-sh/temper#get-started)** ·
 [Configuration and evidence](splash-ud-q4-k-xl-reference.md)
 
@@ -32,8 +53,8 @@ selected for this preset.
 
 ## Behavior on tested hardware
 
-These observations use **Splash 1.3.2**, Unsloth UD-Q4_K_XL weights, Frog v22.5
-and medium thinking. Each row describes one workload.
+The following earlier observations use **Splash 1.3.2**, Unsloth UD-Q4_K_XL
+weights, Frog v22.5 and medium thinking. Each row describes one workload.
 
 | Machine | Configuration and work | Outcome | Elapsed time | Loaded → peak memory |
 |---|---|---|---:|---|

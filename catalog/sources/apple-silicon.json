@@ -1,6 +1,6 @@
 {
   "schema": "temper-catalog/v1",
-  "date": "2026-10-30",
+  "date": "2026-11-01",
   "platform": "apple-silicon",
   "runtime": {
     "router": {
@@ -36,28 +36,6 @@
     }
   },
   "artifacts": {
-    "qwen3.8-27b-q4xl": {
-      "sources": [
-        {
-          "hub": "huggingface",
-          "repo": "unsloth/Qwen3.8-27B-GGUF",
-          "revision": "4ca720788d1e01f1bff70c033e0d0028fd02e502"
-        }
-      ],
-      "format": "gguf",
-      "files": [
-        {
-          "path": "Qwen3.8-27B-UD-Q4_K_XL.gguf",
-          "bytes": 17559178144,
-          "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
-        }
-      ],
-      "license": "Apache-2.0",
-      "presentation": {
-        "model_name": "Qwen3.8 27B",
-        "weights_name": "Unsloth UD-Q4_K_XL · GGUF"
-      }
-    },
     "qwen3.5-4b-q4km": {
       "sources": [
         {
@@ -568,6 +546,28 @@
         "model_name": "Spark X2.6 4B",
         "weights_name": "Q4_K_M"
       }
+    },
+    "qwen3.8-27b-basequant-medium": {
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "basecompute/Qwen3.8-27B-BaseQuant-V1",
+          "revision": "d341d3fec922b9b4343f91d38b3400b6632d1746"
+        }
+      ],
+      "format": "gguf",
+      "files": [
+        {
+          "path": "Qwen3.8-27B-BaseQuant-V1-Medium.gguf",
+          "bytes": 16410453536,
+          "sha256": "277099522be39e070d7d82861976b551aec18daec8a168fee3510e8cc12d0d5c"
+        }
+      ],
+      "license": "Apache-2.0",
+      "presentation": {
+        "model_name": "Qwen3.8 27B",
+        "weights_name": "BaseQuant V1 Medium · GGUF"
+      }
     }
   },
   "templates": {
@@ -587,8 +587,8 @@
         }
       ],
       "compatible_artifacts": [
-        "qwen3.8-27b-q4xl",
-        "qwen3.5-4b-q4km"
+        "qwen3.5-4b-q4km",
+        "qwen3.8-27b-basequant-medium"
       ],
       "license": "Apache-2.0",
       "presentation": {
@@ -612,8 +612,8 @@
         }
       ],
       "compatible_artifacts": [
-        "qwen3.8-27b-q4xl",
-        "qwen3.5-4b-q4km"
+        "qwen3.5-4b-q4km",
+        "qwen3.8-27b-basequant-medium"
       ],
       "license": "Apache-2.0",
       "presentation": {
@@ -3319,72 +3319,6 @@
     }
   },
   "presets": {
-    "qwen3.8-27b-q4xl-mtp": {
-      "artifact": "qwen3.8-27b-q4xl",
-      "template": "froggeric-qwen38",
-      "engine": "llama-cpp",
-      "interface": "chat-completions",
-      "modalities": [
-        "text"
-      ],
-      "request_defaults": {
-        "reasoning": "on",
-        "sampling": {
-          "temperature": 1.0,
-          "top_k": 20,
-          "top_p": 0.95,
-          "min_p": 0.0,
-          "repeat_penalty": 1.0,
-          "presence_penalty": 0.0
-        }
-      },
-      "speculation": {
-        "method": "mtp",
-        "source": "embedded",
-        "max_draft_tokens": 3
-      },
-      "context_limit_tokens": 262144,
-      "compute": "gpu",
-      "compute_options": [
-        "gpu"
-      ],
-      "profiles": [
-        {
-          "min_memory_gib": 32,
-          "context_window_tokens": 65536,
-          "engine_config": {
-            "kind": "llama-server/v1",
-            "parallel": 1,
-            "kv_cache": "q8",
-            "flash_attention": "on",
-            "batch_tokens": 512,
-            "microbatch_tokens": 512,
-            "context_checkpoints": 14,
-            "prompt_cache_ram_mib": 2048,
-            "gpu_layers": 99,
-            "controls": {
-              "cache_reuse": 0,
-              "reasoning_effort": "medium",
-              "preserve_reasoning": false,
-              "context_shift": false,
-              "cache_prompt": true,
-              "fit": "off",
-              "threads": 4,
-              "threads_batch": 4,
-              "load_mode": "mmap",
-              "checkpoint_min_step": 8192
-            }
-          }
-        }
-      ],
-      "presentation": {
-        "display_name": "Qwen3.8 27B Q4 XL / MTP",
-        "description": "A battle-tested default for coding and general use. It trades some speed for the predictability and familiarity of llama.cpp.",
-        "group": "general",
-        "memory_tier": "S"
-      },
-      "reasoning_capability": "switchable"
-    },
     "qwen3.5-4b-q4km-off": {
       "artifact": "qwen3.5-4b-q4km",
       "template": "builtin",
@@ -3624,179 +3558,6 @@
         "description": "Fast helper for note lookups and export conversations. Inventory answers can confuse unknown stock with zero, and the app must enforce edit permissions.",
         "group": "other",
         "memory_tier": "XS"
-      },
-      "reasoning_capability": "switchable"
-    },
-    "qwen3.8-27b-q4xl-splash": {
-      "artifact": "qwen3.8-27b-q4xl",
-      "template": "froggeric-qwen38",
-      "engine": "splash",
-      "interface": "chat-completions",
-      "modalities": [
-        "text"
-      ],
-      "request_defaults": {
-        "reasoning": "on",
-        "sampling": {
-          "temperature": 1.0,
-          "top_k": 20,
-          "top_p": 0.95
-        }
-      },
-      "speculation": {
-        "method": "dflash2",
-        "source": "artifact",
-        "max_draft_tokens": 0,
-        "draft_artifact": "qwen3.8-27b-dflash2"
-      },
-      "context_limit_tokens": 262144,
-      "compute": "gpu",
-      "compute_options": [
-        "gpu"
-      ],
-      "exclude_engine_versions": [
-        {
-          "range": "< 1.3.2",
-          "reason": "needs Splash 1.3.2 or newer: source-assembly frontend, explicit SSD cache policy and native remaining-context output"
-        }
-      ],
-      "profiles": [
-        {
-          "min_memory_gib": 32,
-          "context_window_tokens": 112000,
-          "engine_config": {
-            "kind": "splash/v2",
-            "kv_cache": "int8",
-            "max_memory_bytes": 25769803776,
-            "reasoning_effort": "medium",
-            "request_timeout_seconds": 1800
-          },
-          "memory": {
-            "observed_on": "2026-10-17",
-            "source": "https://temper-sh.github.io/catalog/#memory-observations",
-            "workload": "112,000-token allocation; six sequential short arithmetic, streaming, JSON, tool and prefix-reuse requests; largest input 522 tokens, per-request output cap 512. Loaded after the first response.",
-            "counter": "engine-physical-footprint",
-            "loaded_bytes": 20895345248,
-            "peak_bytes": 21970332664,
-            "limitations": "Engine only; frontend and router excluded. Short requests do not establish full-window use. RSS omits most mapped memory for this engine; footprint is the selected counter. No swap growth; not minimum machine RAM.",
-            "machine": {
-              "chip": "Apple M5",
-              "physical_memory_bytes": 34359738368,
-              "metal_memory_mib": 24576,
-              "os": "macOS 26.6.1 (25G76)"
-            },
-            "execution": {
-              "engine_version": "1.3.2",
-              "engine_files": [
-                "c3deb1dd971461ffafcf6b82c318789d6698b22aa865e490a11a0ed943686c0b"
-              ],
-              "weights": [
-                {
-                  "path": "Qwen3.8-27B-UD-Q4_K_XL.gguf",
-                  "bytes": 17559178144,
-                  "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
-                }
-              ],
-              "draft": [
-                {
-                  "path": "config.json",
-                  "bytes": 1239,
-                  "sha256": "873e3556509b0da06e29654ba00d4944888d4b5e8a33afde25f7eb27d321e980"
-                },
-                {
-                  "path": "model.safetensors",
-                  "bytes": 3848817896,
-                  "sha256": "67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c"
-                }
-              ],
-              "compute": "gpu",
-              "context_window_tokens": 112000,
-              "engine_config": {
-                "kind": "splash/v2",
-                "kv_cache": "int8",
-                "max_memory_bytes": 25769803776,
-                "reasoning_effort": "medium",
-                "request_timeout_seconds": 1800
-              },
-              "speculation": {
-                "method": "dflash2",
-                "source": "artifact",
-                "max_draft_tokens": 0
-              }
-            }
-          }
-        },
-        {
-          "min_memory_gib": 64,
-          "context_window_tokens": 131072,
-          "engine_config": {
-            "kind": "splash/v2",
-            "kv_cache": "int8",
-            "max_memory_bytes": 51539607552,
-            "reasoning_effort": "medium",
-            "request_timeout_seconds": 14400
-          },
-          "memory": {
-            "observed_on": "2026-10-20",
-            "source": "https://temper-sh.github.io/catalog/#memory-observations",
-            "workload": "131,072-token allocation; two-response async-stream coding workflow with medium thinking, temperature 1, top-p 0.95 and top-k 20. First response: 16,369 input and 43,375 generated tokens including reasoning; second: 20,846 input and 4,018 generated tokens. Workflow 1,372.72 seconds. Loaded after readiness; peak sampled across the workflow.",
-            "counter": "system-wired-growth",
-            "loaded_bytes": 20637466624,
-            "peak_bytes": 23228186624,
-            "limitations": "System wired memory above the trial baseline includes other applications and is not dedicated GPU allocation. Sampling about every five seconds can miss short peaks. No swap growth, thermal warning or resource stop. The submitted patch failed eight independent tests; this is runtime resource evidence, not coding acceptance. The largest occupied sequence was 59,744 tokens; full 131,072-token use and minimum machine RAM are unmeasured.",
-            "machine": {
-              "chip": "Apple M5 Pro",
-              "physical_memory_bytes": 68719476736,
-              "metal_memory_mib": 53084,
-              "os": "macOS 26.7.1 (25G241)"
-            },
-            "execution": {
-              "engine_version": "1.3.2",
-              "engine_files": [
-                "c3deb1dd971461ffafcf6b82c318789d6698b22aa865e490a11a0ed943686c0b"
-              ],
-              "weights": [
-                {
-                  "path": "Qwen3.8-27B-UD-Q4_K_XL.gguf",
-                  "bytes": 17559178144,
-                  "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
-                }
-              ],
-              "draft": [
-                {
-                  "path": "config.json",
-                  "bytes": 1239,
-                  "sha256": "873e3556509b0da06e29654ba00d4944888d4b5e8a33afde25f7eb27d321e980"
-                },
-                {
-                  "path": "model.safetensors",
-                  "bytes": 3848817896,
-                  "sha256": "67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c"
-                }
-              ],
-              "compute": "gpu",
-              "context_window_tokens": 131072,
-              "engine_config": {
-                "kind": "splash/v2",
-                "kv_cache": "int8",
-                "max_memory_bytes": 51539607552,
-                "reasoning_effort": "medium",
-                "request_timeout_seconds": 14400
-              },
-              "speculation": {
-                "method": "dflash2",
-                "source": "artifact",
-                "max_draft_tokens": 0
-              }
-            }
-          }
-        }
-      ],
-      "presentation": {
-        "display_name": "Qwen–Splash / DFlash2",
-        "description": "Our top choice in size S for coding tasks. Combines Unsloth’s UD3.0 quantization with Splash and DFlash2, delivering up to twice llama.cpp’s throughput. Requires extra disk space for its native weight cache.",
-        "group": "general",
-        "memory_tier": "S"
       },
       "reasoning_capability": "switchable"
     },
@@ -5493,6 +5254,117 @@
         "memory_tier": "XS"
       },
       "reasoning_capability": "switchable"
+    },
+    "qwen3.8-27b-basequant-medium-splash": {
+      "artifact": "qwen3.8-27b-basequant-medium",
+      "template": "froggeric-qwen38",
+      "engine": "splash",
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "context_limit_tokens": 262144,
+      "request_defaults": {
+        "reasoning": "on",
+        "sampling": {
+          "temperature": 1,
+          "top_k": 20,
+          "top_p": 0.95,
+          "min_p": 0,
+          "repeat_penalty": 1,
+          "presence_penalty": 0
+        }
+      },
+      "speculation": {
+        "draft_artifact": "qwen3.8-27b-dflash2",
+        "method": "dflash2",
+        "source": "artifact",
+        "max_draft_tokens": 0
+      },
+      "exclude_engine_versions": [
+        {
+          "range": "< 1.3.2",
+          "reason": "needs Splash 1.3.2 or newer: source-assembly frontend, explicit SSD cache policy and native remaining-context output"
+        }
+      ],
+      "profiles": [
+        {
+          "min_memory_gib": 32,
+          "context_window_tokens": 114681,
+          "engine_config": {
+            "kind": "splash/v2",
+            "kv_cache": "int8",
+            "max_memory_bytes": 25769803776,
+            "reasoning_effort": "medium",
+            "request_timeout_seconds": 604800
+          },
+          "memory": {
+            "observed_on": "2026-11-01",
+            "source": "https://temper-sh.github.io/models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.html#basequant-medium-and-unsloth-k_xl",
+            "workload": "114,681-token allocation; actual-history CSV review repair, medium thinking, seed 421; maximum occupied sequence 41,769 tokens. Loaded after readiness, peak across the repair. Source review rejected malformed-quote handling despite 15 frozen checks passing.",
+            "counter": "system-wired-growth",
+            "loaded_bytes": 19621888000,
+            "peak_bytes": 22669033472,
+            "limitations": "System wired growth above baseline includes other applications; five-second samples can miss transients. No swap growth or resource stop. Counters overlap; not minimum machine RAM or full-window proof. Execution retains the study's seven-day request watchdog as a deliberately nonbinding comparison condition, not a validated latency requirement.",
+            "machine": {
+              "chip": "Apple M5",
+              "physical_memory_bytes": 34359738368,
+              "metal_memory_mib": 24576,
+              "os": "macOS 26.6.1 (25G76)"
+            },
+            "execution": {
+              "engine_version": "1.3.2",
+              "engine_files": [
+                "c3deb1dd971461ffafcf6b82c318789d6698b22aa865e490a11a0ed943686c0b"
+              ],
+              "weights": [
+                {
+                  "path": "Qwen3.8-27B-BaseQuant-V1-Medium.gguf",
+                  "bytes": 16410453536,
+                  "sha256": "277099522be39e070d7d82861976b551aec18daec8a168fee3510e8cc12d0d5c"
+                }
+              ],
+              "draft": [
+                {
+                  "path": "config.json",
+                  "bytes": 1239,
+                  "sha256": "873e3556509b0da06e29654ba00d4944888d4b5e8a33afde25f7eb27d321e980"
+                },
+                {
+                  "path": "model.safetensors",
+                  "bytes": 3848817896,
+                  "sha256": "67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c"
+                }
+              ],
+              "compute": "gpu",
+              "context_window_tokens": 114681,
+              "engine_config": {
+                "kind": "splash/v2",
+                "kv_cache": "int8",
+                "max_memory_bytes": 25769803776,
+                "reasoning_effort": "medium",
+                "request_timeout_seconds": 604800
+              },
+              "speculation": {
+                "method": "dflash2",
+                "source": "artifact",
+                "max_draft_tokens": 0
+              }
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Qwen–Splash / BaseQuant Medium",
+        "description": "Our size S choice for coding and technical work. Combines well-balanced BaseQuant weights with the fast Splash engine and DFlash2 acceleration. Requires extra disk space for its native weight cache.",
+        "group": "general",
+        "memory_tier": "S"
+      },
+      "reasoning_capability": "switchable"
     }
   },
   "presentation": {
@@ -5532,11 +5404,10 @@
     ],
     "fallback_group": "other",
     "preset_order": [
-      "qwen3.8-27b-q4xl-splash",
+      "qwen3.8-27b-basequant-medium-splash",
       "muse-glimmer-30b-q4xl-dflash2-llama",
       "gemma-4-26b-a4b-qat-ud-q4-k-xl-llama",
       "gemma-4-31b-qat-ud-q4-k-xl-llama",
-      "qwen3.8-27b-q4xl-mtp",
       "muse-glimmer-30b-q4xl-llama",
       "gemma-4-e2b-q4km-off",
       "qwen3.5-4b-q4km-off",
@@ -5555,5 +5426,17 @@
       "tiny-aya-fire-q8-llama",
       "tiny-aya-earth-q8-llama"
     ]
+  },
+  "retired_presets": {
+    "qwen3.8-27b-q4xl-splash": {
+      "retired_on": "2026-11-01",
+      "reason": "BaseQuant Medium uses less measured memory on M5 / 32 GiB. The tested coding tasks found no consistent quality winner.",
+      "successor": "qwen3.8-27b-basequant-medium-splash"
+    },
+    "qwen3.8-27b-q4xl-mtp": {
+      "retired_on": "2026-11-01",
+      "reason": "The Qwen offering is consolidated on BaseQuant Medium with Splash. Historical llama.cpp measurements remain available.",
+      "successor": "qwen3.8-27b-basequant-medium-splash"
+    }
   }
 }

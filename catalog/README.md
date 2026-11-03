@@ -21,8 +21,27 @@ requirements and memory estimate before preparing the selected models.
 | Gemma 4 26B-A4B | Unsloth QAT weights, plain decoding and a 131,072-token window, with a 1,024-token reasoning default. | [Writing and conversation cases](../models/gemma-4-26b-a4b/README.md). |
 | Gemma 4 31B | The larger Gemma model uses MTP width 3 at a 40,960-token window, with a 1,024-token reasoning default. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
 
-These models use the [Apache-2.0 license][apache-license]. Shared model files are
-reused between the Qwen Splash and llama.cpp presets. Splash also creates a
+**Prepared Qwen choice:** BaseQuant Medium with Splash is the sole Qwen3.8 27B
+preset in the authoring source, using the tested 114,681-token allocation.
+Both Unsloth presets, Splash and llama.cpp/MTP, are retired from that source.
+In the comparison's
+CSV review repair, loaded/peak system wired growth was **18.27/21.11 GiB**
+for Medium and **18.89/21.70 GiB** for K_XL. Both remained unaccepted after
+repair; cumulative model-active costs were about 66 minutes each. These are
+workload observations including other applications, not minimum RAM or a
+quality ranking. [Conditions and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl)
+retain the exact evidence. The signed catalog still supplies Unsloth at
+112,000 on 32 GiB; `temper update` will not receive the prepared changes until
+signed publication. Already saved Unsloth presets remain usable;
+updating the catalog neither removes them nor switches their weights to BaseQuant.
+Temper versions supporting the current retirement notice offer **Retired** in
+`configure` for an explicit replacement or removal. Older versions and notices
+that have aged out use **Other**.
+Full `temper update` can still update their router/engine software while keeping
+weights and settings. To change the model, select BaseQuant explicitly.
+
+These models use the [Apache-2.0 license][apache-license]. The signed Unsloth
+Splash and llama.cpp presets share their target file. Splash also creates a
 native weight cache, adding disk use and first-startup work.
 
 The [Qwen / Kapitsa layout](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md) is
@@ -31,8 +50,8 @@ prevent a recommendation; its measured outcomes remain available for review.
 Existing saved presets remain under **Other** when the catalog is updated.
 
 Profiles containing memory observations require Temper 0.4.0 or
-newer. The linked observations also include configurations beyond the published
-presets, including Splash's larger 64 GiB profile and alternative Gemma draft
+newer. The linked observations include Splash's separate 64 GiB profile and
+configurations beyond the published presets, such as alternative Gemma draft
 settings. The
 [configuration reference](reference.md#published-settings-and-evaluated-variants)
 distinguishes them from the offerings in the signed catalog.
