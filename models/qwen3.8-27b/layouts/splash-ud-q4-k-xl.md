@@ -19,9 +19,8 @@ peaks. These workloads neither fill the window nor establish minimum machine RAM
 The [comparison and exact boundaries](splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl)
 also explain the Ruby submission failure and the rejected Large allocation.
 
-The signed preset still uses Unsloth at 112,000 tokens on 32 GiB.
-The authoring catalog prepares only BaseQuant Medium at the tested 114,681
-allocation and retires the Unsloth Splash preset. Existing saved presets keep
+The catalog offers BaseQuant Medium at the tested 114,681-token allocation.
+The Unsloth Splash preset is retired. Existing saved presets keep
 their weights and settings; selecting BaseQuant is an explicit change.
 
 **[Set up with Temper](https://github.com/temper-sh/temper#get-started)** ·

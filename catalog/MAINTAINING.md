@@ -60,7 +60,14 @@ defines the commands.
 
    Ground sampling and context values in the model's own card, generation
    configuration or trusted model-specific guidance unless applicable local
-   evidence supplies a reason to differ. Record the source revision and reason
+   evidence supplies a reason to differ. Choose sampling for the preset's
+   designated role and reasoning mode: prefer the matching model-specific task
+   recipe, then justified local evidence, then the model's general recommendation.
+   The role comes from the authored use description and specialist section, not
+   the General/Other navigation group or an assumption that all Qwen models are
+   coding presets. Do not transfer task recipes between model versions. Keep
+   explicit client overrides effective; the catalog supplies the fallback.
+   Record the source revision and reason
    in the [settings reference](reference.md#sampling-and-context-sources) beside
    the affected preset. A parameter used in a short test is not automatically
    a justified default. Keep publisher capacity, configured input-plus-output

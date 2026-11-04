@@ -11,11 +11,11 @@ Apache-2.0 license. [Model and quantizations](https://huggingface.co/XHToken/Spa
 No MTP acceleration was used in these measurements; announced support is
 separate from a tested configuration.
 
-The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
+The [catalog helper configuration](../../catalog/README.md#smaller-assistants)
 uses llama.cpp b12089, the embedded template, Q8 conversation memory and the
 publisher's 1,048,576-token window. Thinking defaults on, following the publisher and template;
 the harness can switch it off for the measured helper behavior below. There is
-no matched quality, timing or memory measurement for this prepared on default.
+no matched quality, timing or memory measurement for this catalog on default.
 The helper measurements used 16,384 tokens. Full-window fit is unmeasured;
 the earlier XS placement does not establish fit at the publisher's window.
 [Setting sources and memory tradeoff](../../catalog/reference.md#sampling-and-context-sources).

@@ -8,9 +8,13 @@ do not establish a general quality ranking.
 **[Install Temper](https://github.com/temper-sh/temper#get-started)**, then use
 `temper init` for a new setup or `temper configure` to change one. Review the
 requirements and memory estimate before preparing the selected models.
+Use Temper **0.5.0 or newer** for the current presets and retirement controls.
+Older clients retain saved selections but cannot use most current catalog entries.
 
 The [sampling and context reference](reference.md#sampling-and-context-sources)
-links the publisher guidance and local evidence behind each authoring default.
+links the publisher guidance and local evidence behind each authoring default,
+selected for the preset's designated role and reasoning mode. Explicit supported
+application sampling values override that fallback.
 Model capacity, allocated context and demonstrated workload length are distinct;
 publisher-sized windows can require substantially more memory than short tests.
 
@@ -20,33 +24,29 @@ publisher-sized windows can require substantially more memory than short tests.
 
 | Preset | Why this configuration exists | Observations |
 |---|---|---|
-| Qwen3.8 27B with Splash | Uses the Unsloth weight build with a draft model and the Frog template integration. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
-| Qwen3.8 27B with llama.cpp | Runs the same target weights through another engine, with the Frog template and built-in draft prediction. | [Coding and document-work cases](../models/qwen3.8-27b/README.md). |
+| Qwen3.8 27B with Splash | Uses BaseQuant Medium weights with a draft model and the Frog template integration. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
 | Muse Glimmer 30B | DFlash2 accelerates generation on the tested M5 at a 131,072-token window; the plain 57,344-token option uses less memory. | [Technical writing and workflow observations](../models/muse-glimmer-30b/README.md). |
 | Gemma 4 26B-A4B | Unsloth QAT weights, plain decoding and a 131,072-token window, with a 1,024-token reasoning default. | [Writing and conversation cases](../models/gemma-4-26b-a4b/README.md). |
 | Gemma 4 31B | The larger Gemma model uses MTP width 3 at a 40,960-token window, with a 1,024-token reasoning default. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
 
-**Prepared Qwen choice:** BaseQuant Medium with Splash is the sole Qwen3.8 27B
-preset in the authoring source, using the tested 114,681-token allocation.
-Both Unsloth presets, Splash and llama.cpp/MTP, are retired from that source.
+**Qwen choice:** BaseQuant Medium with Splash is the sole offered Qwen3.8 27B
+preset, using the tested 114,681-token allocation. Both Unsloth presets, Splash
+and llama.cpp/MTP, are retired.
 In the comparison's
 CSV review repair, loaded/peak system wired growth was **18.27/21.11 GiB**
 for Medium and **18.89/21.70 GiB** for K_XL. Both remained unaccepted after
 repair; cumulative model-active costs were about 66 minutes each. These are
 workload observations including other applications, not minimum RAM or a
 quality ranking. [Conditions and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl)
-retain the exact evidence. The signed catalog still supplies Unsloth at
-112,000 on 32 GiB; `temper update` will not receive the prepared changes until
-signed publication. Already saved Unsloth presets remain usable;
+retain the exact evidence. Already saved Unsloth presets remain usable;
 updating the catalog neither removes them nor switches their weights to BaseQuant.
-Temper versions supporting the current retirement notice offer **Retired** in
+Temper 0.5.0 offers **Retired** in
 `configure` for an explicit replacement or removal. Older versions and notices
 that have aged out use **Other**.
 Full `temper update` can still update their router/engine software while keeping
 weights and settings. To change the model, select BaseQuant explicitly.
 
-These models use the [Apache-2.0 license][apache-license]. The signed Unsloth
-Splash and llama.cpp presets share their target file. Splash also creates a
+These models use the [Apache-2.0 license][apache-license]. Splash also creates a
 native weight cache, adding disk use and first-startup work.
 
 The [Qwen / Kapitsa layout](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md) is
@@ -55,7 +55,8 @@ prevent a recommendation; its measured outcomes remain available for review.
 Existing saved presets remain under **Other** when the catalog is updated.
 
 Profiles containing memory observations require Temper 0.4.0 or
-newer. The linked observations include Splash's separate 64 GiB profile and
+newer; retirement controls and optional preset settings use Temper 0.5.0.
+The linked observations include the historical Unsloth Splash 64 GiB profile and
 configurations beyond the published presets, such as alternative Gemma draft
 settings. The
 [configuration reference](reference.md#published-settings-and-evaluated-variants)
@@ -88,13 +89,11 @@ The cards identify the actual cases and review method.
 These configurations serve different small application jobs rather than one
 universal assistant role. Actual fit on 8 or 16 GiB machines remains unmeasured.
 
-**Availability:** the signed catalog contains the earlier Gemma E2B, Gemma E4B
-and Qwen3.5 presets. The assessed configurations below are prepared in the
-[authoring source](sources/apple-silicon.json), awaiting signed publication;
-`temper update` continues to use the signed choices. Their memory observations
-require Temper 0.4.0 or newer. Existing saved selections are unchanged.
+**Availability:** the configurations below are offered in the signed catalog.
+Use Temper 0.5.0 for their optional defaults and reasoning controls. Existing
+saved selections change only through an explicit update or configuration action.
 
-| Prepared preset | Useful distinction | Assessment |
+| Preset | Useful distinction | Assessment |
 |---|---|---|
 | Gemma 4 E2B, 32K | Fast note reads and export conversations; correct populated lookups with unwanted JSON fences | [Behavior and memory](../models/gemma-4-e2b/README.md). |
 | Qwen3.5 4B, 256K | Publisher thinking-on window; one checkpoint for continuation reuse. Helper measurements used 16K/off; full-window fit is unmeasured. | [Ownership and lookup limits](../models/qwen3.5-4b/README.md). |
@@ -105,7 +104,7 @@ require Temper 0.4.0 or newer. Existing saved selections are unchanged.
 
 Thinking is a preset default that the harness can override where supported.
 [Defaults, capabilities and publisher guidance](reference.md#thinking-defaults-and-operator-controls)
-explain the exceptions and distinguish prepared settings from measured modes.
+explain the exceptions and distinguish current defaults from measured modes.
 
 All use Q4 weights and Q8 conversation memory; these are different precision
 choices. Gemma, Qwen and Spark use [Apache-2.0][apache-license]; Bolt and its

@@ -4,9 +4,8 @@ Configuration details and evidence behind the [short preset page](splash-ud-q4-k
 For installation, use Temper's published catalog; the evaluated variants here
 are not all offered presets. See [how to use the technical references](../../../guides/technical-reference.md).
 
-**Prepared preset:** `qwen3.8-27b-basequant-medium-splash`.
-`qwen3.8-27b-q4xl-splash` is retired from the authoring catalog; the signed
-catalog still supplies it until publication. Existing saved copies retain
+**Offered preset:** `qwen3.8-27b-basequant-medium-splash`.
+`qwen3.8-27b-q4xl-splash` is retired and no longer offered. Existing saved copies retain
 Unsloth weights. Its ID is not repurposed for a different quantization.
 
 The [Kapitsa reference](kapitsa-mlx4-reference.md) documents the thinking-off
@@ -22,8 +21,7 @@ their own settings and do not inherit the thinking-off outcomes.
 **Prefer Medium for its measured memory saving on M5 / 32 GiB.** The coding
 observations support neither a consistent quality winner nor a general speed
 advantage. K_XL remains comparison evidence. Its Splash and llama.cpp/MTP
-presets are retired from authoring; the signed catalog still supplies both
-until publication. Only Medium is prepared as a Qwen3.8 27B choice; Large
+presets are retired. Only Medium is offered as a Qwen3.8 27B choice; Large
 is not offered for this composition.
 
 ### Completed work and review
@@ -115,12 +113,12 @@ not established.
 | [Unsloth UD-Q4_K_XL](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) · 17,559,178,144 bytes | `4ca720788d1e01f1bff70c033e0d0028fd02e502` | `3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e` |
 | [DFlash2](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2) · target-independent draft | `015e795645c74b1a0eeef3b570031fb62e769bc5` | `model.safetensors`: `67fc76d68dc5a9415511a4f394ef744d67510cd20e93b37cc2cc7d28e4bab65c` |
 
-The prepared Medium authoring profile repeats the tested 114,681 allocation and
+The Medium catalog profile repeats the tested 114,681 allocation and
 seven-day engine watchdog, with the CSV repair's exact memory observation.
 Medium has one measured 32 GiB profile; no 64 GiB observation is inherited
 from K_XL. K_XL's separate 64 GiB profile remains historical evidence.
-The signed catalog still owns availability and preserves its 112,000-token
-32 GiB default until publication and an explicit user update.
+Saved Unsloth selections retain their existing defaults until an explicit
+user change; the catalog does not replace their weights automatically.
 
 The harness now permits final submission by immutable tested-proposal ID,
 avoiding the redundant full-patch transmission that exhausted K_XL's Ruby
@@ -175,8 +173,8 @@ the release change and template-maintenance cost, not every possible 1.4.0 setup
 
 The preset requires Apple M3 or newer, macOS 26.4+ and at least 32 GiB.
 Temper supplies the Frog template through the Python server's tokenizer
-override. The signed Unsloth Splash/llama.cpp presets share a target GGUF;
-the prepared BaseQuant preset uses its own target. Splash's first startup
+override. The historical Unsloth Splash/llama.cpp presets share a target GGUF;
+the BaseQuant preset uses its own target. Splash's first startup
 also prepares a native weight cache, adding time and disk use.
 The tested profile calibrates ANE prefill during startup and disables SSD
 prefix caching. The engine memory allowance is a cap, not reserved memory.

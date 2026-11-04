@@ -1,8 +1,7 @@
 # Qwen3.8 27B / llama.cpp: technical reference
 
-This preset is retired from the authoring catalog; the signed catalog still
-supplies it until publication. Existing installed selections remain usable.
-[BaseQuant Medium/Splash](splash-ud-q4-k-xl.md) is the sole prepared Qwen choice.
+This preset is retired and no longer offered in the catalog. Existing installed selections remain usable.
+[BaseQuant Medium/Splash](splash-ud-q4-k-xl.md) is the sole offered Qwen choice.
 The measurements below remain historical evidence.
 
 Document-work and context observations behind the [model overview](../README.md).

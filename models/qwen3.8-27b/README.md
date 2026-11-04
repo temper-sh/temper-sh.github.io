@@ -1,8 +1,7 @@
 # Qwen3.8 27B
 
-**BaseQuant Medium with Splash is the sole prepared Qwen preset.** The signed
-catalog still offers Unsloth Splash and llama.cpp; both are retired from
-authoring and will leave the catalog at publication. Existing saved selections
+**BaseQuant Medium with Splash is the sole offered Qwen preset.**
+The Unsloth Splash and llama.cpp presets are retired. Existing saved selections
 stay usable. The [Kapitsa layout is parked experimental](layouts/kapitsa-mlx4.md).
 Kapitsa
 completed a checked Flask change on a 32 GiB M5, but failed pagination,
@@ -15,9 +14,8 @@ with a 262,144-token native context. Apache 2.0.
 [Official model details](https://huggingface.co/Qwen/Qwen3.8-27B).
 
 The configurations here use text. Kapitsa uses MLX weights and native
-rendering; the signed Splash and llama.cpp presets share Unsloth UD-Q4_K_XL
-weights and the Frog template. The authoring catalog prepares only BaseQuant
-Medium for Splash: lower measured memory on M5 / 32 GiB, with no consistent
+rendering; the historical Splash and llama.cpp presets share Unsloth UD-Q4_K_XL
+weights and the Frog template. The catalog offers BaseQuant Medium for Splash: lower measured memory on M5 / 32 GiB, with no consistent
 coding-quality advantage. The publisher's context and modality claims do
 not establish those capabilities in these local configurations.
 
@@ -26,8 +24,8 @@ not establish those capabilities in these local configurations.
 | Configuration | Purpose and availability | Observations and details |
 |---|---|---|
 | Kapitsa | Parked experimental; not offered in the current catalog. Tested MLX 4-bit, DFlash2, thinking off, 98,304-token window. | [Assessment and hardware table](layouts/kapitsa-mlx4.md); coding failures and retained successful cases. |
-| Splash | BaseQuant Medium with DFlash2 and Frog is prepared; the signed Unsloth preset awaits retirement. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
-| llama.cpp | Unsloth/MTP is retired from authoring, still in the signed catalog. Historical document and tool cases remain. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
+| Splash | BaseQuant Medium with DFlash2 and Frog is offered; Unsloth is retired. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
+| llama.cpp | Unsloth/MTP is retired and no longer offered. Historical document and tool cases remain. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
 
 [Explore the presets and set up Temper](../../catalog/README.md).
 

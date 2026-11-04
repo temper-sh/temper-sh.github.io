@@ -15,7 +15,7 @@ an experiment's settings to prepare a setup.
 
 | Configuration | Published preset | Additional evaluated configuration |
 |---|---|---|
-| Qwen / Splash | Unsloth K_XL, 112,000 tokens for 32 GiB+ and 131,072 for 64 GiB+ | Prepared BaseQuant Medium only, at 114,681; Unsloth retired from authoring |
+| Qwen / Splash | BaseQuant Medium, 114,681 tokens | Retired Unsloth K_XL: historical 112,000-token 32 GiB and 131,072-token 64 GiB profiles, plus the matched 114,681-token comparison |
 | Qwen / Kapitsa | Not offered; parked experimental layout | MLX4/DFlash2 coding failures, successful cases and context measurements remain in the [reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) |
 | Muse Glimmer | DFlash2 at 131,072 tokens, or plain decoding at 57,344 | Matched plain/DFlash2 comparison at 57,344 tokens |
 | Gemma 26B | Plain decoding, 131,072-token window and a 1,024-token reasoning budget | Earlier 98,304-token configuration and draft experiments |
@@ -29,7 +29,8 @@ requirements.
 ## Sampling and context sources
 
 The [authoring source](sources/apple-silicon.json) uses model-specific guidance
-unless a documented local comparison or workload justifies a different setting.
+selected for the preset's designated role and reasoning mode, unless a documented
+local comparison or workload justifies a different setting.
 A successful short request is not evidence for choosing its test window as a
 general default. Published snapshots and historical measurements retain their
 original settings until an explicit catalog publication and user update.
@@ -41,35 +42,43 @@ Mac. The table covers all 21 authoring presets. Larger fallback windows have no
 new loaded/peak memory or latency measurements; review Temper's estimate and
 adjust the allocation for your workload and machine.
 
-| Preset(s) | Sampling basis | Allocation / catalog ceiling, tokens; reason |
+| Preset(s) and designated role | Sampling basis | Allocation / catalog ceiling, tokens; reason |
 |---|---|---|
-| Qwen3.5 4B | [Qwen's general-task thinking recipe][settings-qwen35]: T1, top_p .95, top_k 20, presence penalty 1.5 | **262,144 / 262,144**, publisher default. Earlier 16,384 off-mode helper/cache measurements do not ground a thinking-on default; Qwen advises at least 128K for thinking. |
-| Qwen3.8 BaseQuant Medium / Splash | [Qwen's thinking recipe][settings-qwen38]: T1, top_p .95, top_k 20, presence penalty 0 | **114,681 / 262,144**. Retains the [admitted comparison allocation](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl) under the selected 24 GiB engine allowance. Actual occupied maximum was 41,769; this is not full-window proof. |
-| Muse plain / DFlash2 | [Meta's generation configuration][settings-muse]: T1, top_p .95, top_k 64 | **57,344 / 131,072** plain; **131,072 / 131,072** DFlash2. Retains [populated retrieval, continuation and memory observations](#muse-glimmer-configurations), with a lower-memory plain alternative. |
-| Gemma 4 E2B | [Google's card][settings-e2b]: T1, top_p .95, top_k **64** | **32,768 / 131,072**. Retains the [selected 32K lookup/cache allocation](#small-collaborator-configurations), tested with 24.5K input. The former top_k 0 was a common test setting without a model-specific selection reason. |
-| Gemma 4 E4B | [Google's card][settings-e4b]: T1, top_p .95, top_k **64** | **16,384 / 131,072**. Retains the compact helper allocation demonstrated by [12.3K-input lookup and stateful tasks](../models/gemma-4-e4b/README.md); larger capacity and actual 16 GiB fit remain unmeasured. |
-| Gemma 4 26B-A4B / 31B | [26B][settings-gemma26] and [31B][settings-gemma31] cards: T1, top_p .95, top_k 64 | **131,072 / 262,144** and **40,960 / 262,144**, respectively. [Populated-context and writing tests](#gemma-writing-configurations) justify these machine-specific allocations, not a native model ceiling. |
-| Nemotron Bolt plain / DFlash | [NVIDIA's card][settings-bolt] supplies T1/top_p .95; its [generation configuration][settings-bolt-generation] supplies top_k **64** | Both **16,384 / 65,536**. Retains the [compact helper choice and populated lookup evidence](../models/nemotron-3.5-bolt-e4b/README.md). The earlier common top_k 0 has no demonstrated advantage. |
-| Spark X2.6 4B | [Publisher recipe][settings-spark]: T1, top_p .95, top_k disabled | **1,048,576 / 1,048,576**, publisher deployment default. The earlier 16K off-mode conversations used at most 869 input tokens; they do not justify restricting the on-mode window. The publisher explicitly permits reducing context for available memory. |
-| NuExtract3 | Greedy decoding retained: [nine local extraction cases](../models/specialists/nuextract3/README.md) and the publisher's [Transformers example][settings-nuextract] use it. The same card recommends T.2 for non-thinking sampling; greedy is a documented local choice. | **131,072 / 262,144**. Allocation follows the publisher's deployment recipe; [model configuration][settings-nuextract-config] supplies the architectural ceiling. The earlier 8,192 allocation only tested short documents. This does not transfer vLLM's memory behavior to llama.cpp. |
-| Qwen3 Reranker 0.6B | No generative sampler; native relevance scoring | **32,768 / 32,768**, [publisher's 32K bound][settings-reranker]. The 40,960 positional embedding size is not adopted over the card's narrower claim. The earlier 4,096 was a short-passage test allocation. |
-| Ettin Reranker 150M | No generative sampler; native relevance scoring | **7,999 / 7,999**, the [model's maximum sequence length][settings-ettin]. Kept unchanged; a pair includes query, passage and formatting. |
-| TranslateGemma 4B / 12B / 27B | Greedy decoding follows all three Google cards: [4B][settings-translate4], [12B][settings-translate12], [27B][settings-translate27] | All **4,096 / 4,096**, a deliberately bounded translation allocation: Google documents **2K input**; the remaining space accommodates translation output. This total is a local policy, not Google's stated input limit or the inherited 131,072 architectural maximum. No long-document claim or separate output cap is introduced. |
-| Tiny Aya Global / Water / Fire / Earth | Each Cohere card demonstrates **T.1 / top_p .95**: [Global][settings-aya-global], [Water][settings-aya-water], [Fire][settings-aya-fire], [Earth][settings-aya-earth]. Greedy translation tests did not compare sampler choices. | All **8,192 / 8,192**, following the documented 8K context conservatively as a shared input/output window. The cards mention 8K input and output; these are not added together. The GGUF's 500,000 positional capacity is not a supported task-length claim. |
+| Qwen3.5 4B — application helper | [Qwen's general-task thinking recipe][settings-qwen35]: T1, top_p .95, top_k 20, presence penalty 1.5 | **262,144 / 262,144**, publisher default. Earlier 16,384 off-mode helper/cache measurements do not ground a thinking-on default; Qwen advises at least 128K for thinking. |
+| Qwen3.8 BaseQuant Medium / Splash — coding and technical work | [Qwen's thinking recipe][settings-qwen38]: T1, top_p .95, top_k 20, presence penalty 0 | **114,681 / 262,144**. Retains the [admitted comparison allocation](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl) under the selected 24 GiB engine allowance. Actual occupied maximum was 41,769; this is not full-window proof. |
+| Muse plain / DFlash2 — technical writing, planning and review | [Meta's generation configuration][settings-muse]: T1, top_p .95, top_k 64 | **57,344 / 131,072** plain; **131,072 / 131,072** DFlash2. Retains [populated retrieval, continuation and memory observations](#muse-glimmer-configurations), with a lower-memory plain alternative. |
+| Gemma 4 E2B — note lookup and export helper | [Google's card][settings-e2b]: T1, top_p .95, top_k **64** | **32,768 / 131,072**. Retains the [selected 32K lookup/cache allocation](#small-collaborator-configurations), tested with 24.5K input. The former top_k 0 was a common test setting without a model-specific selection reason. |
+| Gemma 4 E4B — booking and inventory helper | [Google's card][settings-e4b]: T1, top_p .95, top_k **64** | **16,384 / 131,072**. Retains the compact helper allocation demonstrated by [12.3K-input lookup and stateful tasks](../models/gemma-4-e4b/README.md); larger capacity and actual 16 GiB fit remain unmeasured. |
+| Gemma 4 26B-A4B / 31B — creative drafting, conversation and revision | [26B][settings-gemma26] and [31B][settings-gemma31] cards: T1, top_p .95, top_k 64 | **131,072 / 262,144** and **40,960 / 262,144**, respectively. [Populated-context and writing tests](#gemma-writing-configurations) justify these machine-specific allocations, not a native model ceiling. |
+| Nemotron Bolt plain / DFlash — stateful application helper | [NVIDIA's card][settings-bolt] supplies T1/top_p .95; its [generation configuration][settings-bolt-generation] supplies top_k **64** | Both **16,384 / 65,536**. Retains the [compact helper choice and populated lookup evidence](../models/nemotron-3.5-bolt-e4b/README.md). The earlier common top_k 0 has no demonstrated advantage. |
+| Spark X2.6 4B — English application helper | [Publisher recipe][settings-spark]: T1, top_p .95, top_k disabled | **1,048,576 / 1,048,576**, publisher deployment default. The earlier 16K off-mode conversations used at most 869 input tokens; they do not justify restricting the on-mode window. The publisher explicitly permits reducing context for available memory. |
+| NuExtract3 — structured extraction and document conversion | Greedy decoding retained: [nine local extraction cases](../models/specialists/nuextract3/README.md) and the publisher's [Transformers example][settings-nuextract] use it. The same card recommends T.2 for non-thinking sampling; greedy is a documented local choice. | **131,072 / 262,144**. Allocation follows the publisher's deployment recipe; [model configuration][settings-nuextract-config] supplies the architectural ceiling. The earlier 8,192 allocation only tested short documents. This does not transfer vLLM's memory behavior to llama.cpp. |
+| Qwen3 Reranker 0.6B — multilingual relevance scoring | No generative sampler; native relevance scoring | **32,768 / 32,768**, [publisher's 32K bound][settings-reranker]. The 40,960 positional embedding size is not adopted over the card's narrower claim. The earlier 4,096 was a short-passage test allocation. |
+| Ettin Reranker 150M — English relevance scoring | No generative sampler; native relevance scoring | **7,999 / 7,999**, the [model's maximum sequence length][settings-ettin]. Kept unchanged; a pair includes query, passage and formatting. |
+| TranslateGemma 4B / 12B / 27B — translation | Greedy decoding follows all three Google cards: [4B][settings-translate4], [12B][settings-translate12], [27B][settings-translate27] | All **4,096 / 4,096**, a deliberately bounded translation allocation: Google documents **2K input**; the remaining space accommodates translation output. This total is a local policy, not Google's stated input limit or the inherited 131,072 architectural maximum. No long-document claim or separate output cap is introduced. |
+| Tiny Aya Global / Water / Fire / Earth — translation | **Greedy (T0)**, selecting [Cohere's reported generative-evaluation setting][settings-aya-evaluation] for translation, consistent with the [local greedy baseline](../models/specialists/tiny-aya/README.md). The cards' T.1/top_p .95 examples are general usage, not translation-specific recommendations. No sampler-quality advantage is claimed. | All **8,192 / 8,192**, following the [Global][settings-aya-global], [Water][settings-aya-water], [Fire][settings-aya-fire] and [Earth][settings-aya-earth] cards' 8K context conservatively as a shared input/output window. The cards mention 8K input and output; these are not added together. The GGUF's 500,000 positional capacity is not a supported task-length claim. |
 
-For Tiny Aya, top_k 0 explicitly disables the old top-1 restriction so nucleus
-sampling can operate; it is a neutral adapter choice, not a Cohere-recommended
-k value. Other unsourced extra filters remain disabled: min_p 0, repeat penalty
-1 and presence penalty 0, except the explicitly sourced Qwen presence penalty.
-These neutral settings prevent engine defaults from adding an extra restriction.
-They are not tuned model parameters. TranslateGemma and NuExtract's top_k 1
-is redundant with their greedy temperature 0.
+Qwen3.8 is the coding choice here; its publisher recommends the shown thinking
+recipe without a separate coding sampler. Qwen3.5's lower-temperature coding
+recipe does not apply to that model or to Qwen3.5's designated helper role.
+Gemma, Muse, Bolt and Spark use their model-specific general recommendation
+because the reviewed sources give no separate sampler for their catalog role.
+NuExtract retains the documented extraction exception. Rerankers have no
+generation sampler. Explicit supported request values override these defaults.
+
+Extra filters remain disabled unless sourced: min_p 0, repeat penalty 1 and
+presence penalty 0, except Qwen's explicit presence penalty. These neutral
+settings prevent engine defaults from adding an extra restriction; they are not
+tuned model parameters. Tiny Aya, TranslateGemma and NuExtract use top_k 1 and
+top_p 1 alongside temperature 0 to express greedy decoding. Top-k/top-p do not
+add a sampling policy to greedy generation.
 
 The small-helper reasoning budgets remain scoped to their recorded workloads;
 the larger Gemmas' 1,024-token choice has a separate [writing comparison](#gemma-writing-configurations).
 Changing sampling can change quality, output length, latency and memory. Earlier
-top_k 0 / greedy observations stay attached to those settings and do not validate
-the replacement sampler. Qwen3.5 and Spark have no current-default XS fit claim.
+top_k 0 observations stay attached to those settings and do not validate the
+replacement sampler. Tiny Aya's greedy baseline still does not validate the
+larger configured window. Qwen3.5 and Spark have no current-default XS fit claim.
 
 <details>
 <summary>Source provenance</summary>
@@ -79,7 +88,12 @@ and the catalog's exact cached GGUF metadata. No model weights were downloaded
 and no inference was performed. TranslateGemma and Tiny Aya's gated Transformer
 configuration files were unavailable; the public publisher cards and locally
 cached, catalog-pinned GGUF headers were used instead. Architectural metadata
-does not override a narrower publisher task-length statement.
+does not override a narrower publisher task-length statement. Role review also
+uses Cohere Labs maintainer `alexrs`'s 2 March 2026 reply on generation parameters,
+checked 2026-11-04. This is reported evaluation practice, not a universal
+translation recommendation. Regional defaults apply that family practice to
+the shared translation role; regional quality remains bounded by each card's
+local evidence.
 
 </details>
 
@@ -100,6 +114,7 @@ does not override a narrower publisher task-length statement.
 [settings-translate4]: https://huggingface.co/google/translategemma-4b-it/blob/10042cb0e6e7fdce748996a71dc3dc432a4e0c89/README.md
 [settings-translate12]: https://huggingface.co/google/translategemma-12b-it/blob/d1b225e1caa17f1ddc7e62065d8637d0923f34e2/README.md
 [settings-translate27]: https://huggingface.co/google/translategemma-27b-it/blob/7d10f0b72f89a2d0f268cea30727d8b77c0d25c2/README.md
+[settings-aya-evaluation]: https://huggingface.co/CohereLabs/tiny-aya-global/discussions/8
 [settings-aya-global]: https://huggingface.co/CohereLabs/tiny-aya-global/blob/af89d219b53ed9b13b8a4645f9c8028973510324/README.md
 [settings-aya-water]: https://huggingface.co/CohereLabs/tiny-aya-water/blob/41a99216d12b3ef4881df762934186e5e4d2bbc1/README.md
 [settings-aya-fire]: https://huggingface.co/CohereLabs/tiny-aya-fire/blob/73500c80fcb6c8bea3e830c21d5d2920249a0e1a/README.md
@@ -115,18 +130,18 @@ selections and forks; the suffix does not constrain requests. New preset IDs
 use runtime names. Signed catalogs and existing locks change only through their
 normal publication/update path.
 
-| Reviewed presets | Capability and prepared fallback | Guidance and template finding |
+| Reviewed presets | Capability and default fallback | Guidance and template finding |
 |---|---|---|
 | Qwen3.8 27B, BaseQuant Splash (1) | Switchable, on | [Publisher](https://huggingface.co/Qwen/Qwen3.8-27B) defaults on. The selected [Froggeric template](https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/blob/855bffc49448e299789730ff92c9b8d834d6cc14/chat_template.jinja) accepts `enable_thinking` and effort; the reviewed medium preset default is retained. Retired Unsloth Splash/MTP observations remain separate. |
-| Qwen3.5 4B (1) | Switchable, on | [Publisher guidance](https://huggingface.co/Qwen/Qwen3.5-4B#best-practices) defaults on. The consumed GGUF template defaults off unless enabled. The prepared fallback explicitly enables it, with general-task thinking sampling T1 / top_p .95 / top_k 20 / presence penalty 1.5. |
+| Qwen3.5 4B (1) | Switchable, on | [Publisher guidance](https://huggingface.co/Qwen/Qwen3.5-4B#best-practices) defaults on. The consumed GGUF template defaults off unless enabled. The fallback explicitly enables it, with general-task thinking sampling T1 / top_p .95 / top_k 20 / presence penalty 1.5. |
 | Gemma 4 E2B (1) | Switchable, off | [Google's card](https://huggingface.co/google/gemma-4-E2B-it) documents both modes and demonstrates off. The tested helper default is retained; no publisher requirement to enable thinking was found. |
 | Gemma 4 E4B, 26B-A4B and 31B (3) | Switchable, on | [Google's card](https://huggingface.co/google/gemma-4-E4B-it) documents the switch. Consumed templates default off; explicit on preserves the assessed choices. The 512/1,024-token budgets remain overridable defaults grounded in the named local workloads, not universal model limits. |
-| Nemotron 3.5 Bolt E4B, plain and DFlash (2) | Switchable, on | [NVIDIA's card](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16#reasoning-on) defaults on; the consumed GGUF template defaults off. Both prepared presets explicitly enable it and retain their tested, overridable 512-token budgets. |
+| Nemotron 3.5 Bolt E4B, plain and DFlash (2) | Switchable, on | [NVIDIA's card](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16#reasoning-on) defaults on; the consumed GGUF template defaults off. Both presets explicitly enable it and retain their tested, overridable 512-token budgets. |
 | Spark X2.6 4B (1) | Switchable, on | [Publisher](https://huggingface.co/XHToken/Spark-X2.6-4B) and consumed template default on. High is the template's effort default; only low/high are supported. Earlier off-mode helper measurements do not measure this fallback. |
 | Muse Glimmer 30B, plain and DFlash2 (2) | Always thinking; template strength high | [Meta](https://huggingface.co/meta-models/Muse-Glimmer-30B) recommends high/xhigh for complex, coding and agentic work. The [selected template](https://huggingface.co/meta-models/Muse-Glimmer-30B/blob/cec94fcfd6512f2cfe708138c32533b346ea4f69/chat_template.jinja) reads `reasoning_strength`, defaults high, and has no thinking-off branch. The ineffective `reasoning_effort: medium` override is omitted. Use `chat_template_kwargs.reasoning_strength` or an explicit system directive to choose strength. |
 | NuExtract3 (1) | Switchable, off | [NuMind](https://huggingface.co/numind/NuExtract3#reasoning-and-non-reasoning-modes) recommends off for production extraction and on for difficult examples. Its consumed template permits thinking only in structured/content modes. Existing measured sampling remains unchanged. |
 | TranslateGemma 4B, 12B and 27B (3) | No thinking switch, off | Consumed translation templates have no reasoning control. [Model details](https://huggingface.co/bullerwins/translategemma-4b-it-GGUF) describe the translation-specific interface. |
-| Tiny Aya Global, Water, Fire and Earth (4) | No thinking switch, off | The [official GGUF family](https://huggingface.co/CohereLabs/tiny-aya-global-GGUF) uses conversational templates without a thinking control. Sampling and context follow the publisher cards; historical translation tests remain a separate greedy baseline. |
+| Tiny Aya Global, Water, Fire and Earth (4) | No thinking switch, off | The [official GGUF family](https://huggingface.co/CohereLabs/tiny-aya-global-GGUF) uses conversational templates without a thinking control. Greedy sampling follows the selected generative-evaluation practice for translation; context follows the cards. Historical tests retain their smaller allocation. |
 | Ettin 150M and Qwen3 Reranker 0.6B (2) | Not applicable | Native reranking interfaces have no generation defaults; a chat template in the Qwen weight file does not turn its scoring interface into a reasoning chat model. |
 
 All 21 maintained presets are covered. Effort placeholders are omitted where
@@ -142,7 +157,7 @@ levels in that switch select on; they do not promise matching effort levels in
 every model. Muse's fixed behavior is a limitation, not a switchable mode.
 
 Historical quality, latency and memory observations keep their tested mode and
-budgets. Qwen3.5 and Spark's prepared on defaults have no new matched timing or
+budgets. Qwen3.5 and Spark's on defaults have no new matched timing or
 loaded/peak memory measurements. Their off-mode engine RSS measurements below
 remain workload observations, not forecasts for thinking-on use. Removing an
 engine setting can also make a saved memory observation inapplicable; Temper
@@ -254,9 +269,8 @@ workloads. This is evidence for a writing default, not a universal reasoning lim
 
 ## Small collaborator configurations
 
-These are prepared authoring choices, awaiting signed publication; the
-[signed channel](v1/channels/stable/channel.yaml) remains the installation
-authority. The helper measurements used llama.cpp **b11869**, llama-swap **v265**, the embedded
+These presets are offered through the
+[signed channel](v1/channels/stable/channel.yaml), the installation authority. The helper measurements used llama.cpp **b11869**, llama-swap **v265**, the embedded
 GGUF template, one GPU slot, four threads, mmap, batch/microbatch 512 and Q8
 KV. Prompt caching is enabled, RAM cache reserve is zero, and speculation is
 disabled except for the named Bolt variant. Current authoring uses b12089 and
@@ -264,7 +278,7 @@ v269. The table gives current defaults; the [source table](#sampling-and-context
 explains changes from the measured samplers and windows. Those changes have no
 new quality, latency or memory measurements.
 
-| Prepared ID | Target and context | Request defaults | Context checkpoints |
+| Preset ID | Target and context | Request defaults | Context checkpoints |
 |---|---|---|---:|
 | `gemma-4-e2b-q4km-off` | Unsloth Q4_K_M, 32,768 | Off; T1 / top_p .95 / top_k 64 | 0 |
 | `qwen3.5-4b-q4km-off` | Unsloth Q4_K_M, 262,144 | On; T1 / top_p .95 / top_k 20 / presence penalty 1.5 | 1 |

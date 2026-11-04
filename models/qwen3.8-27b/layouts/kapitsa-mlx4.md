@@ -12,8 +12,8 @@ KV precision and engine together; it does not prove that Kapitsa itself causes
 the failures. Splash also failed the held-out repair.
 
 Existing saved `qwen3.8-27b-mlx4-kapitsa` presets remain user-owned under
-**Other** after a catalog update. For the sole prepared BaseQuant/Splash choice
-and the signed Unsloth presets awaiting retirement, see the
+**Other** after a catalog update. For the offered BaseQuant/Splash choice
+and the retired Unsloth presets, see the
 [current Qwen configurations](../README.md#configuration-choices).
 
 ## Tested configuration

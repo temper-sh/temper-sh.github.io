@@ -10,7 +10,7 @@ embeddings), text/image/audio input and text output. Apache 2.0; 128K context.
 [Model details](https://huggingface.co/google/gemma-4-E4B-it).
 Image and audio quality are unassessed here.
 
-The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
+The [catalog helper configuration](../../catalog/README.md#smaller-assistants)
 uses Unsloth Q4_K_M, the embedded template, llama.cpp b12089, Q8 conversation
 memory and a 16,384-token window. Thinking has a 512-token default, separately
 from total output. This is the tested helper treatment; it does not establish
@@ -78,7 +78,7 @@ Measured 24–25 October 2026. Unsloth revision
 `gemma-4-E4B-it-Q4_K_M.gguf`, SHA-256
 `85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87`.
 The native output allowance is a test condition, not product capacity evidence.
-The prepared thinking configuration has its own preset ID; it does not
+The catalog thinking configuration has its own preset ID; it does not
 relabel the historical off-mode observations.
 
 </details>

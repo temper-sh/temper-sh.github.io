@@ -10,7 +10,7 @@ native context. [Model details](https://huggingface.co/Qwen/Qwen3.5-4B).
 The helper confirmation uses text only; the separate extraction study includes
 one legible invoice image.
 
-The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
+The [catalog helper configuration](../../catalog/README.md#smaller-assistants)
 uses Unsloth Q4_K_M, the embedded template, llama.cpp b12089, Q8 conversation
 memory, one saved context checkpoint and the publisher's 262,144-token window. Its fallback
 follows the publisher's thinking-on guidance: temperature 1, top_p .95,
@@ -75,7 +75,7 @@ quality or capacity maximum. Actual 8/16 GiB fit remains unmeasured.
 <summary>Earlier capabilities, structured extraction and cache comparison</summary>
 
 The following measurements retain their own engine, template, sampling and
-workload conditions; the prepared deployment does not inherit them unchanged.
+workload conditions; the catalog deployment does not inherit them unchanged.
 An older successful lookup and the current failure do not isolate an engine
 regression because other request and source conditions also differ.
 

@@ -10,7 +10,7 @@ including embeddings), text/image/audio input and text output. Apache 2.0;
 128K context. [Model details](https://huggingface.co/google/gemma-4-E2B-it).
 Image and audio quality are unassessed here.
 
-The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
+The [catalog helper configuration](../../catalog/README.md#smaller-assistants)
 uses Unsloth Q4_K_M, the embedded template, llama.cpp b12089, thinking off and
 Q8 conversation memory. The 32,768-token window adds useful lookup headroom
 without a material short-work cost in the measured follow-up. It is a tested
@@ -79,7 +79,7 @@ Older b10655/b11149 off-mode tests establish field extraction, small scheduling
 and short release work, while retaining policy/missing-evidence errors,
 source-fact changes in writing and recovery that rereads a concurrent edit
 but stops before saving. These are separate configurations, not repeated
-quality checks of the prepared deployment.
+quality checks of the catalog deployment.
 
 Measured 24–25 October 2026. Unsloth revision
 `0314792d7f1f7e229411f620751375812bb9faf2`, file

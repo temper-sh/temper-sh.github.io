@@ -68,14 +68,14 @@ placement here does not imply that they all fit an 8 GB machine.
 - [Qwen3.5 4B](qwen3.5-4b/README.md) — Extraction, classification and short
   booking/export workflows; one checkpoint speeds continuation, while ownership
   and larger lookup errors remain. This placement covers the tested 16K/off
-  setup; fit at the prepared 256K/on default is unmeasured.
+  setup; fit at the catalog 256K/on default is unmeasured.
 - [Nemotron 3.5 Bolt E4B](nemotron-3.5-bolt-e4b/README.md) — Thinking completes
   the tested grounded actions; DFlash shortens waits at a higher memory cost.
   Unsloth UD-Q4_K_XL.
 - [Spark X2.6 4B](spark-x2.6-4b/README.md) — Fast English booking/note/export
   helper with thinking off; stock errors and missing reasoning-mode answers
   limit broader work. This placement covers the tested 16K/off setup; fit at
-  the prepared 1M/on default is unmeasured.
+  the catalog 1M/on default is unmeasured.
 - [Spark X2.5 4B](spark-x2.5-4b/README.md) — With thinking on, completed short
   policy, copyediting and recovery tasks on official llama.cpp. Broader tests
   on the XHToken fork found limitations in longer writing and translation.
@@ -104,8 +104,8 @@ reached 12.23 GiB of server memory.
   and checking evidence; longer workflows stopped before the final report.
   Q4_K_M, thinking budget 512, 32k.
 - [Qwen3.8 27B](qwen3.8-27b/README.md) —
-  BaseQuant Medium/Splash is the sole prepared preset; signed Unsloth
-  Splash and llama.cpp presets await retirement.
+  BaseQuant Medium/Splash is the sole offered preset; Unsloth Splash and
+  llama.cpp presets are retired.
   [Kapitsa is parked experimental](qwen3.8-27b/layouts/kapitsa-mlx4.md)
   following coding failures on M5 Pro; the successful M5 cases remain recorded.
   Separate llama.cpp results cover source synthesis and document editing.
