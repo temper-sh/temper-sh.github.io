@@ -11,11 +11,15 @@ including embeddings), text/image/audio input and text output. Apache 2.0;
 Image and audio quality are unassessed here.
 
 The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
-uses Unsloth Q4_K_M, the embedded template, llama.cpp b11869, thinking off and
+uses Unsloth Q4_K_M, the embedded template, llama.cpp b12089, thinking off and
 Q8 conversation memory. The 32,768-token window adds useful lookup headroom
 without a material short-work cost in the measured follow-up. It is a tested
 point, not a measured maximum. Q4 is the measured baseline; higher weight
 precision was not compared for E2B.
+
+Sampling follows Google's T1 / top_p .95 / top_k 64 recipe. The helper
+measurements below used top_k 0; they do not validate the replacement sampler.
+[Setting sources](../../catalog/reference.md#sampling-and-context-sources).
 
 ## Observed work
 

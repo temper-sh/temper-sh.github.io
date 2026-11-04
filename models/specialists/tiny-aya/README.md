@@ -38,12 +38,15 @@ the translation.” No TranslateGemma language-code adapter is needed. Keep the
 source alongside the output so names, quantities, negation and required actions
 can be checked before another step uses the translation.
 
-Temper selects the official **Q8_0** GGUF for each variant, **3.57 GB** per
-model, with **llama.cpp b11396**, GPU by default and CPU available. The default
-is a **4,096-token total window** with **2,048 output tokens**; the catalog
-allows up to 8,192 total tokens, without claiming local capacity validation
-there. CPU speed, longer inputs and simultaneous use with a main model remain
-unmeasured.
+The prepared catalog selects the official **Q8_0** GGUF for each variant,
+**3.57 GB** per model, with **llama.cpp b12089**, GPU by default and CPU available.
+It follows Cohere's **temperature .1 / top_p .95** examples and **8,192-token
+window**, shared by input and output, with no separate output cap. Local
+translation measurements used greedy decoding and 4,096 tokens; neither full
+capacity nor the new sampler is locally validated. CPU speed, longer inputs and
+simultaneous use with a main model remain unmeasured.
+[Setting sources](../../../catalog/reference.md#sampling-and-context-sources)
+distinguish the prepared defaults from the signed catalog and tested baseline.
 
 Global/Water tested builds: official Cohere Labs Q8_0 GGUFs with llama.cpp b11396 on Metal,
 the embedded chat template, greedy decoding, F16 KV, 4,096-token total context,

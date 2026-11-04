@@ -11,14 +11,16 @@ The helper confirmation uses text only; the separate extraction study includes
 one legible invoice image.
 
 The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
-uses Unsloth Q4_K_M, the embedded template, llama.cpp b11869, Q8 conversation
-memory, one saved context checkpoint and a 16,384-token window. Its fallback
+uses Unsloth Q4_K_M, the embedded template, llama.cpp b12089, Q8 conversation
+memory, one saved context checkpoint and the publisher's 262,144-token window. Its fallback
 follows the publisher's thinking-on guidance: temperature 1, top_p .95,
 top_k 20 and presence penalty 1.5. The harness can switch thinking off.
 
-The helper results below used thinking off, temperature .7 and top_p .8.
+The helper results below used 16,384 tokens, thinking off, temperature .7 and top_p .8.
 They do not establish the latency, quality or memory use of the prepared on
-default. Weight precision was not compared for this candidate.
+default. Full-window fit is unmeasured; the earlier XS placement describes the
+small tested allocation, not this default. [Setting sources](../../catalog/reference.md#sampling-and-context-sources).
+Weight precision was not compared for this candidate.
 
 ## Observed helper work
 

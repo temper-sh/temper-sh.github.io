@@ -27,6 +27,11 @@ the codes on every request; the
 shows the contract. Keep input within 2K tokens and check the output before a
 later pipeline step relies on it.
 
+The 4,096-token combined allocation leaves room for translation after the
+publisher's 2K input allowance. It is a local bounded-translation policy, not
+the underlying architecture's maximum. Greedy decoding follows Google's
+examples. [Setting sources](../../../catalog/reference.md#sampling-and-context-sources).
+
 Native language-code handling preserves the former adapter's prompt: the
 4B check on 2026-10-17 produced identical rendered prompts and translations for
 English→French and English→German. All three selected GGUFs contain the same

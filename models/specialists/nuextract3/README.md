@@ -20,6 +20,12 @@ interface through Temper's supervised API. CPU placement includes the image
 projector; it is much slower for the tested image. These are component checks,
 not an integrated document-processing workflow.
 
+The prepared catalog retains this evidenced greedy extraction choice, but uses
+the publisher's **131,072-token deployment window** and **262,144 architectural
+ceiling**. The 8,192-token test allocation did not establish a useful capacity
+limit. Larger-window memory and extraction quality are unmeasured.
+[Setting sources](../../../catalog/reference.md#sampling-and-context-sources).
+
 ## Use in a pipeline
 
 **Text or a document image plus an extraction template → structured records.**

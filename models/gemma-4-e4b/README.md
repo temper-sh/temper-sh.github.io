@@ -11,11 +11,15 @@ embeddings), text/image/audio input and text output. Apache 2.0; 128K context.
 Image and audio quality are unassessed here.
 
 The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
-uses Unsloth Q4_K_M, the embedded template, llama.cpp b11869, Q8 conversation
+uses Unsloth Q4_K_M, the embedded template, llama.cpp b12089, Q8 conversation
 memory and a 16,384-token window. Thinking has a 512-token default, separately
 from total output. This is the tested helper treatment; it does not establish
 that 512 is optimal.
 Q4 is the measured economical baseline, with no E4B weight-precision comparison.
+
+Sampling follows Google's T1 / top_p .95 / top_k 64 recipe. The helper
+measurements below used top_k 0; they do not validate the replacement sampler.
+[Setting sources](../../catalog/reference.md#sampling-and-context-sources).
 
 ## Observed work
 

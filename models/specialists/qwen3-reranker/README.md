@@ -22,6 +22,12 @@ for the 4B comparison. Both use the embedded reranking template, rank pooling,
 These conversions include the scoring head expected by llama.cpp; the evidence
 does not transfer to arbitrary GGUF conversions or added query instructions.
 
+The prepared catalog uses the publisher's **32,768-token bound** for the
+combined query, passage and formatting. The 4,096-token allocation above was
+a short-passage test condition, not the model limit. Long-pair quality and
+loaded/peak memory remain unmeasured.
+[Setting sources](../../../catalog/reference.md#sampling-and-context-sources).
+
 ## Use in a pipeline
 
 **Query and candidate passages → multilingual relevance order.** Use the 0.6B

@@ -38,7 +38,7 @@ Unless stated otherwise, the listed configurations use Q4_K_M at 16k context.
 
 ## XS · Up to 16 GB
 
-**Estimated fit.** These are the smaller configurations in the catalog. The
+**Estimated fit.** These are smaller measured configurations. The
 larger entries in this group are candidates for the 16 GB end of the range;
 placement here does not imply that they all fit an 8 GB machine.
 
@@ -67,13 +67,15 @@ placement here does not imply that they all fit an 8 GB machine.
   unfinished. Q4_K_M, 16k context, 5.17 GiB measured process RSS.
 - [Qwen3.5 4B](qwen3.5-4b/README.md) — Extraction, classification and short
   booking/export workflows; one checkpoint speeds continuation, while ownership
-  and larger lookup errors remain.
+  and larger lookup errors remain. This placement covers the tested 16K/off
+  setup; fit at the prepared 256K/on default is unmeasured.
 - [Nemotron 3.5 Bolt E4B](nemotron-3.5-bolt-e4b/README.md) — Thinking completes
   the tested grounded actions; DFlash shortens waits at a higher memory cost.
   Unsloth UD-Q4_K_XL.
 - [Spark X2.6 4B](spark-x2.6-4b/README.md) — Fast English booking/note/export
   helper with thinking off; stock errors and missing reasoning-mode answers
-  limit broader work.
+  limit broader work. This placement covers the tested 16K/off setup; fit at
+  the prepared 1M/on default is unmeasured.
 - [Spark X2.5 4B](spark-x2.5-4b/README.md) — With thinking on, completed short
   policy, copyediting and recovery tasks on official llama.cpp. Broader tests
   on the XHToken fork found limitations in longer writing and translation.

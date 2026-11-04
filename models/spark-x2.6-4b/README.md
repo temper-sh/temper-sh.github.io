@@ -12,10 +12,13 @@ No MTP acceleration was used in these measurements; announced support is
 separate from a tested configuration.
 
 The [prepared helper configuration](../../catalog/README.md#smaller-assistants)
-uses llama.cpp b11869, the embedded template, Q8 conversation memory and a
-16,384-token window. Thinking defaults on, following the publisher and template;
+uses llama.cpp b12089, the embedded template, Q8 conversation memory and the
+publisher's 1,048,576-token window. Thinking defaults on, following the publisher and template;
 the harness can switch it off for the measured helper behavior below. There is
 no matched quality, timing or memory measurement for this prepared on default.
+The helper measurements used 16,384 tokens. Full-window fit is unmeasured;
+the earlier XS placement does not establish fit at the publisher's window.
+[Setting sources and memory tradeoff](../../catalog/reference.md#sampling-and-context-sources).
 Earlier bounded reasoning attempts do not measure unrestricted generation.
 Q4_K_M is the tested baseline;
 no precision comparison establishes an optimal quant for Spark 2.6.

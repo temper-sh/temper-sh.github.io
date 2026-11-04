@@ -58,6 +58,20 @@ defines the commands.
    Missing or mismatched evidence leaves estimation as the fallback. The
    measurement field needs Temper 0.4.0; older readers hide affected profiles.
 
+   Ground sampling and context values in the model's own card, generation
+   configuration or trusted model-specific guidance unless applicable local
+   evidence supplies a reason to differ. Record the source revision and reason
+   in the [settings reference](reference.md#sampling-and-context-sources) beside
+   the affected preset. A parameter used in a short test is not automatically
+   a justified default. Keep publisher capacity, configured input-plus-output
+   allocation and observed occupied context distinct. Retain a smaller window
+   only with a documented workload, memory or runtime reason; otherwise use
+   the publisher's default/native window. Do not add separately advertised
+   input/output allowances or copy a base architecture's limit over a narrower
+   model-specific claim. Explain neutral adapter controls separately from
+   publisher-recommended sampling. Preserve historical measurements unchanged
+   when defaults change, and check the resulting locks and rendered commands.
+
 2. **Preview it locally.** `--catalog` reads the file as is, without a
    signature, into a separate root:
 

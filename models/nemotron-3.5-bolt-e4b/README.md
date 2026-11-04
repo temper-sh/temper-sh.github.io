@@ -15,10 +15,14 @@ from the larger Nemotron Bolt that some engines support.
 ## Configuration choices
 
 Both [prepared choices](../../catalog/README.md#smaller-assistants) use the same
-Unsloth UD-Q4_K_XL target, embedded template, llama.cpp b11869, Q8 conversation
+Unsloth UD-Q4_K_XL target, embedded template, llama.cpp b12089, Q8 conversation
 memory and a 16,384-token window. Thinking has a 512-token default; applications
 can override it independently of total output. No separate total-output cap is
 selected. The test's 2,048-token allowance is not a product limit.
+
+Sampling uses NVIDIA's T1 / top_p .95 and top_k 64 generation configuration.
+The matched helper measurements below used top_k 0; they do not validate the
+replacement sampler. [Setting sources](../../catalog/reference.md#sampling-and-context-sources).
 
 | Choice | Reason to use it | Cost |
 |---|---|---|

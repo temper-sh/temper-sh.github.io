@@ -3468,7 +3468,7 @@
       "profiles": [
         {
           "min_memory_gib": 8,
-          "context_window_tokens": 16384,
+          "context_window_tokens": 262144,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -3551,9 +3551,8 @@
       ],
       "presentation": {
         "display_name": "Qwen3.5 4B / llama.cpp",
-        "description": "Compact helper with the publisher's thinking-on fallback and one context checkpoint. Booking/export observations used thinking off; verify ownership claims and long lookups.",
-        "group": "other",
-        "memory_tier": "XS"
+        "description": "A compact helper for booking corrections, note reads and export workflows. Uses the publisher's 262,144-token thinking window; local helper measurements used 16K with thinking off. Full-window memory and quality are unmeasured.",
+        "group": "other"
       },
       "reasoning_capability": "switchable"
     },
@@ -3569,7 +3568,7 @@
         "reasoning": "off",
         "sampling": {
           "temperature": 1,
-          "top_k": 0,
+          "top_k": 64,
           "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
@@ -4083,7 +4082,7 @@
         "source": "none",
         "max_draft_tokens": 0
       },
-      "context_limit_tokens": 8192,
+      "context_limit_tokens": 262144,
       "compute": "gpu",
       "compute_options": [
         "gpu",
@@ -4092,7 +4091,7 @@
       "profiles": [
         {
           "min_memory_gib": 32,
-          "context_window_tokens": 8192,
+          "context_window_tokens": 131072,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -4174,7 +4173,7 @@
         "source": "none",
         "max_draft_tokens": 0
       },
-      "context_limit_tokens": 4096,
+      "context_limit_tokens": 32768,
       "compute": "cpu",
       "compute_options": [
         "cpu",
@@ -4183,7 +4182,7 @@
       "profiles": [
         {
           "min_memory_gib": 32,
-          "context_window_tokens": 4096,
+          "context_window_tokens": 32768,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -4496,9 +4495,9 @@
       "request_defaults": {
         "reasoning": "off",
         "sampling": {
-          "temperature": 0,
-          "top_k": 1,
-          "top_p": 1,
+          "temperature": 0.1,
+          "top_k": 0,
+          "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
           "presence_penalty": 0
@@ -4517,7 +4516,7 @@
       "profiles": [
         {
           "min_memory_gib": 32,
-          "context_window_tokens": 4096,
+          "context_window_tokens": 8192,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -4561,9 +4560,9 @@
       "request_defaults": {
         "reasoning": "off",
         "sampling": {
-          "temperature": 0,
-          "top_k": 1,
-          "top_p": 1,
+          "temperature": 0.1,
+          "top_k": 0,
+          "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
           "presence_penalty": 0
@@ -4582,7 +4581,7 @@
       "profiles": [
         {
           "min_memory_gib": 32,
-          "context_window_tokens": 4096,
+          "context_window_tokens": 8192,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -4626,9 +4625,9 @@
       "request_defaults": {
         "reasoning": "off",
         "sampling": {
-          "temperature": 0,
-          "top_k": 1,
-          "top_p": 1,
+          "temperature": 0.1,
+          "top_k": 0,
+          "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
           "presence_penalty": 0
@@ -4647,7 +4646,7 @@
       "profiles": [
         {
           "min_memory_gib": 32,
-          "context_window_tokens": 4096,
+          "context_window_tokens": 8192,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -4691,9 +4690,9 @@
       "request_defaults": {
         "reasoning": "off",
         "sampling": {
-          "temperature": 0,
-          "top_k": 1,
-          "top_p": 1,
+          "temperature": 0.1,
+          "top_k": 0,
+          "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
           "presence_penalty": 0
@@ -4712,7 +4711,7 @@
       "profiles": [
         {
           "min_memory_gib": 32,
-          "context_window_tokens": 4096,
+          "context_window_tokens": 8192,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -4894,7 +4893,7 @@
         "reasoning_budget_tokens": 512,
         "sampling": {
           "temperature": 1,
-          "top_k": 0,
+          "top_k": 64,
           "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
@@ -5016,7 +5015,7 @@
         "reasoning_budget_tokens": 512,
         "sampling": {
           "temperature": 1,
-          "top_k": 0,
+          "top_k": 64,
           "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
@@ -5146,7 +5145,7 @@
         "reasoning_budget_tokens": 512,
         "sampling": {
           "temperature": 1,
-          "top_k": 0,
+          "top_k": 64,
           "top_p": 0.95,
           "min_p": 0,
           "repeat_penalty": 1,
@@ -5282,7 +5281,7 @@
       "profiles": [
         {
           "min_memory_gib": 16,
-          "context_window_tokens": 16384,
+          "context_window_tokens": 1048576,
           "engine_config": {
             "kind": "llama-server/v1",
             "parallel": 1,
@@ -5366,9 +5365,8 @@
       ],
       "presentation": {
         "display_name": "Spark X2.6 4B / llama.cpp",
-        "description": "English helper with the publisher's thinking-on fallback. Fast booking, note and export observations used thinking off; stock answers and longer work need independent checks.",
-        "group": "other",
-        "memory_tier": "XS"
+        "description": "English helper using the publisher's thinking-on, 1,048,576-token window. Local helper observations used 16K with thinking off. Full-window memory and quality are unmeasured; inventory answers can be quietly wrong.",
+        "group": "other"
       },
       "reasoning_capability": "switchable"
     },
