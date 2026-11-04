@@ -667,16 +667,16 @@
           "archive_root": "llama-{version}"
         },
         "release": {
-          "version": "b11741",
-          "revision": "1b29621bacc6a446bd523fc790316a24a06e886f",
+          "version": "b12089",
+          "revision": "9309bf1bcfe8d52b0fb7ef906474db94041a5e0c",
           "artifact": {
-            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11741/llama-b11741-bin-macos-arm64.tar.gz",
-            "sha256": "812a5f7d3707013956a5c9828c1b40fcfe2e3eb31c1ff7f091df193c3003e5bf",
-            "size": 12324422,
-            "unpacked_size": 32572694,
-            "installed_entries": 60,
+            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b12089/llama-b12089-bin-macos-arm64.tar.gz",
+            "sha256": "7dd4d5809a9e0e6d24d2c56d5939e1fa132ce3b1585ea18f8db100d01e7eddf5",
+            "size": 16576862,
+            "unpacked_size": 41923846,
+            "installed_entries": 61,
             "format": "tar.gz",
-            "archive_root": "llama-b11741"
+            "archive_root": "llama-b12089"
           }
         }
       },
@@ -745,16 +745,16 @@
           "archive_root": "llama-{version}"
         },
         "release": {
-          "version": "b11716",
-          "revision": "797de63b2fa7396dcc8caca76834c699ac84e1c3",
+          "version": "b12089",
+          "revision": "9309bf1bcfe8d52b0fb7ef906474db94041a5e0c",
           "artifact": {
-            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11716/llama-b11716-bin-macos-arm64.tar.gz",
-            "sha256": "622020528e3c5c98226bcb7d7e836945b2539197d88855ff1b5f3b846a6fa237",
-            "size": 12292446,
-            "unpacked_size": 32483638,
-            "installed_entries": 60,
+            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b12089/llama-b12089-bin-macos-arm64.tar.gz",
+            "sha256": "7dd4d5809a9e0e6d24d2c56d5939e1fa132ce3b1585ea18f8db100d01e7eddf5",
+            "size": 16576862,
+            "unpacked_size": 41923846,
+            "installed_entries": 61,
             "format": "tar.gz",
-            "archive_root": "llama-b11716"
+            "archive_root": "llama-b12089"
           }
         }
       },
@@ -3379,16 +3379,16 @@
           "archive_root": "llama-{version}"
         },
         "release": {
-          "version": "b11756",
-          "revision": "d80619397c2ba5cf1366c29f7d43699ca3a159b9",
+          "version": "b12089",
+          "revision": "9309bf1bcfe8d52b0fb7ef906474db94041a5e0c",
           "artifact": {
-            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11756/llama-b11756-bin-macos-arm64.tar.gz",
-            "sha256": "f86b5eb838b985a17587e794dee9c6b34193aca6dceec018031a4ba7951fb7e6",
-            "size": 16103382,
-            "unpacked_size": 40842486,
+            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b12089/llama-b12089-bin-macos-arm64.tar.gz",
+            "sha256": "7dd4d5809a9e0e6d24d2c56d5939e1fa132ce3b1585ea18f8db100d01e7eddf5",
+            "size": 16576862,
+            "unpacked_size": 41923846,
             "installed_entries": 61,
             "format": "tar.gz",
-            "archive_root": "llama-b11756"
+            "archive_root": "llama-b12089"
           }
         }
       },
@@ -3417,16 +3417,16 @@
           "archive_root": "llama-{version}"
         },
         "release": {
-          "version": "b11869",
-          "revision": "d327bf1f0780f87b8c01b367b61853b0c291d7c4",
+          "version": "b12089",
+          "revision": "9309bf1bcfe8d52b0fb7ef906474db94041a5e0c",
           "artifact": {
-            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b11869/llama-b11869-bin-macos-arm64.tar.gz",
-            "sha256": "0a24eb567528ee3265f0fcf11d9ef5d83f9d8f5bd18be760895b853eae82508f",
-            "size": 16248800,
-            "unpacked_size": 41137446,
+            "locator": "https://github.com/ggml-org/llama.cpp/releases/download/b12089/llama-b12089-bin-macos-arm64.tar.gz",
+            "sha256": "7dd4d5809a9e0e6d24d2c56d5939e1fa132ce3b1585ea18f8db100d01e7eddf5",
+            "size": 16576862,
+            "unpacked_size": 41923846,
             "installed_entries": 61,
             "format": "tar.gz",
-            "archive_root": "llama-b11869"
+            "archive_root": "llama-b12089"
           }
         }
       },
