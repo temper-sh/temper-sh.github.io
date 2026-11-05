@@ -1,8 +1,21 @@
 # Qwen3.8 27B / llama.cpp: technical reference
 
-This preset is retired and no longer offered in the catalog. Existing installed selections remain usable.
-[BaseQuant Medium/Splash](splash-ud-q4-k-xl.md) is the sole offered Qwen choice.
-The measurements below remain historical evidence.
+Choose `qwen3.8-27b-q4xl-mtp` for Apple Silicon Macs outside
+[Splash's M3+ requirement](https://github.com/incoai/splash#quick-start).
+It is offered alongside BaseQuant Medium/Splash in Temper's catalog.
+
+The configuration uses Unsloth UD-Q4_K_XL weights,
+Frog v22.5 template, embedded MTP with three draft tokens, medium reasoning,
+Q8 K/V, 14 checkpoints and 2,048 MiB extra prompt cache. It uses the maintained
+llama.cpp b12089 engine and a 65,536-token allocation with
+a 32 GiB minimum catalog profile. Sampling follows Qwen's thinking recipe:
+temperature 1, top-p 0.95 and top-k 20, with no presence penalty.
+
+The allocation preserves the former preset; it is not a newly measured
+capacity. M1/M2 runtime fit and loaded/peak memory at these settings on b12089
+remain unmeasured. Temper uses its memory estimate rather than treating older
+measurements as a match. The observations below retain their original engine,
+context and workload identities.
 
 Document-work and context observations behind the [model overview](../README.md).
 Results apply to the exact builds and conditions below. The

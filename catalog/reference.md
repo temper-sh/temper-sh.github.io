@@ -16,6 +16,7 @@ an experiment's settings to prepare a setup.
 | Configuration | Published preset | Additional evaluated configuration |
 |---|---|---|
 | Qwen / Splash | BaseQuant Medium, 114,681 tokens | Retired Unsloth K_XL: historical 112,000-token 32 GiB and 131,072-token 64 GiB profiles, plus the matched 114,681-token comparison |
+| Qwen / llama.cpp | Unsloth UD-Q4_K_XL / MTP, 65,536 tokens | [Document and capacity observations](../models/qwen3.8-27b/layouts/llama-cpp-reference.md) retain their earlier engines and workloads; M1/M2 fit is unmeasured |
 | Qwen / Kapitsa | Not offered; parked experimental layout | MLX4/DFlash2 coding failures, successful cases and context measurements remain in the [reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) |
 | Muse Glimmer | DFlash2 at 131,072 tokens, or plain decoding at 57,344 | Matched plain/DFlash2 comparison at 57,344 tokens |
 | Gemma 26B | Plain decoding, 131,072-token window and a 1,024-token reasoning budget | Earlier 98,304-token configuration and draft experiments |
@@ -38,7 +39,7 @@ original settings until an explicit catalog publication and user update.
 `context_window_tokens` allocates input **plus output**. `context_limit_tokens`
 is the preset's editable ceiling; it can be narrower than the architecture.
 Neither number establishes useful long-context quality or fit on a particular
-Mac. The table covers all 21 authoring presets. Larger fallback windows have no
+Mac. The table covers all 22 authoring presets. Larger fallback windows have no
 new loaded/peak memory or latency measurements; review Temper's estimate and
 adjust the allocation for your workload and machine.
 
@@ -46,6 +47,7 @@ adjust the allocation for your workload and machine.
 |---|---|---|
 | Qwen3.5 4B — application helper | [Qwen's general-task thinking recipe][settings-qwen35]: T1, top_p .95, top_k 20, presence penalty 1.5 | **262,144 / 262,144**, publisher default. Earlier 16,384 off-mode helper/cache measurements do not ground a thinking-on default; Qwen advises at least 128K for thinking. |
 | Qwen3.8 BaseQuant Medium / Splash — coding and technical work | [Qwen's thinking recipe][settings-qwen38]: T1, top_p .95, top_k 20, presence penalty 0 | **114,681 / 262,144**. Retains the [admitted comparison allocation](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl) under the selected 24 GiB engine allowance. Actual occupied maximum was 41,769; this is not full-window proof. |
+| Qwen3.8 Unsloth / llama.cpp — coding and general use | [Qwen's thinking recipe][settings-qwen38]: T1, top_p .95, top_k 20, presence penalty 0 | **65,536 / 262,144**. Retains the established allocation for the M1/M2 alternative; not a new capacity finding. [Earlier capacity observations](../models/qwen3.8-27b/layouts/llama-cpp-reference.md#long-documents-with-llamacpp) show why configured context is not proof of sustained fit. Current-engine loaded/peak memory and M1/M2 fit remain unmeasured. |
 | Muse plain / DFlash2 — technical writing, planning and review | [Meta's generation configuration][settings-muse]: T1, top_p .95, top_k 64 | **57,344 / 131,072** plain; **131,072 / 131,072** DFlash2. Retains [populated retrieval, continuation and memory observations](#muse-glimmer-configurations), with a lower-memory plain alternative. |
 | Gemma 4 E2B — note lookup and export helper | [Google's card][settings-e2b]: T1, top_p .95, top_k **64** | **32,768 / 131,072**. Retains the [selected 32K lookup/cache allocation](#small-collaborator-configurations), tested with 24.5K input. The former top_k 0 was a common test setting without a model-specific selection reason. |
 | Gemma 4 E4B — booking and inventory helper | [Google's card][settings-e4b]: T1, top_p .95, top_k **64** | **16,384 / 131,072**. Retains the compact helper allocation demonstrated by [12.3K-input lookup and stateful tasks](../models/gemma-4-e4b/README.md); larger capacity and actual 16 GiB fit remain unmeasured. |

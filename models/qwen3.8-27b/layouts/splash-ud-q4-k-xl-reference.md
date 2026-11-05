@@ -20,9 +20,10 @@ their own settings and do not inherit the thinking-off outcomes.
 
 **Prefer Medium for its measured memory saving on M5 / 32 GiB.** The coding
 observations support neither a consistent quality winner nor a general speed
-advantage. K_XL remains comparison evidence. Its Splash and llama.cpp/MTP
-presets are retired. Only Medium is offered as a Qwen3.8 27B choice; Large
-is not offered for this composition.
+advantage. K_XL remains comparison evidence for Splash; that preset is retired.
+The separate [llama.cpp/MTP configuration](llama-cpp-reference.md) is offered
+for older Apple Silicon. Medium is the
+offered Splash choice; Large is not offered for this composition.
 
 ### Completed work and review
 

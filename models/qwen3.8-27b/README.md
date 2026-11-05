@@ -1,9 +1,11 @@
 # Qwen3.8 27B
 
-**BaseQuant Medium with Splash is the sole offered Qwen preset.**
-The Unsloth Splash and llama.cpp presets are retired. Existing saved selections
-stay usable. The [Kapitsa layout is parked experimental](layouts/kapitsa-mlx4.md).
-Kapitsa
+**Choose Splash for M3+ or llama.cpp for older Apple Silicon.** The catalog
+offers BaseQuant Medium/Splash and Unsloth UD-Q4_K_XL/llama.cpp with MTP.
+Unsloth/Splash remains retired; existing saved selections stay usable.
+M1/M2 runtime fit remains unmeasured.
+
+The [Kapitsa layout is parked experimental](layouts/kapitsa-mlx4.md). It
 completed a checked Flask change on a 32 GiB M5, but failed pagination,
 revision-store and held-out streaming repairs on a 64 GiB M5 Pro. Those
 results do not support recommending it. Splash also failed the held-out repair;
@@ -25,7 +27,7 @@ not establish those capabilities in these local configurations.
 |---|---|---|
 | Kapitsa | Parked experimental; not offered in the current catalog. Tested MLX 4-bit, DFlash2, thinking off, 98,304-token window. | [Assessment and hardware table](layouts/kapitsa-mlx4.md); coding failures and retained successful cases. |
 | Splash | BaseQuant Medium with DFlash2 and Frog is offered; Unsloth is retired. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
-| llama.cpp | Unsloth/MTP is retired and no longer offered. Historical document and tool cases remain. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
+| llama.cpp | Unsloth/MTP for Apple Silicon including M1/M2. 65,536-token allocation, 32 GiB minimum catalog profile; M1/M2 runtime fit unmeasured. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
 
 [Explore the presets and set up Temper](../../catalog/README.md).
 

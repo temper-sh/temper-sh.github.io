@@ -1,6 +1,6 @@
 {
   "schema": "temper-catalog/v1",
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "platform": "apple-silicon",
   "runtime": {
     "router": {
@@ -568,6 +568,28 @@
         "model_name": "Qwen3.8 27B",
         "weights_name": "BaseQuant V1 Medium · GGUF"
       }
+    },
+    "qwen3.8-27b-q4xl": {
+      "sources": [
+        {
+          "hub": "huggingface",
+          "repo": "unsloth/Qwen3.8-27B-GGUF",
+          "revision": "4ca720788d1e01f1bff70c033e0d0028fd02e502"
+        }
+      ],
+      "format": "gguf",
+      "files": [
+        {
+          "path": "Qwen3.8-27B-UD-Q4_K_XL.gguf",
+          "bytes": 17559178144,
+          "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
+        }
+      ],
+      "license": "Apache-2.0",
+      "presentation": {
+        "model_name": "Qwen3.8 27B",
+        "weights_name": "Unsloth UD-Q4_K_XL · GGUF"
+      }
     }
   },
   "templates": {
@@ -588,7 +610,8 @@
       ],
       "compatible_artifacts": [
         "qwen3.5-4b-q4km",
-        "qwen3.8-27b-basequant-medium"
+        "qwen3.8-27b-basequant-medium",
+        "qwen3.8-27b-q4xl"
       ],
       "license": "Apache-2.0",
       "presentation": {
@@ -613,7 +636,8 @@
       ],
       "compatible_artifacts": [
         "qwen3.5-4b-q4km",
-        "qwen3.8-27b-basequant-medium"
+        "qwen3.8-27b-basequant-medium",
+        "qwen3.8-27b-q4xl"
       ],
       "license": "Apache-2.0",
       "presentation": {
@@ -5480,6 +5504,72 @@
         "memory_tier": "S"
       },
       "reasoning_capability": "switchable"
+    },
+    "qwen3.8-27b-q4xl-mtp": {
+      "artifact": "qwen3.8-27b-q4xl",
+      "template": "froggeric-qwen38",
+      "engine": "llama-cpp",
+      "interface": "chat-completions",
+      "modalities": [
+        "text"
+      ],
+      "request_defaults": {
+        "reasoning": "on",
+        "sampling": {
+          "temperature": 1.0,
+          "top_k": 20,
+          "top_p": 0.95,
+          "min_p": 0.0,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0
+        }
+      },
+      "speculation": {
+        "method": "mtp",
+        "source": "embedded",
+        "max_draft_tokens": 3
+      },
+      "context_limit_tokens": 262144,
+      "compute": "gpu",
+      "compute_options": [
+        "gpu"
+      ],
+      "profiles": [
+        {
+          "min_memory_gib": 32,
+          "context_window_tokens": 65536,
+          "engine_config": {
+            "kind": "llama-server/v1",
+            "parallel": 1,
+            "kv_cache": "q8",
+            "flash_attention": "on",
+            "batch_tokens": 512,
+            "microbatch_tokens": 512,
+            "context_checkpoints": 14,
+            "prompt_cache_ram_mib": 2048,
+            "gpu_layers": 99,
+            "controls": {
+              "cache_reuse": 0,
+              "reasoning_effort": "medium",
+              "preserve_reasoning": false,
+              "context_shift": false,
+              "cache_prompt": true,
+              "fit": "off",
+              "threads": 4,
+              "threads_batch": 4,
+              "load_mode": "mmap",
+              "checkpoint_min_step": 8192
+            }
+          }
+        }
+      ],
+      "presentation": {
+        "display_name": "Qwen3.8 27B Q4 XL / MTP",
+        "description": "For coding and general use on Apple Silicon, including M1 and M2 Macs that cannot run Splash. Uses native MTP acceleration; runtime fit on M1/M2 remains unmeasured.",
+        "group": "general",
+        "memory_tier": "S"
+      },
+      "reasoning_capability": "switchable"
     }
   },
   "presentation": {
@@ -5520,6 +5610,7 @@
     "fallback_group": "other",
     "preset_order": [
       "qwen3.8-27b-basequant-medium-splash",
+      "qwen3.8-27b-q4xl-mtp",
       "muse-glimmer-30b-q4xl-dflash2-llama",
       "gemma-4-26b-a4b-qat-ud-q4-k-xl-llama",
       "gemma-4-31b-qat-ud-q4-k-xl-llama",
@@ -5546,11 +5637,6 @@
     "qwen3.8-27b-q4xl-splash": {
       "retired_on": "2026-11-04",
       "reason": "BaseQuant Medium uses less measured memory on M5 / 32 GiB. The tested coding tasks found no consistent quality winner.",
-      "successor": "qwen3.8-27b-basequant-medium-splash"
-    },
-    "qwen3.8-27b-q4xl-mtp": {
-      "retired_on": "2026-11-04",
-      "reason": "The Qwen offering is consolidated on BaseQuant Medium with Splash. Historical llama.cpp measurements remain available.",
       "successor": "qwen3.8-27b-basequant-medium-splash"
     }
   }

@@ -24,21 +24,25 @@ publisher-sized windows can require substantially more memory than short tests.
 
 | Preset | Why this configuration exists | Observations |
 |---|---|---|
+| Qwen3.8 27B with llama.cpp | Uses Unsloth UD-Q4_K_XL, Frog and embedded MTP for Apple Silicon including M1/M2; 32 GiB minimum catalog profile. Actual M1/M2 fit remains unmeasured. | [Configuration, document cases and memory limits](../models/qwen3.8-27b/layouts/llama-cpp-reference.md). |
 | Qwen3.8 27B with Splash | Uses BaseQuant Medium weights with a draft model and the Frog template integration. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
 | Muse Glimmer 30B | DFlash2 accelerates generation on the tested M5 at a 131,072-token window; the plain 57,344-token option uses less memory. | [Technical writing and workflow observations](../models/muse-glimmer-30b/README.md). |
 | Gemma 4 26B-A4B | Unsloth QAT weights, plain decoding and a 131,072-token window, with a 1,024-token reasoning default. | [Writing and conversation cases](../models/gemma-4-26b-a4b/README.md). |
 | Gemma 4 31B | The larger Gemma model uses MTP width 3 at a 40,960-token window, with a 1,024-token reasoning default. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
 
-**Qwen choice:** BaseQuant Medium with Splash is the sole offered Qwen3.8 27B
-preset, using the tested 114,681-token allocation. Both Unsloth presets, Splash
-and llama.cpp/MTP, are retired.
+**Qwen choice:** BaseQuant Medium with Splash uses the tested 114,681-token
+allocation and requires M3 or newer. Choose `qwen3.8-27b-q4xl-mtp` for Macs
+outside that hardware requirement: Unsloth weights, a 65,536-token allocation
+and the maintained llama.cpp engine.
+The Unsloth Splash preset remains retired.
 In the comparison's
 CSV review repair, loaded/peak system wired growth was **18.27/21.11 GiB**
 for Medium and **18.89/21.70 GiB** for K_XL. Both remained unaccepted after
 repair; cumulative model-active costs were about 66 minutes each. These are
 workload observations including other applications, not minimum RAM or a
 quality ranking. [Conditions and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl)
-retain the exact evidence. Already saved Unsloth presets remain usable;
+retain the exact evidence. These Splash measurements do not describe the
+llama.cpp preset. Already saved Unsloth presets remain usable;
 updating the catalog neither removes them nor switches their weights to BaseQuant.
 Temper 0.5.0 offers **Retired** in
 `configure` for an explicit replacement or removal. Older versions and notices
