@@ -12,7 +12,7 @@ No MTP acceleration was used in these measurements; announced support is
 separate from a tested configuration.
 
 The [catalog helper configuration](../../catalog/README.md#smaller-assistants)
-uses llama.cpp b12089, the embedded template, Q8 conversation memory and the
+uses llama.cpp b12359, the embedded template, Q8 conversation memory and the
 publisher's 1,048,576-token window. Thinking defaults on, following the publisher and template;
 the harness can switch it off for the measured helper behavior below. There is
 no matched quality, timing or memory measurement for this catalog on default.

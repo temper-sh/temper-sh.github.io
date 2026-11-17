@@ -15,7 +15,7 @@ an experiment's settings to prepare a setup.
 
 | Configuration | Published preset | Additional evaluated configuration |
 |---|---|---|
-| Qwen / Splash | BaseQuant Medium, 114,681 tokens | Retired Unsloth K_XL: historical 112,000-token 32 GiB and 131,072-token 64 GiB profiles, plus the matched 114,681-token comparison |
+| Qwen / Splash | UD 3.1 default and BaseQuant Medium alternative, Splash 1.7.0, 114,681 tokens | [UD 3.1 comparison on 1.3.2](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#ud-31-default) and [1.7 completed work](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#splash-17-compatibility-and-completed-work); older memory observations retain their tested engine |
 | Qwen / llama.cpp | Unsloth UD-Q4_K_XL / MTP, 65,536 tokens | [Document and capacity observations](../models/qwen3.8-27b/layouts/llama-cpp-reference.md) retain their earlier engines and workloads; M1/M2 fit is unmeasured |
 | Qwen / Kapitsa | Not offered; parked experimental layout | MLX4/DFlash2 coding failures, successful cases and context measurements remain in the [reference](../models/qwen3.8-27b/layouts/kapitsa-mlx4-reference.md) |
 | Muse Glimmer | DFlash2 at 131,072 tokens, or plain decoding at 57,344 | Matched plain/DFlash2 comparison at 57,344 tokens |
@@ -47,6 +47,7 @@ adjust the allocation for your workload and machine.
 |---|---|---|
 | Qwen3.5 4B — application helper | [Qwen's general-task thinking recipe][settings-qwen35]: T1, top_p .95, top_k 20, presence penalty 1.5 | **262,144 / 262,144**, publisher default. Earlier 16,384 off-mode helper/cache measurements do not ground a thinking-on default; Qwen advises at least 128K for thinking. |
 | Qwen3.8 BaseQuant Medium / Splash — coding and technical work | [Qwen's thinking recipe][settings-qwen38]: T1, top_p .95, top_k 20, presence penalty 0 | **114,681 / 262,144**. Retains the [admitted comparison allocation](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl) under the selected 24 GiB engine allowance. Actual occupied maximum was 41,769; this is not full-window proof. |
+| Qwen3.8 UD 3.1 / Splash — coding default | Same model-specific thinking recipe as Medium; medium effort, int8 KV and the same draft | **114,681 / 262,144**. Retains the comparison allocation under 24 GiB; 1.7 native interface checks also admitted it. On 1.3.2 the accepted CSV repair occupied 52,674 tokens and Ruby follow-up reached 82,363. [Exact conditions](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#ud-31-default), not a full-window claim. |
 | Qwen3.8 Unsloth / llama.cpp — coding and general use | [Qwen's thinking recipe][settings-qwen38]: T1, top_p .95, top_k 20, presence penalty 0 | **65,536 / 262,144**. Retains the established allocation for the M1/M2 alternative; not a new capacity finding. [Earlier capacity observations](../models/qwen3.8-27b/layouts/llama-cpp-reference.md#long-documents-with-llamacpp) show why configured context is not proof of sustained fit. Current-engine loaded/peak memory and M1/M2 fit remain unmeasured. |
 | Muse plain / DFlash2 — technical writing, planning and review | [Meta's generation configuration][settings-muse]: T1, top_p .95, top_k 64 | **57,344 / 131,072** plain; **131,072 / 131,072** DFlash2. Retains [populated retrieval, continuation and memory observations](#muse-glimmer-configurations), with a lower-memory plain alternative. |
 | Gemma 4 E2B — note lookup and export helper | [Google's card][settings-e2b]: T1, top_p .95, top_k **64** | **32,768 / 131,072**. Retains the [selected 32K lookup/cache allocation](#small-collaborator-configurations), tested with 24.5K input. The former top_k 0 was a common test setting without a model-specific selection reason. |
@@ -146,7 +147,7 @@ normal publication/update path.
 | Tiny Aya Global, Water, Fire and Earth (4) | No thinking switch, off | The [official GGUF family](https://huggingface.co/CohereLabs/tiny-aya-global-GGUF) uses conversational templates without a thinking control. Greedy sampling follows the selected generative-evaluation practice for translation; context follows the cards. Historical tests retain their smaller allocation. |
 | Ettin 150M and Qwen3 Reranker 0.6B (2) | Not applicable | Native reranking interfaces have no generation defaults; a chat template in the Qwen weight file does not turn its scoring interface into a reasoning chat model. |
 
-All 21 maintained presets are covered. Effort placeholders are omitted where
+All 23 maintained presets are covered. Effort placeholders are omitted where
 the consumed template does not read them; supported Qwen3.8, Spark and Splash
 defaults remain explicit. Splash's unsupported neutral penalty placeholders are
 also omitted. The [sampling and context source table](#sampling-and-context-sources)
@@ -275,7 +276,7 @@ These presets are offered through the
 [signed channel](v1/channels/stable/channel.yaml), the installation authority. The helper measurements used llama.cpp **b11869**, llama-swap **v265**, the embedded
 GGUF template, one GPU slot, four threads, mmap, batch/microbatch 512 and Q8
 KV. Prompt caching is enabled, RAM cache reserve is zero, and speculation is
-disabled except for the named Bolt variant. Current authoring uses b12089 and
+disabled except for the named Bolt variant. The offered presets use b12359 and
 v269. The table gives current defaults; the [source table](#sampling-and-context-sources)
 explains changes from the measured samplers and windows. Those changes have no
 new quality, latency or memory measurements.
@@ -343,6 +344,7 @@ is available.
 | Preset and tested engine | Date | Loaded → peak | Measured workload |
 |---|---|---|---|
 | Qwen/BaseQuant Medium, Splash 1.3.2, 114,681-token window | 2026-11-01 | 18.27 → 21.11 GiB system wired-memory growth | Actual-history CSV review repair; maximum occupied 41,769 tokens. Passed 15 frozen checks, rejected after source review. |
+| Qwen/UD 3.1 Q4_K_XL, Splash 1.3.2, 114,681-token window | 2026-11-12 | 19.33 → 22.14 GiB system wired-memory growth | Accepted CSV review repair; maximum occupied 52,674 tokens, 17 frozen and three supplementary review checks pass. M5 / 32 GiB / macOS 26.7.2. |
 | Qwen/Unsloth K_XL, Splash 1.3.2, 114,681-token window | 2026-11-01 | 18.89 → 21.70 GiB system wired-memory growth | Actual-history CSV review repair; maximum occupied 60,314 tokens. Passed 15 frozen checks, rejected after source review. |
 | Qwen/Splash 1.3.2, 112,000-token window | 2026-10-17 | 19.46 → 20.46 GiB engine physical footprint | Six short interface/reuse requests, largest input 522 tokens. Loaded after the first response. |
 | Qwen/Splash 1.3.2, M5 Pro / 64 GiB, 131,072-token window | 2026-10-20 | 19.22 → 21.63 GiB system wired-memory growth | Two-response coding workflow, thinking on; 16,369 input + 43,375 generated tokens in the first response, then 20,846 input + 4,018 generated. Loaded after readiness. Submitted code failed independent tests; resource measurements remain applicable. |

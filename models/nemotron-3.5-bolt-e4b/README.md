@@ -15,7 +15,7 @@ from the larger Nemotron Bolt that some engines support.
 ## Configuration choices
 
 Both [catalog choices](../../catalog/README.md#smaller-assistants) use the same
-Unsloth UD-Q4_K_XL target, embedded template, llama.cpp b12089, Q8 conversation
+Unsloth UD-Q4_K_XL target, embedded template, llama.cpp b12359, Q8 conversation
 memory and a 16,384-token window. Thinking has a 512-token default; applications
 can override it independently of total output. No separate total-output cap is
 selected. The test's 2,048-token allowance is not a product limit.

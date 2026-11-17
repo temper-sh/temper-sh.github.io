@@ -8,8 +8,9 @@ do not establish a general quality ranking.
 **[Install Temper](https://github.com/temper-sh/temper#get-started)**, then use
 `temper init` for a new setup or `temper configure` to change one. Review the
 requirements and memory estimate before preparing the selected models.
-Use Temper **0.5.0 or newer** for the current presets and retirement controls.
-Older clients retain saved selections but cannot use most current catalog entries.
+Use Temper **0.6.1 or newer** for all current presets. Splash 1.7 requires this
+version; the other presets and retirement controls require 0.5.0 or newer.
+Older clients retain saved selections and hide incompatible catalog entries.
 
 The [sampling and context reference](reference.md#sampling-and-context-sources)
 links the publisher guidance and local evidence behind each authoring default,
@@ -25,33 +26,31 @@ publisher-sized windows can require substantially more memory than short tests.
 | Preset | Why this configuration exists | Observations |
 |---|---|---|
 | Qwen3.8 27B with llama.cpp | Uses Unsloth UD-Q4_K_XL, Frog and embedded MTP for Apple Silicon including M1/M2; 32 GiB minimum catalog profile. Actual M1/M2 fit remains unmeasured. | [Configuration, document cases and memory limits](../models/qwen3.8-27b/layouts/llama-cpp-reference.md). |
-| Qwen3.8 27B with Splash | Uses BaseQuant Medium weights with a draft model and the Frog template integration. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
+| Qwen3.8 27B with Splash | Uses UD 3.1 Q4_K_XL weights with DFlash2 and Frog on Splash 1.7.0. BaseQuant Medium is available under Other. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
 | Muse Glimmer 30B | DFlash2 accelerates generation on the tested M5 at a 131,072-token window; the plain 57,344-token option uses less memory. | [Technical writing and workflow observations](../models/muse-glimmer-30b/README.md). |
 | Gemma 4 26B-A4B | Unsloth QAT weights, plain decoding and a 131,072-token window, with a 1,024-token reasoning default. | [Writing and conversation cases](../models/gemma-4-26b-a4b/README.md). |
 | Gemma 4 31B | The larger Gemma model uses MTP width 3 at a 40,960-token window, with a 1,024-token reasoning default. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
 
-**Qwen choice:** BaseQuant Medium with Splash uses the tested 114,681-token
-allocation and requires M3 or newer. Choose `qwen3.8-27b-q4xl-mtp` for Macs
-outside that hardware requirement: Unsloth weights, a 65,536-token allocation
-and the maintained llama.cpp engine.
-The Unsloth Splash preset remains retired.
-In the comparison's
-CSV review repair, loaded/peak system wired growth was **18.27/21.11 GiB**
-for Medium and **18.89/21.70 GiB** for K_XL. Both remained unaccepted after
-repair; cumulative model-active costs were about 66 minutes each. These are
-workload observations including other applications, not minimum RAM or a
-quality ranking. [Conditions and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl)
-retain the exact evidence. These Splash measurements do not describe the
-llama.cpp preset. Already saved Unsloth presets remain usable;
-updating the catalog neither removes them nor switches their weights to BaseQuant.
-Temper 0.5.0 offers **Retired** in
-`configure` for an explicit replacement or removal. Older versions and notices
-that have aged out use **Other**.
-Full `temper update` can still update their router/engine software while keeping
-weights and settings. To change the model, select BaseQuant explicitly.
+**Qwen/Splash default:** UD 3.1 Q4_K_XL uses a 114,681-token allocation.
+Its selection follows accepted CSV and Ruby work with Splash 1.3.2; the
+[comparison](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#ud-31-default)
+retains the quality, time and memory observations. BaseQuant Medium used less
+memory in that comparison. Those measurements remain attached to 1.3.2 and do
+not qualify Splash 1.7 memory fit; Temper falls back to an estimate.
+[Splash 1.7 compatibility and completed work](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl-reference.md#splash-17-compatibility-and-completed-work)
+cover the selected release without claiming a general speed or quality gain.
 
-These models use the [Apache-2.0 license][apache-license]. Splash also creates a
-native weight cache, adding disk use and first-startup work.
+Choose `qwen3.8-27b-q4xl-mtp` for Macs outside Splash's M3+ requirement:
+its existing Unsloth weights, a 65,536-token allocation and llama.cpp b12359,
+the binary build associated with v1.0.0. M1/M2 runtime fit remains unmeasured.
+The original UD 3.0 Splash preset remains retired; the UD 3.1 default has its own
+ID. Saved selections stay usable and are not switched to different weights by
+a catalog update. Use **Retired** in `temper configure` for an explicit
+replacement or removal; older clients and expired notices use **Other**.
+
+These models use the [Apache-2.0 license][apache-license]. Splash 1.7 uses the
+shared weight files without the older native weight copy. Its first startup
+still performs preparation and calibration.
 
 The [Qwen / Kapitsa layout](../models/qwen3.8-27b/layouts/kapitsa-mlx4.md) is
 parked experimental and is not offered in the current catalog. Coding failures

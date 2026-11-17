@@ -1,8 +1,8 @@
 schema: temper-catalog-channel/v1
 channel: stable
-sequence: 7
+sequence: 8
 catalogs:
   apple-silicon:
     schema: temper-catalog/v1
-    sha256: 167a59cdddd13f9c2ca9942e0f38d55c6edd91f17299a2ac25829850ba944d1b
-    locator: https://temper-sh.github.io/catalog/v1/snapshots/167a59cdddd13f9c2ca9942e0f38d55c6edd91f17299a2ac25829850ba944d1b/
+    sha256: 516e36a4798c24deaef859117bf7f8b5773a857a14c2c320516335b6a6cbc3ea
+    locator: https://temper-sh.github.io/catalog/v1/snapshots/516e36a4798c24deaef859117bf7f8b5773a857a14c2c320516335b6a6cbc3ea/

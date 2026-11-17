@@ -104,9 +104,10 @@ reached 12.23 GiB of server memory.
   and checking evidence; longer workflows stopped before the final report.
   Q4_K_M, thinking budget 512, 32k.
 - [Qwen3.8 27B](qwen3.8-27b/README.md) —
-  BaseQuant Medium/Splash requires M3+. The Unsloth llama.cpp/MTP alternative
+  UD 3.1/Splash is the M3+ default; BaseQuant is the alternative that used less
+  memory in the Splash 1.3.2 comparison. The Unsloth llama.cpp/MTP alternative
   serves older Apple Silicon; actual M1/M2 runtime fit remains unmeasured.
-  Unsloth/Splash remains retired.
+  The original UD 3.0/Splash preset remains retired.
   [Kapitsa is parked experimental](qwen3.8-27b/layouts/kapitsa-mlx4.md)
   following coding failures on M5 Pro; the successful M5 cases remain recorded.
   Separate llama.cpp results cover source synthesis and document editing.

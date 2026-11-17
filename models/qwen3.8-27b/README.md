@@ -1,8 +1,9 @@
 # Qwen3.8 27B
 
-**Choose Splash for M3+ or llama.cpp for older Apple Silicon.** The catalog
-offers BaseQuant Medium/Splash and Unsloth UD-Q4_K_XL/llama.cpp with MTP.
-Unsloth/Splash remains retired; existing saved selections stay usable.
+**Choose Splash for M3+ or llama.cpp for older Apple Silicon.** Our
+Splash default is Unsloth UD 3.1 Q4_K_XL, after accepted CSV and Ruby work.
+The catalog offers Splash 1.7.0, BaseQuant Medium as an alternative, and the
+existing Unsloth/llama.cpp preset with MTP on build b12359.
 M1/M2 runtime fit remains unmeasured.
 
 The [Kapitsa layout is parked experimental](layouts/kapitsa-mlx4.md). It
@@ -17,8 +18,8 @@ with a 262,144-token native context. Apache 2.0.
 
 The configurations here use text. Kapitsa uses MLX weights and native
 rendering; the historical Splash and llama.cpp presets share Unsloth UD-Q4_K_XL
-weights and the Frog template. The catalog offers BaseQuant Medium for Splash: lower measured memory on M5 / 32 GiB, with no consistent
-coding-quality advantage. The publisher's context and modality claims do
+weights and the Frog template. BaseQuant Medium used less memory in the
+Splash 1.3.2 comparison on M5 / 32 GiB. The publisher's context and modality claims do
 not establish those capabilities in these local configurations.
 
 ## Configuration choices
@@ -26,7 +27,7 @@ not establish those capabilities in these local configurations.
 | Configuration | Purpose and availability | Observations and details |
 |---|---|---|
 | Kapitsa | Parked experimental; not offered in the current catalog. Tested MLX 4-bit, DFlash2, thinking off, 98,304-token window. | [Assessment and hardware table](layouts/kapitsa-mlx4.md); coding failures and retained successful cases. |
-| Splash | BaseQuant Medium with DFlash2 and Frog is offered; Unsloth is retired. Requires M3+, macOS 26.4+ and 32 GiB+. | [Short preset page and hardware table](layouts/splash-ud-q4-k-xl.md). |
+| Splash | UD 3.1/DFlash2/Frog on Splash 1.7.0 is the default; BaseQuant Medium remains an alternative. Requires Temper 0.6.1+, M3+, macOS 26.4+ and 32 GiB+. | [Completed-work comparison and memory](layouts/splash-ud-q4-k-xl.md). |
 | llama.cpp | Unsloth/MTP for Apple Silicon including M1/M2. 65,536-token allocation, 32 GiB minimum catalog profile; M1/M2 runtime fit unmeasured. | [Configuration and evidence](layouts/llama-cpp-reference.md), including errors and context limits. |
 
 [Explore the presets and set up Temper](../../catalog/README.md).

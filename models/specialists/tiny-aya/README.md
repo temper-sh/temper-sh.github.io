@@ -39,7 +39,7 @@ source alongside the output so names, quantities, negation and required actions
 can be checked before another step uses the translation.
 
 The catalog selects the official **Q8_0** GGUF for each variant,
-**3.57 GB** per model, with **llama.cpp b12089**, GPU by default and CPU available.
+**3.57 GB** per model, with **llama.cpp b12359**, GPU by default and CPU available.
 For its translation role it uses **greedy decoding (temperature 0)**, matching
 [Cohere's reported generative-evaluation practice](https://huggingface.co/CohereLabs/tiny-aya-global/discussions/8)
 and the local translation baseline. The cards' temperature .1 examples are

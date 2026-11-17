@@ -4,7 +4,9 @@ Configuration details and evidence behind the [short preset page](splash-ud-q4-k
 For installation, use Temper's published catalog; the evaluated variants here
 are not all offered presets. See [how to use the technical references](../../../guides/technical-reference.md).
 
-**Offered preset:** `qwen3.8-27b-basequant-medium-splash`.
+**Offered default:** UD 3.1 Q4_K_XL with Splash 1.7.0, preset
+`qwen3.8-27b-ud31-q4xl-splash`. The alternative is
+`qwen3.8-27b-basequant-medium-splash`. Both require Temper 0.6.1 or newer.
 `qwen3.8-27b-q4xl-splash` is retired and no longer offered. Existing saved copies retain
 Unsloth weights. Its ID is not repurposed for a different quantization.
 
@@ -16,14 +18,114 @@ so the comparison does not establish general coding reliability.
 Results for the medium-thinking preset retain
 their own settings and do not inherit the thinking-off outcomes.
 
+## Splash 1.7 compatibility and completed work
+
+[Splash 1.7.0](https://github.com/incoai/splash/releases/tag/1.7.0) includes
+the custom-template override needed for Frog. Temper uses the release's local
+preparation API, references the shared weights without the older native weight
+copy, and verifies the frontend/native process identities during recovery.
+Native chat/tool streaming, tool-result follow-up, client cancellation, managed
+recovery and shutdown passed with UD 3.1 at the offered 114,681-token allocation.
+The short interface checks do not establish full-window fit or coding quality.
+
+The initial Ruby webhook-inbox task was repeated with identical UD 3.1 weights,
+DFlash2, Frog v22.5, router v265, sampling, seed 421 and a 112,000-token allocation
+under the 24 GiB allowance on M5 / 32 GiB. Splash 1.7 used its released arithmetic
+and verification defaults. The original task and proposal harness were frozen.
+
+| Ruby completed-work observation | Splash 1.3.2 | Splash 1.7.0 |
+|---|---:|---:|
+| Acceptance | Accepted initial episode | Unaccepted initial episode; accepted after one review repair |
+| Active model/test time through acceptance | 44m23s | 65m16s |
+| Observed weighted native decode | 20.41 tokens/s | 31.31 tokens/s |
+| Output tokens through acceptance | 51,953 | 96,818 |
+| Engine `phys_footprint` loaded / lifetime peak | 19.73 / 22.29 GiB | 19.87 / 22.68 GiB |
+| Maximum occupied context | 36,239 tokens | 89,749 tokens |
+
+The 1.7 initial episode took 49m54s and its repair 15m22s. Four proposal-format
+refusals arose from the frozen harness, separately from real defects in clock
+handling and mutable handler arguments. The repair passed the frozen checks,
+the retained retry-clock check and source review. Current workspace-edit
+protocols address the proposal friction but were not measured in this comparison.
+Different generated paths and output volumes prevent a controlled decode-speed
+claim; one trajectory does not establish a general quality regression or gain.
+Startup and reviewer effort are excluded from active time. Physical footprint
+is not total machine RAM; overlapping counters are not summed. The initial
+startup added 8.25 MiB of swap, the repair none, and neither episode hit a
+resource stop or engine restart. Full-window memory remains unmeasured.
+
+The catalog retains its older 1.3.2 memory records under their exact identities;
+they do not match the offered 1.7 execution, so Temper uses an estimate.
+Evidence provenance: 17 November 2026, native study `splash17-ruby-2026-11-17`.
+Release commit `61f6d51643a2cf8b3ed868dcb4bcda176ae578ec`; arm64 archive SHA-256
+`5cbb1a6708443383c08262bca7c3d8261109caf74238fdafca063435074b586d`.
+
+## UD 3.1 default
+
+UD 3.1 is our selected Qwen/Splash default. It produced accepted CSV and Ruby
+changes in the completed-work comparison, with shorter total Ruby workflow
+time than the retained UD 3.0 and BaseQuant Medium runs. In that Splash 1.3.2
+comparison, Medium used less memory and was faster on the Ruby follow-up alone.
+
+| Work, including review repairs | BaseQuant Medium | UD 3.0 K_XL | UD 3.1 K_XL |
+|---|---:|---:|---:|
+| CSV model-active time and outcome | 66m04s; unaccepted | 65m49s; unaccepted | 64m38s; accepted |
+| Ruby initial active model/test time | 70m52s; accepted | 90m29s; accepted | 44m23s; accepted |
+| Ruby follow-up active model/test time | 50m06s; accepted | 96m31s; correct source retained, final repeat truncated | 54m29s; accepted |
+| CSV repair wired loaded / peak GiB | 18.27 / 21.11 | 18.89 / 21.70 | 19.33 / 22.14 |
+| Ruby initial wired loaded / peak GiB | 18.26 / 20.96 | 18.88 / 21.26 | 19.34 / 22.07 |
+| Ruby follow-up wired loaded / peak GiB | 18.27 / 21.46 | 18.88 / 22.29 | 19.35 / 22.02 |
+
+UD 3.1 passed 17/17 frozen CSV checks from its first complete implementation.
+Source review still found missing conflict diagnostics on invalid rows and
+loss of exact cents for large valid prices. One repair passed those three
+supplementary checks and source review. Both older repaired outputs scored
+15/17 under retrospective common-oracle grading; their original scores remain
+historical. Ruby initial passed 15/15 frozen checks and the retained retry-clock
+check without reviewer repair: its own tests exposed the double clock read and
+it corrected the code before submission. The follow-up initially scored 16/27,
+repeating UD 3.0's positional policy-call and missing-key-validation defects.
+After one review repair, 27/27 frozen checks and both retained review checks pass.
+Review was AI-assisted and label-aware; candidate code was not edited by the reviewer.
+
+The comparison reuses historical inference. All runs used M5 / 32 GiB,
+Splash 1.3.2, Frog v22.5, DFlash2, int8 KV, FP32 recurrent state, medium
+thinking and a 24 GiB engine allowance. Ruby initial allocated 112,000 tokens;
+CSV and Ruby follow-up allocated 114,681. Seed 421 and the original task
+inputs/protocols were retained. UD 3.1 used macOS 26.7.2 and Temper 0.6.0;
+the baselines used macOS 26.6.1 and Temper 0.4.0. Different histories, cache
+reuse and output volume mean these are workflow costs, not a pure quant speed
+measurement. Startup and reviewer effort are excluded; reviewer time was not
+instrumented. There is one sample per task, not a general reliability ranking.
+
+For the accepted UD 3.1 CSV repair, engine footprint loaded/peak was
+19.73/22.53 GiB and native allocation 19.14/21.89 GiB. System wired growth
+includes other applications; five-second sampling can miss peaks. Counters
+overlap and are not summed or interpreted as minimum RAM. New runs had zero
+swap growth or resource stops. Maximum occupied context was 52,674 for CSV
+repair and 82,363 for Ruby follow-up repair; the full window was not populated.
+
+The default uses the tested 114,681 allocation, not a new capacity claim.
+Sampling and the deliberately nonbinding seven-day request watchdog retain
+the comparison settings. The new artifact has its own ID; the llama.cpp
+configuration retains its prior weights. No 64 GiB measurement is inherited.
+
+Exact target: [Unsloth UD 3.1 Q4_K_XL](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF/tree/ce331efc48d5722b4b8041f72793e530eae18d9b),
+revision `ce331efc48d5722b4b8041f72793e530eae18d9b`, 17,659,407,264 bytes,
+SHA256 `2a5f3565f39cf885103da591182c1266da64745737b42b452fd3e675369f1211`.
+Measurement provenance: 12 November 2026, native Field Kit study
+`qwen38-ud31-csv-2026-11-12`. The CSV memory record is the accepted review
+repair, not a composite of the lowest loading cost and highest unrelated peak.
+
 ## BaseQuant Medium and Unsloth K_XL
 
-**Prefer Medium for its measured memory saving on M5 / 32 GiB.** The coding
-observations support neither a consistent quality winner nor a general speed
-advantage. K_XL remains comparison evidence for Splash; that preset is retired.
+**Medium used less memory on M5 / 32 GiB with Splash 1.3.2.** The two-way
+observations below concern UD 3.0, not the selected UD 3.1 default. They support
+neither a consistent quality winner nor a general speed advantage between those
+two artifacts. The old K_XL preset remains retired.
 The separate [llama.cpp/MTP configuration](llama-cpp-reference.md) is offered
 for older Apple Silicon. Medium is the
-offered Splash choice; Large is not offered for this composition.
+offered alternative; Large is not offered for this composition.
 
 ### Completed work and review
 
@@ -106,7 +208,7 @@ zero swap growth. Older 103k/110k misses remain unexplained: zero matched-prefix
 tokens did not mean zero KV reuse. A general long-history cache guarantee is
 not established.
 
-### Exact composition and prepared catalog
+### Exact comparison composition
 
 | Consumed artifact | Revision | File SHA-256 |
 |---|---|---|
@@ -142,12 +244,13 @@ retains the quality findings, request times, memory counter and exact identities
 It also explains the confounds in the packaged-weight comparison. A missing
 comparison is not a reason to claim another option is worse.
 
-### Why retain Splash 1.3.2
+### Why Splash 1.4 was not selected
 
 Splash 1.4.0 was evaluated but not selected for this preset: the matched release
 check did not show a request-time improvement, and preserving Frog required a
-local frontend patch. Retaining 1.3.2 avoids adopting that additional patch
-without a demonstrated benefit in the matched workload.
+local frontend patch. That was the reason to retain 1.3.2. The offered 1.7
+release includes the required override; the comparison below preserves the
+distinct 1.4 evidence rather than describing the current selection.
 
 The release check used M5 / 32 GiB / macOS 26.6.1, the same Unsloth target and
 Frog v22.5, a 112,000-token allocation, FP32 recurrent states, int8 conversation
@@ -173,10 +276,10 @@ the release change and template-maintenance cost, not every possible 1.4.0 setup
 ## Setup and integration
 
 The preset requires Apple M3 or newer, macOS 26.4+ and at least 32 GiB.
-Temper supplies the Frog template through the Python server's tokenizer
-override. The historical Unsloth Splash/llama.cpp presets share a target GGUF;
-the BaseQuant preset uses its own target. Splash's first startup
-also prepares a native weight cache, adding time and disk use.
+Temper 0.6.1 supplies Frog through Splash 1.7's explicit chat-template-file
+option. The historical UD 3.0 Splash/llama.cpp presets share a target GGUF;
+UD 3.1 and BaseQuant each have their own target. Splash 1.7 reads the shared
+weight files without the older native weight copy.
 The tested profile calibrates ANE prefill during startup and disables SSD
 prefix caching. The engine memory allowance is a cap, not reserved memory.
 

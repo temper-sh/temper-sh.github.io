@@ -1,81 +1,59 @@
 # Qwen3.8 27B with Splash
 
-A text-only Qwen preset using Splash. It requires **Apple M3 or newer,
-macOS 26.4+ and 32 GiB+**.
+**UD 3.1 Q4_K_XL with Splash 1.7.0 is our default for Qwen with Splash.**
+It requires Temper 0.6.1+, Apple M3 or newer, macOS 26.4+ and 32 GiB+.
+BaseQuant Medium is available as an alternative.
 
-**BaseQuant Medium is the lower-memory choice on the tested M5 / 32 GiB.**
-It and Unsloth K_XL produced correct Ruby changes after review, but both
-retained a malformed-CSV parsing defect after a focused repair. The trials do
-not establish a consistent coding-quality winner.
+The weight choice follows accepted CSV and Ruby changes on an M5 / 32 GiB
+with Splash 1.3.2. BaseQuant Medium used less memory and was faster on the Ruby
+follow-up alone. This completed-work comparison does not establish a general
+coding-quality ranking or memory fit on 1.7.
 
-| CSV initial work plus one review repair | BaseQuant Medium | Unsloth K_XL |
-|---|---:|---:|
-| Model active time; neither accepted | 1h06m04s | 1h05m49s |
-| Repair loaded / peak system wired growth | 18.27 / 21.11 GiB | 18.89 / 21.70 GiB |
+| Work including review repairs | BaseQuant Medium | UD 3.0 | UD 3.1 |
+|---|---:|---:|---:|
+| CSV model-active time | 66m04s; unaccepted | 65m49s; unaccepted | **64m38s; accepted** |
+| Ruby initial active model/test time | 70m52s | 90m29s | **44m23s** |
+| Ruby follow-up active model/test time | **50m06s** | 96m31s | 54m29s |
+| CSV repair wired loaded / peak GiB | **18.27 / 21.11** | 18.89 / 21.70 | 19.33 / 22.14 |
+| Ruby follow-up wired loaded / peak GiB | **18.27 / 21.46** | 18.88 / 22.29 | 19.35 / 22.02 |
 
-Both used a 114,681-token allocation, Splash 1.3.2, DFlash2 and medium thinking.
+UD 3.0 produced correct follow-up source, but repeating its final patch
+exhausted context. UD 3.1 completed submission. It fixed the initial Ruby
+clock defect using its own tests, then needed review repair for the follow-up
+policy API and validation. CSV also needed one review repair. Acceptance was
+AI-assisted and label-aware; reviewer effort was not timed.
+
+All used Splash 1.3.2, DFlash2, Frog v22.5, int8 conversation memory and medium
+thinking. Ruby initial allocated 112,000 tokens; CSV and follow-up 114,681.
+The UD 3.1 runs used a newer macOS and Temper supervisor. Different histories and
+output volumes affect time, so these observations do not isolate quant speed.
 System wired growth includes other applications; five-second samples can miss
-peaks. These workloads neither fill the window nor establish minimum machine RAM.
-The [comparison and exact boundaries](splash-ud-q4-k-xl-reference.md#basequant-medium-and-unsloth-k_xl)
-also explain the Ruby submission failure and the rejected Large allocation.
-
-The catalog offers BaseQuant Medium at the tested 114,681-token allocation.
-The Unsloth Splash preset is retired. Existing saved presets keep
-their weights and settings; selecting BaseQuant is an explicit change.
-
-**[Set up with Temper](https://github.com/temper-sh/temper#get-started)** ·
-[Configuration and evidence](splash-ud-q4-k-xl-reference.md)
-
-[Kapitsa is parked experimental](kapitsa-mlx4.md) after coding failures.
-Splash remains offered and favored large cold inputs in the comparison;
-both configurations failed a held-out streaming repair. That comparison used
-thinking off; the offered Splash preset uses medium thinking.
+peaks. Memory counters are not minimum machine RAM. The UD 3.1 quant-comparison
+tasks incurred no swap growth or resource stop.
 
 ## Why this combination
 
-**Splash was selected to shorten the wait for a first code patch.** On an M5
-with 32 GiB, two coding tasks took **40m 27s and 19m 21s**, versus **102m 21s
-and 58m 23s** with llama.cpp. Both configurations needed review and corrections.
-Splash peaked at **20.3–20.5 GiB of native allocations**; loaded memory and a
-comparable llama.cpp measurement were not recorded. This
-[comparison used earlier engine builds](splash-ud-q4-k-xl-reference.md#m5--32-gib-matched-coding-comparison-with-llamacpp)
-and measured first submissions, not time to accepted code.
+The offered default retains the tested 114,681-token allocation under a
+24 GiB engine allowance, medium thinking and the same draft/template. Its
+accepted Ruby follow-up reached 82,363 occupied tokens; full-window quality
+and peak memory remain unmeasured. The separate llama.cpp/MTP preset
+serves older Apple Silicon and retains its own target weights.
 
-**The 112,000-token setting fits the selected 24 GiB engine allowance.**
-Splash 1.3.2 refused 118,000 under that allowance; 112,000 passed startup and
-short request checks. That supports the allocation, not useful work across
-the full window.
+Splash was originally selected for shorter first code submissions than
+llama.cpp in two matched tasks. The [technical reference](splash-ud-q4-k-xl-reference.md)
+retains those engine comparisons, exact UD 3.1 provenance and historical
+larger-machine observations. Those older
+measurements are not relabeled as UD 3.1 results.
 
-The [decision notes](splash-ud-q4-k-xl-reference.md#why-these-choices) explain
-the weight/template baseline, retained defaults and why Splash 1.4.0 was not
-selected for this preset.
+Splash 1.7 includes the custom-template override, so Temper can use Frog without
+a local frontend patch. Native chat/tools, cancellation and recovery checks
+passed. In the repeated initial Ruby task, it reached acceptance after one
+review repair and 65m16s of active model/test time. Engine physical footprint
+was 19.87 GiB loaded and 22.68 GiB peak at 112,000 allocated tokens. This is not
+full-window proof or minimum machine RAM. The catalog uses an estimate because
+its retained 1.3.2 memory observations do not match the selected 1.7 engine.
+[Matched release comparison and its harness limitation](splash-ud-q4-k-xl-reference.md#splash-17-compatibility-and-completed-work).
 
-## Behavior on tested hardware
-
-The following earlier observations use **Splash 1.3.2**, Unsloth UD-Q4_K_XL
-weights, Frog v22.5 and medium thinking. Each row describes one workload.
-
-| Machine | Configuration and work | Outcome | Elapsed time | Loaded → peak memory |
-|---|---|---|---:|---|
-| M5 · 32 GiB | 112,000-token window; six short interface/reuse requests | Passed; largest input 522 tokens | Prefix check: **2.60 s** cold / **0.36 s** reused | **19.46 → 20.46 GiB** engine physical footprint |
-| M5 Pro · 64 GiB | Evaluated 131,072-token window; coding | Submitted code failed independent tests | **22m 53s**, two responses | **19.22 → 21.63 GiB** system wired-memory growth |
-
-The workloads and memory counters differ, so these rows do not compare the
-machines' speed or efficiency. Memory observations are not minimum RAM
-requirements. Neither trial filled its configured window.
-
-## What to expect
-
-Coding outcomes depend on the task and configuration. The
-[thinking-off comparison with Kapitsa](kapitsa-mlx4-reference.md#completed-code-changes)
-produced a submitted Flask patch passing behavior, source review and focused
-typing checks after corrections. A separate thinking-off trial retained a
-source-review concern and stopped before submission; other trials produced
-errors that ordinary tests missed. These outcomes do not establish general
-coding reliability or apply unchanged to the offered medium-thinking preset.
-
-The larger 64 GiB variant is evaluated separately.
-[Technical details](splash-ud-q4-k-xl-reference.md) retain the settings, other
-workloads and review findings.
-
-[Qwen model overview](../README.md) · [Explore presets](../../../catalog/README.md).
+**[Set up with Temper](https://github.com/temper-sh/temper#get-started)** ·
+[Exact comparison and limitations](splash-ud-q4-k-xl-reference.md#ud-31-default) ·
+[Qwen model overview](../README.md).
