@@ -28,7 +28,7 @@ publisher-sized windows can require substantially more memory than short tests.
 | Qwen3.8 27B with llama.cpp | Uses Unsloth UD-Q4_K_XL, Frog and embedded MTP for Apple Silicon including M1/M2; 32 GiB minimum catalog profile. Actual M1/M2 fit remains unmeasured. | [Configuration, document cases and memory limits](../models/qwen3.8-27b/layouts/llama-cpp-reference.md). |
 | Qwen3.8 27B with Splash | Uses UD 3.1 Q4_K_XL weights with DFlash2 and Frog on Splash 1.7.0. BaseQuant Medium is available under Other. Requires Apple M3+, macOS 26.4+ and 32 GiB+. | [Coding trials, hardware behavior and limitations](../models/qwen3.8-27b/layouts/splash-ud-q4-k-xl.md). |
 | Muse Glimmer 30B | DFlash2 accelerates generation on the tested M5 at a 131,072-token window; the plain 57,344-token option uses less memory. | [Technical writing and workflow observations](../models/muse-glimmer-30b/README.md). |
-| Gemma 4 26B-A4B | Unsloth QAT weights, plain decoding and a 131,072-token window, with a 1,024-token reasoning default. | [Writing and conversation cases](../models/gemma-4-26b-a4b/README.md). |
+| Gemma 4 26B-A4B | Unsloth QAT weights, plain decoding and a 131,072-token window, with a 1,024-token reasoning default. | [Writing and long-document retrieval](../models/gemma-4-26b-a4b/README.md). |
 | Gemma 4 31B | The larger Gemma model uses MTP width 3 at a 40,960-token window, with a 1,024-token reasoning default. | [Writing cases and measured costs](../models/gemma-4-31b/README.md). |
 
 **Qwen/Splash default:** UD 3.1 Q4_K_XL uses a 114,681-token allocation.

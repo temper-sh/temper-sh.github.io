@@ -93,10 +93,10 @@ reached 12.23 GiB of server memory.
   structured drafts and a second review; completed a conflict-recovery workflow.
   Check operational details and source fidelity. UD-Q4_K_XL, template-default high strength,
   DFlash2, 128k; plain decoding at 56k is the lower-memory alternative.
-- [Gemma 4 26B-A4B](gemma-4-26b-a4b/README.md) — Creative drafting, dialogue,
-  tone revision and general explanations, with substantially shorter waits than
-  31B on the M5. Unsloth QAT UD-Q4_K_XL, plain decoding, 128k; check factual
-  constraints and continuity.
+- [Gemma 4 26B-A4B](gemma-4-26b-a4b/README.md) — Drafting, revision and
+  explanations; facts, chronology and length constraints still need review.
+  Long-document retrieval was inconsistent in the tested M5 Pro configuration.
+  Unsloth QAT UD-Q4_K_XL, plain decoding, 128k allocation.
 - [Gemma 4 31B](gemma-4-31b/README.md) — Coherent scenes and tone revision,
   with much longer waits; the sample establishes no human preference advantage
   over 26B. Unsloth QAT UD-Q4_K_XL, MTP width 3, 40k.
